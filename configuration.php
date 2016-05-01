@@ -1,21 +1,4 @@
 <?php
-/**
- * @package     Joomla
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- *
- * -------------------------------------------------------------------------
- * THIS SHOULD ONLY BE USED AS A LAST RESORT WHEN THE WEB INSTALLER FAILS
- *
- * If you are installing Joomla! manually i.e. not using the web browser installer
- * then rename this file to configuration.php e.g.
- *
- * UNIX -> mv configuration.php-dist configuration.php
- * Windows -> rename configuration.php-dist configuration.php
- *
- * Now edit this file and configure the parameters for your site and
- * database.
- */
 class JConfig {
 	/* Site Settings */
 	public $offline = '0';
@@ -31,9 +14,9 @@ class JConfig {
 	/* Database Settings */
 	public $dbtype = 'mysqli';               // Normally mysqli
 	public $host = 'localhost';              // This is normally set to localhost
-	public $user = 'grecow';                       // DB username
+	public $user = 'greco';                       // DB username
 	public $password = 'Greco2907*';                   // DB password
-	public $db = 'RRHH';                         // DB database name
+	public $db = 'rrhh';                         // DB database name
 	public $dbprefix = 'rrhh_';               // Do not change unless you need to!
 
 	/* Server Settings */
