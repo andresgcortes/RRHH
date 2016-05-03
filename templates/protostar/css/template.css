@@ -531,8 +531,6 @@ a:focus {
 	clear: both;
 }
 .container-fluid {
-	padding-right: 20px;
-	padding-left: 20px;
 	*zoom: 1;
 }
 .container-fluid:before,
@@ -4751,10 +4749,6 @@ a.badge:focus {
 	}
 }
 @media (max-width: 767px) {
-	body {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
 	.navbar-fixed-top,
 	.navbar-fixed-bottom,
 	.navbar-static-top {
@@ -6982,7 +6976,6 @@ body {
 }
 body.site {
 	border-top: 3px solid #0088cc;
-	padding: 20px;
 	background-color: #f4f6f7;
 }
 body.site.fluid {
@@ -7019,12 +7012,7 @@ body.site.fluid {
 .header .finder .btn {
 	margin-top: 0px;
 }
-.navigation {
-	padding: 5px 0;
-	border-top: 1px solid rgba(0,0,0,0.075);
-	border-bottom: 1px solid rgba(0,0,0,0.075);
-	margin-bottom: 10px;
-}
+
 .navigation .nav-pills {
 	margin-bottom: 0;
 }

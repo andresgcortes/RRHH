@@ -64,10 +64,10 @@ JHtml::_('behavior.keepalive');
 			<?php endif; ?>
 
 			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-			<div  class="control-group">
-				<div class="control-label"><label><?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?></label></div>
-				<div class="controls"><input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"/></div>
-			</div>
+				<div  class="control-group">
+					<div class="control-label"><label><?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?></label></div>
+					<div class="controls"><input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"/></div>
+				</div>
 			<?php endif; ?>
 
 			<div class="control-group">
@@ -80,26 +80,25 @@ JHtml::_('behavior.keepalive');
 
 			<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))); ?>" />
 			<?php echo JHtml::_('form.token'); ?>
+			
+			<div>
+				<ul class="nav nav-tabs nav-stacked">
+					<li>
+						<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+						<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
+					</li>		
+					<?php
+					$usersConfig = JComponentHelper::getParams('com_users');
+					if ($usersConfig->get('allowUserRegistration')) : ?>
+					<li>
+						<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
+							<?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
+					</li>
+					<?php endif; ?>
+				</ul>
+			</div>
+
 		</fieldset>
+
 	</form>
-</div>
-<div>
-	<ul class="nav nav-tabs nav-stacked">
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
-			<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
-		</li>
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
-			<?php echo JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
-		</li>
-		<?php
-		$usersConfig = JComponentHelper::getParams('com_users');
-		if ($usersConfig->get('allowUserRegistration')) : ?>
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
-				<?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
-		</li>
-		<?php endif; ?>
-	</ul>
 </div>
