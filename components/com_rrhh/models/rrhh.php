@@ -31,90 +31,167 @@ class RrhhModelRrhh extends JModelItem
 //Probando Albol
 	public function getArbol(){
 
-		$this->html='<ul id="org" style="display:none">
+		$this->html='
+		
+			<ul id="org" style="display:none">
 				    <li>
-				       <h5>PRESIDENTE</h5>
-				        <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-				        <p><b>Zac Snider</b></p>
-				        <p >MEMBER SINCE</p>
-				        <p>2012</p>
-				        <p >TOTAL SPEND</p>
-				        <p>$ 47,60</p>
+				       <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+				        <div class="cdescrip ccolar">
+				        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+				        </div>
+				        <div class="fdescrip fcolar"><hr/>
+				          <p >(00/00,0/000/00/XX/XX)</p>
+				        </div>
 				       <ul>
 				         <li id="beer">
-				            <h5>GERENTE 1</h5>
-				            <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-				            <p><b>Zac Snider</b></p>
-				            <p >MEMBER SINCE</p>
-				            <p>2012</p>
-				            <p >TOTAL SPEND</p>
-				            <p>$ 47,60</p>
+				            <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+					        <div class="cdescrip ccolar">
+					        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+					        </div>
+					        <div class="fdescrip fcolar"><hr/>
+					          <p >(00/00,0/000/00/XX/XX)</p>
+					        </div>
 				         </li>
 				         <li>
-				            <h5>GERENTE 2</h5>
-				            <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-				            <p><b>Zac Snider</b></p>
-				            <p >MEMBER SINCE</p>
-				            <p>2012</p>
-				            <p >TOTAL SPEND</p>
-				            <p>$ 47,60</p>
-				            <a href="http://wesnolte.com" target="_blank">ver perfil</a>
+				            <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+					        <div class="cdescrip ccolar">
+					        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+					        </div>
+					        <div class="fdescrip fcolar"><hr/>
+					          <p >(00/00,0/000/00/XX/XX)</p>
+					        </div>
 				           <ul>
 				            <li>
-				                <h5>COORDINADO</h5>
-				                <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-				                <p><b>Zac Snider</b></p>
-				                <p >MEMBER SINCE</p>
-				                <p>2012</p>
-				                <p >TOTAL SPEND</p>
-				                <p>$ 47,60</p>
+				                <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+						        <div class="cdescrip ccolar">
+						        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+						          <p >(00/00,0/000/00/XX/XX)</p>
+						        </div>
 				                <ul>
 				                    <li>
-				                        <h5>lIDER AREA</h5>
-				                        <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-				                        <p><b>Zac Snider</b></p>
-				                        <p >MEMBER SINCE</p>
-				                        <p>2012</p>
-				                        <p >TOTAL SPEND</p>
-				                        <p>$ 47,60</p>
-				                                    
+				                        <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+								        <div class="cdescrip ccolar">
+								        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+								        </div>
+								        <div class="fdescrip fcolar"><hr/>
+								          <p >(00/00,0/000/00/XX/XX)</p>
+								        </div>         
 				                    </li>
 				                </ul>
 
 				            </li>
-				             <li>Pumpkin</li>
 				             <li>
-				                <a href="http://tquila.com" target="_blank">Aubergine</a>
-				                <p>A link and paragraph is all we need.</p>
+				              <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+						        <div class="cdescrip ccolar">
+						        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+						          <p >(00/00,0/000/00/XX/XX)</p>
+						        </div>
+					        </li>
+				             <li>
+				                <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+						        <div class="cdescrip ccolar">
+						        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+						          <p >(00/00,0/000/00/XX/XX)</p>
+						        </div>
 				             </li>
 				           </ul>
 				         </li>
-				         <li class="fruit">Fruit
+				         <li class="fruit">
+				         	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+					        <div class="cdescrip ccolar">
+					        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+					        </div>
+					        <div class="fdescrip fcolar"><hr/>
+					          <p >(00/00,0/000/00/XX/XX)</p>
+					        </div>
 				           <ul>
-				             <li>Apple
+				             <li>
+				             	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+						        <div class="cdescrip ccolar">
+						        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+						          <p >(00/00,0/000/00/XX/XX)</p>
+						        </div>
 				               <ul>
-				                 <li>Granny Smith</li>
+				                 <li>
+				                 		<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+								        <div class="cdescrip ccolar">
+								        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+								        </div>
+								        <div class="fdescrip fcolar"><hr/>
+								          <p >(00/00,0/000/00/XX/XX)</p>
+								        </div>
+				                 </li>
 				               </ul>
 				             </li>
-				             <li>Berries
+				             <li>
+				             	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+						        <div class="cdescrip ccolar">
+						        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+						          <p >(00/00,0/000/00/XX/XX)</p>
+						        </div>
 				               <ul>
-				                 <li>Blueberry</li>
-				                 <li><img src="images/raspberry.jpg" alt="Raspberry"/></li>
-				                 <li>Cucumber</li>
+				                 <li>
+				                 	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+							        <div class="cdescrip ccolar">
+							        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+							        </div>
+							        <div class="fdescrip fcolar"><hr/>
+							          <p >(00/00,0/000/00/XX/XX)</p>
+							        </div>
+				                 </li>
+				                 <li>
+				                 	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+							        <div class="cdescrip ccolar">
+							        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+							        </div>
+							        <div class="fdescrip fcolar"><hr/>
+							          <p >(00/00,0/000/00/XX/XX)</p>
+							        </div>
+				                 </li>
+				                 <li>
+				                 	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       
+							        <div class="cdescrip ccolar">
+							        	<p> Nombre y apellido del empleado que ocupa el cargo</p>
+							        </div>
+							        <div class="fdescrip fcolar"><hr/>
+							          <p >(00/00,0/000/00/XX/XX)</p>
+							        </div>
+				                 </li>
 				               </ul>
 				             </li>
 				           </ul>
 				         </li>
-				         <li>Bread</li>
-				         <li class="collapsed">Chocolate
-				           <ul>
-				             <li>Topdeck</li>
-				             <li>Reeses Cups</li>
-				           </ul>
-				         </li>
+				         
 				       </ul>
 				     </li>
-				   </ul>            
+				   </ul>
+				   <div class="well">
+				   <div id="chart" class="orgChart"></div>	 
+				   <div>           
 				    ';
 
 		return $this->html;   
