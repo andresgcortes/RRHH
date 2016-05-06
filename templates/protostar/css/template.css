@@ -204,7 +204,7 @@ textarea {
 }
 body {
 	margin: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	color: #333;
@@ -805,7 +805,7 @@ address {
 code,
 pre {
 	padding: 0 3px 2px;
-	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-family: Lato, Monaco, Menlo, Consolas, "Courier New", monospace;
 	font-size: 11px;
 	color: #333;
 	-webkit-border-radius: 3px;
@@ -887,7 +887,7 @@ input,
 button,
 select,
 textarea {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 label {
 	display: block;
@@ -911,21 +911,18 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
 	display: inline-block;
-	height: 18px;
-	padding: 4px 6px;
+	height: 30px;
+	padding: 6px 6px 2px 6px;
 	margin-bottom: 9px;
 	font-size: 13px;
 	line-height: 18px;
 	color: #555;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	vertical-align: middle;
 }
 input,
 textarea,
 .uneditable-input {
-	width: 206px;
+	width: 233px;
 }
 textarea {
 	height: auto;
@@ -1643,7 +1640,7 @@ legend + .control-group {
 	-webkit-margin-top-collapse: separate;
 }
 .form-horizontal .control-group {
-	margin-bottom: 18px;
+	margin-bottom: 10px;
 	*zoom: 1;
 }
 .form-horizontal .control-group:before,
@@ -1662,10 +1659,10 @@ legend + .control-group {
 	text-align: right;
 }
 .form-horizontal .controls {
-	*display: inline-block;
-	*padding-left: 20px;
-	margin-left: 180px;
-	*margin-left: 0;
+	max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
 }
 .form-horizontal .controls:first-child {
 	*padding-left: 180px;
@@ -2134,14 +2131,7 @@ table th[class*="span"],
 	min-height: 20px;
 	padding: 19px;
 	margin-bottom: 20px;
-	background-color: #f5f5f5;
-	border: 1px solid #e3e3e3;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
-	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+	background-color: #F2F2F2;
 }
 .well blockquote {
 	border-color: #ddd;
@@ -2227,15 +2217,15 @@ button.close {
 	background-image: linear-gradient(to bottom,#fff,#e6e6e6);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0);
-	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: #278dad #278dad #278dad;
 	*background-color: #e6e6e6;
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	border: 1px solid #bbb;
+	border: 1px solid #278dad;
 	*border: 0;
-	border-bottom-color: #a2a2a2;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	border-bottom-color: #278dad;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
 	*margin-left: .3em;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
 	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
@@ -2352,7 +2342,7 @@ input[type="button"].btn-block {
 .btn-primary {
 	color: #fff;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-	background-color: #006dcc;
+	background-color: #278dad;
 	background-image: -moz-linear-gradient(top,#08c,#0044cc);
 	background-image: -webkit-gradient(linear,0 0,0 100%,from(#08c),to(#0044cc));
 	background-image: -webkit-linear-gradient(top,#08c,#0044cc);
@@ -2360,7 +2350,7 @@ input[type="button"].btn-block {
 	background-image: linear-gradient(to bottom,#08c,#0044cc);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0043cc', GradientType=0);
-	border-color: #0044cc #0044cc #002a80;
+	border-color: #278dad;
 	*background-color: #0044cc;
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -2371,8 +2361,8 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
 	color: #fff;
-	background-color: #0044cc;
-	*background-color: #003bb3;
+	background-color: #278dad;
+	*background-color: #278dad
 }
 .btn-primary:active,
 .btn-primary.active {
@@ -3327,7 +3317,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
 	margin-bottom: 0;
 	padding: 4px 14px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	font-weight: normal;
 	line-height: 1;
@@ -7509,6 +7499,7 @@ body.modal-open {
 .well .chzn-container {
 	max-width: 100%;
 }
+
 @media (max-width: 767px) {
 	.field-media-wrapper .modal .modal-body {
 		padding: 5px 0;
@@ -7518,3 +7509,26 @@ body.modal-open {
 	-webkit-overflow-scrolling: touch;
 	overflow-y: auto !important;
 }
+
+
+.sucesion{
+	background-image:url('../images/sucesion.png');
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 248px;
+    height: 118px;
+    margin-top: -30px;
+    margin-bottom: -22px;
+}
+
+.login .btn{
+	width: 245px;
+    height: 36px;
+    text-align: left;
+    font-size: 23px
+}
+
+::-webkit-input-placeholder { color:#ACACAC; font-size:23px }
+::-moz-placeholder { color:#ACACAC; font-size:23px} /* firefox 19+ */
+:-ms-input-placeholder { color:#ACACAC; font-size:23px} /* ie */
+input:-moz-placeholder { color:#ACACAC; font-size:23px}
