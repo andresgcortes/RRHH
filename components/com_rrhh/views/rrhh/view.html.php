@@ -19,6 +19,7 @@ class RrhhViewRrhh extends JViewLegacy
 	{
 		// Assign data to the view
 		$this->msg = $this->get('Msg');
+		$this->html = $this->get('Arbol');
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -29,6 +30,7 @@ class RrhhViewRrhh extends JViewLegacy
 		// Display the view
 		parent::display($tpl);
 	}
+
 
 }
 
