@@ -13,3 +13,4 @@ defined('_JEXEC') or die('Restricted access');
 
 
 ?>
+<h1><?php echo $this->html; ?></h1>
