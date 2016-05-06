@@ -11,6 +11,7 @@
 			required="true"
 			validate="username"
 			autofocus="true"
+			hint="Usuario"
 		/>
 
 		<field
@@ -21,6 +22,7 @@
 			filter="raw"
 			label="JGLOBAL_PASSWORD"
 			size="25"
+			hint="Contraseña"
 		/>
 		</fieldset>
 
