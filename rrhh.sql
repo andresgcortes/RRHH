@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2016 a las 21:37:19
+-- Tiempo de generación: 10-05-2016 a las 11:02:15
 -- Versión del servidor: 5.7.9
--- Versión de PHP: 7.0.0
+-- Versión de PHP: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_assets` (
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rrhh_assets`
@@ -106,7 +106,8 @@ INSERT INTO `rrhh_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `ti
 (59, 18, 82, 83, 2, 'com_modules.module.92', 'Image Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
 (60, 18, 84, 85, 2, 'com_modules.module.93', 'Search', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
 (61, 27, 19, 20, 3, 'com_content.article.1', 'Getting Started', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(62, 1, 117, 118, 1, 'rrhh_ucm_content.1', 'rrhh_ucm_content.1', '[]');
+(62, 1, 117, 118, 1, 'rrhh_ucm_content.1', 'rrhh_ucm_content.1', '[]'),
+(63, 0, 120, 121, 0, 'com_rrhh', 'com_rrhh', '{"core.manage":{"8":1,"12":1},"core.create":{"10":1,"8":1},"core.edit":{"11":1,"8":1}}');
 
 -- --------------------------------------------------------
 
@@ -391,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_content` (
 --
 
 INSERT INTO `rrhh_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 61, 'Getting Started', 'getting-started', '<p>It''s easy to get started creating your website. Knowing some of the basics will help.</p><h3>What is a Content Management System?</h3><p>A content management system is software that allows you to create and manage webpages easily by separating the creation of your content from the mechanics required to present it on the web.</p><p>In this site, the content is stored in a <em>database</em>. The look and feel are created by a <em>template</em>. Joomla! brings together the template and your content to create web pages.</p><h3>Logging in</h3><p>To login to your site use the user name and password that were created as part of the installation process. Once logged-in you will be able to create and edit articles and modify some settings.</p><h3>Creating an article</h3><p>Once you are logged-in, a new menu will be visible. To create a new article, click on the "Submit Article" link on that menu.</p><p>The new article interface gives you a lot of options, but all you need to do is add a title and put something in the content area. To make it easy to find, set the state to published.</p><div>You can edit an existing article by clicking on the edit icon (this only displays to users who have the right to edit).</div><h3>Template, site settings, and modules</h3><p>The look and feel of your site is controlled by a template. You can change the site name, background colour, highlights colour and more by editing the template settings. Click the "Template Settings" in the user menu.</p><p>The boxes around the main content of the site are called modules. You can modify modules on the current page by moving your cursor to the module and clicking the edit link. Always be sure to save and close any module you edit.</p><p>You can change some site settings such as the site name and description by clicking on the "Site Settings" link.</p><p>More advanced options for templates, site settings, modules, and more are available in the site administrator.</p><h3>Site and Administrator</h3><p>Your site actually has two separate sites. The site (also called the front end) is what visitors to your site will see. The administrator (also called the back end) is only used by people managing your site. You can access the administrator by clicking the "Site Administrator" link on the "User Menu" menu (visible once you login) or by adding /administrator to the end of your domain name. The same user name and password are used for both sites.</p><h3>Learn more</h3><p>There is much more to learn about how to use Joomla! to create the web site you envision. You can learn much more at the <a href="https://docs.joomla.org" target="_blank">Joomla! documentation site</a> and on the<a href="http://forum.joomla.org" target="_blank"> Joomla! forums</a>.</p>', '', 1, 2, '2013-11-16 00:00:00', 849, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2013-11-16 00:00:00', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(1, 61, 'Getting Started', 'getting-started', '<p>It''s easy to get started creating your website. Knowing some of the basics will help.</p><h3>What is a Content Management System?</h3><p>A content management system is software that allows you to create and manage webpages easily by separating the creation of your content from the mechanics required to present it on the web.</p><p>In this site, the content is stored in a <em>database</em>. The look and feel are created by a <em>template</em>. Joomla! brings together the template and your content to create web pages.</p><h3>Logging in</h3><p>To login to your site use the user name and password that were created as part of the installation process. Once logged-in you will be able to create and edit articles and modify some settings.</p><h3>Creating an article</h3><p>Once you are logged-in, a new menu will be visible. To create a new article, click on the "Submit Article" link on that menu.</p><p>The new article interface gives you a lot of options, but all you need to do is add a title and put something in the content area. To make it easy to find, set the state to published.</p><div>You can edit an existing article by clicking on the edit icon (this only displays to users who have the right to edit).</div><h3>Template, site settings, and modules</h3><p>The look and feel of your site is controlled by a template. You can change the site name, background colour, highlights colour and more by editing the template settings. Click the "Template Settings" in the user menu.</p><p>The boxes around the main content of the site are called modules. You can modify modules on the current page by moving your cursor to the module and clicking the edit link. Always be sure to save and close any module you edit.</p><p>You can change some site settings such as the site name and description by clicking on the "Site Settings" link.</p><p>More advanced options for templates, site settings, modules, and more are available in the site administrator.</p><h3>Site and Administrator</h3><p>Your site actually has two separate sites. The site (also called the front end) is what visitors to your site will see. The administrator (also called the back end) is only used by people managing your site. You can access the administrator by clicking the "Site Administrator" link on the "User Menu" menu (visible once you login) or by adding /administrator to the end of your domain name. The same user name and password are used for both sites.</p><h3>Learn more</h3><p>There is much more to learn about how to use Joomla! to create the web site you envision. You can learn much more at the <a href="https://docs.joomla.org" target="_blank">Joomla! documentation site</a> and on the<a href="http://forum.joomla.org" target="_blank"> Joomla! forums</a>.</p>', '', 1, 2, '2013-11-16 00:00:00', 849, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2013-11-16 00:00:00', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 3, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -510,7 +511,22 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_areas` (
   `modified_by` int(11) NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id_area`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_areas`
+--
+
+INSERT INTO `rrhh_core_areas` (`id_area`, `nombre`, `parent_id`, `lft`, `rgt`, `id_cargo`, `columnas`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 'root', 0, 0, 17, 0, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(2, 'Dirección Ejecutiva', 1, 1, 2, 1, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(3, 'Dirección Comercial\r\n', 2, 3, 4, 2, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(4, 'Dirección Financiera\r\n\r\n', 2, 5, 6, 3, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(5, 'Dirección Asuntos Corporativos y RRHH', 2, 7, 8, 4, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(6, 'Dirección de Planta', 2, 9, 10, 4, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(7, 'Gerencia de Producción', 6, 11, 12, 5, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(8, 'Gerencia de Mantenimiento', 6, 13, 14, 6, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(9, 'Gerencia Materias Primas\r\n', 6, 15, 16, 7, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -521,6 +537,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_areas` (
 DROP TABLE IF EXISTS `rrhh_core_cargos`;
 CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
+  `id_area` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `disabled` tinyint(1) NOT NULL,
   `created_by` int(11) NOT NULL,
@@ -528,7 +545,22 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
   `modified_by` int(11) NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id_cargo`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_cargos`
+--
+
+INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 2, 'Dirección Ejecutiva', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(2, 2, 'Dirección Comercial\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(3, 2, 'Dirección Planta Nobsa\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(4, 2, 'Dirección Asuntos Corporativos y RRHH\r\n\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(5, 2, 'CFO', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(6, 2, 'Gerente Abastecimiento\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(7, 2, 'Gerencia Nacional de OH&S\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(8, 2, 'Gerente Legal\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(9, 2, 'Gerente Planeación Estratégica\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -732,7 +764,7 @@ INSERT INTO `rrhh_extensions` (`extension_id`, `name`, `type`, `element`, `folde
 (600, 'English (United Kingdom)', 'language', 'en-GB', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (601, 'English (United Kingdom)', 'language', 'en-GB', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (700, 'files_joomla', 'file', 'joomla', '', 0, 1, 1, 1, '{"name":"files_joomla","type":"file","creationDate":"April 2016","author":"Joomla! Project","copyright":"(C) 2005 - 2016 Open Source Matters. All rights reserved","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.5.1","description":"FILES_JOOMLA_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(701, 'com_rrhh', 'component', 'com_rrhh', '', 0, 1, 1, 1, '', '', '', '', 0, '2016-04-28 00:00:00', 0, 0),
+(701, 'com_rrhh', 'component', 'com_rrhh', '', 0, 1, 1, 1, '', '{}', '', '', 0, '2016-04-28 00:00:00', 0, 0),
 (702, 'joomla_3.5.1', 'language', 'es-ES', '', 0, 1, 0, 0, '{"name":"joomla_3.5.1","type":"language","creationDate":"06\\/04\\/2016","author":"ComunidadJoomla","copyright":"Copyright (C) 2005 - 2016 comunididadjomla.org. All rights reserved.r; see LICENSE.txt","authorEmail":"jcomunidad@gmail.com","authorUrl":"http:\\/\\/comunidadjoomla.org","version":"3.5.1.1","description":"es-ES - Site language","group":"","filename":"install"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (703, 'joomla_3.5.1', 'language', 'es-ES', '', 1, 1, 0, 0, '{"name":"joomla_3.5.1","type":"language","creationDate":"06\\/04\\/2016","author":"ComunidadJoomla","copyright":"Copyright (C) 2005 - 2016 comunididadjomla.org. All rights reserved.r; see LICENSE.txt","authorEmail":"jcomunidad@gmail.com","authorUrl":"http:\\/\\/comunidadjoomla.org","version":"3.5.1.1","description":"es-ES - Administration language","group":"","filename":"install"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (704, 'joomla_3.5.1', 'package', 'pkg_es-ES', '', 0, 1, 1, 0, '{"name":"joomla_3.5.1","type":"package","creationDate":"06\\/04\\/2016","author":"ComunidadJoomla","copyright":"Copyright (C) 2005 - 2016 comunididadjomla.org. All rights reserved.r; see LICENSE.txt","authorEmail":"jcomunidad@gmail.com","authorUrl":"http:\\/\\/comunidadjoomla.org","version":"3.5.1.1","description":"<div style=\\"text-align:left;\\"><h2>Successfully installed the spanish language pack for Joomla! 3.5.1.<\\/h2><p><\\/p><p>Please report any bugs or issues at the Comunidad Joomla! <a href=\\"http:\\/\\/foro.comunidadjoomla.org\\/traduccion-ext\\/\\" target=\\"_blank\\">Translation forum<\\/a><\\/p><p><\\/p><p>Translated by: <a href=\\"http:\\/\\/www.comunidadjoomla.org\\" target=\\"_blank\\" title=\\"\\">The spanish translation team of Comunidad Joomla!<\\/a><\\/p><h2>El paquete en espa\\u00f1ol para Joomla! 3.5.1 se ha instalado correctamente.<\\/h2><p><\\/p><p>Por favor, reporte cualquier bug o asunto relacionado a nuestro <a href=\\"http:\\/\\/foro.comunidadjoomla.org\\/traduccion-ext\\/\\" target=\\"_blank\\">Foro de traducciones<\\/a><\\/p><p><\\/p><p>Traducci\\u00f3n: <a href=\\"http:\\/\\/www.comunidadjoomla.org\\" target=\\"_blank\\" title=\\"\\">El equipo de traducci\\u00f3n de Comunidad Joomla!<\\/a><\\/p><\\/div>","group":"","filename":"pkg_es-ES"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
@@ -1424,7 +1456,7 @@ INSERT INTO `rrhh_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `li
 (104, 'usermenu', 'Submit an Article', 'submit-an-article', '', 'submit-an-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 3, '', 0, '{"enable_category":"0","catid":"2","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 13, 14, 0, '*', 0),
 (106, 'usermenu', 'Template Settings', 'template-settings', '', 'template-settings', 'index.php?option=com_config&view=templates&controller=config.display.templates', 'component', 1, 1, 1, 23, 0, '0000-00-00 00:00:00', 0, 6, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 19, 20, 0, '*', 0),
 (107, 'usermenu', 'Site Settings', 'site-settings', '', 'site-settings', 'index.php?option=com_config&view=config&controller=config.display.config', 'component', 1, 1, 1, 23, 0, '0000-00-00 00:00:00', 0, 6, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 21, 22, 0, '*', 0),
-(108, 'invisible', 'Home', 'home', '', 'home', 'index.php?option=com_users&view=login', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"login_redirect_url":"","logindescription_show":"1","login_description":"","login_image":"","logout_redirect_url":"","logoutdescription_show":"1","logout_description":"","logout_image":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 55, 56, 1, '*', 0);
+(108, 'invisible', 'Home', 'home', '', 'home', 'index.php?option=com_users&view=login', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"login_redirect_url":"index.php?option=com_rrhh","logindescription_show":"1","login_description":"","login_image":"","logout_redirect_url":"","logoutdescription_show":"1","logout_description":"","logout_image":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 55, 56, 1, '*', 0);
 
 -- --------------------------------------------------------
 
@@ -1746,7 +1778,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_session` (
 --
 
 INSERT INTO `rrhh_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('bg5ll7j6f6516pkle0oj76aur2', 1, 0, '1462502150', 'joomla|s:2604:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo1MDtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0NjI1MDE1OTQ7czo0OiJsYXN0IjtpOjE0NjI1MDIxNTA7czozOiJub3ciO2k6MTQ2MjUwMjE1MDt9czo1OiJ0b2tlbiI7czozMjoiM0QzWUQ5VWk5REp0cVhncnFwWFdJUk1FeXlIMlJ0QnEiO31zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoxMzoiY29tX2luc3RhbGxlciI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo3OiJtZXNzYWdlIjtzOjA6IiI7czoxNzoiZXh0ZW5zaW9uX21lc3NhZ2UiO3M6MDoiIjt9czo5OiJjb21fdXNlcnMiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoiZWRpdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJ1c2VyIjtPOjg6InN0ZENsYXNzIjoyOntzOjI6ImlkIjthOjA6e31zOjQ6ImRhdGEiO047fX19fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086NToiSlVzZXIiOjI5OntzOjk6IgAqAGlzUm9vdCI7YjoxO3M6MjoiaWQiO2k6MjQ4O3M6NDoibmFtZSI7czoxMDoiU3VwZXIgVXNlciI7czo4OiJ1c2VybmFtZSI7czo1OiJBZG1pbiI7czo1OiJlbWFpbCI7czoyNDoiYW5kcmVzLmNvcnRlc2JAZ21haWwuY29tIjtzOjg6InBhc3N3b3JkIjtzOjYwOiIkMnkkMTAkcGU3bDdjeXVmOEcycS9vU2xFZldhTzNRYUl0NEoyRE55amtIaVRDUWxQU2ZDdzVoN2lFMWUiO3M6MTQ6InBhc3N3b3JkX2NsZWFyIjtzOjA6IiI7czo1OiJibG9jayI7czoxOiIwIjtzOjk6InNlbmRFbWFpbCI7czoxOiIxIjtzOjEyOiJyZWdpc3RlckRhdGUiO3M6MTk6IjIwMTYtMDQtMjcgMDI6NTE6MDQiO3M6MTM6Imxhc3R2aXNpdERhdGUiO3M6MTk6IjIwMTYtMDUtMDYgMDI6Mjg6NTEiO3M6MTA6ImFjdGl2YXRpb24iO3M6MDoiIjtzOjY6InBhcmFtcyI7czo5MjoieyJhZG1pbl9zdHlsZSI6IiIsImFkbWluX2xhbmd1YWdlIjoiIiwibGFuZ3VhZ2UiOiIiLCJlZGl0b3IiOiIiLCJoZWxwc2l0ZSI6IiIsInRpbWV6b25lIjoiIn0iO3M6NjoiZ3JvdXBzIjthOjE6e2k6MDtzOjE6IjgiO31zOjU6Imd1ZXN0IjtpOjA7czoxMzoibGFzdFJlc2V0VGltZSI7czowOiIiO3M6MTA6InJlc2V0Q291bnQiO3M6MToiMCI7czoxMjoicmVxdWlyZVJlc2V0IjtzOjE6IjAiO3M6MTA6IgAqAF9wYXJhbXMiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjo2OntzOjExOiJhZG1pbl9zdHlsZSI7czowOiIiO3M6MTQ6ImFkbWluX2xhbmd1YWdlIjtzOjA6IiI7czo4OiJsYW5ndWFnZSI7czowOiIiO3M6NjoiZWRpdG9yIjtzOjA6IiI7czo4OiJoZWxwc2l0ZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MDoiIjt9czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6MTQ6IgAqAF9hdXRoR3JvdXBzIjthOjI6e2k6MDtpOjE7aToxO2k6ODt9czoxNDoiACoAX2F1dGhMZXZlbHMiO2E6NTp7aTowO2k6MTtpOjE7aToxO2k6MjtpOjI7aTozO2k6MztpOjQ7aTo2O31zOjE1OiIAKgBfYXV0aEFjdGlvbnMiO047czoxMjoiACoAX2Vycm9yTXNnIjtOO3M6MTM6IgAqAHVzZXJIZWxwZXIiO086MTg6IkpVc2VyV3JhcHBlckhlbHBlciI6MDp7fXM6MTA6IgAqAF9lcnJvcnMiO2E6MDp7fXM6Njoib3RwS2V5IjtzOjA6IiI7czo0OiJvdGVwIjtzOjA6IiI7czo5OiJwYXNzd29yZDIiO3M6MDoiIjtzOjQ6InRhZ3MiO047fXM6MTE6ImFwcGxpY2F0aW9uIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InF1ZXVlIjtOO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=";', 248, 'Admin');
+('3dm2i5iu58q9ook3ng5lkqcnk6', 0, 0, '1462877832', 'joomla|s:2568:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo5O3M6NToidG9rZW4iO3M6MzI6IkRZNVlRR3ZRUzl6bHlZNVNPZGlwdTZ1amFWOW51VHBMIjtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0NjI4NzczOTY7czo0OiJsYXN0IjtpOjE0NjI4Nzc4MDU7czozOiJub3ciO2k6MTQ2Mjg3NzgzMjt9fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InVzZXJzIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6ImxvZ2luIjtPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImZvcm0iO086ODoic3RkQ2xhc3MiOjI6e3M6NDoiZGF0YSI7YToxOntzOjY6InJldHVybiI7czozOToiaW5kZXgucGhwP29wdGlvbj1jb21fdXNlcnMmdmlldz1wcm9maWxlIjt9czo2OiJyZXR1cm4iO3M6MjU6ImluZGV4LnBocD9vcHRpb249Y29tX3JyaGgiO319fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoyODp7czo5OiIAKgBpc1Jvb3QiO2I6MDtzOjI6ImlkIjtzOjM6IjI1MCI7czo0OiJuYW1lIjtzOjEzOiJBZG1pbmlzdHJhZG9yIjtzOjg6InVzZXJuYW1lIjtzOjEzOiJhZG1pbmlzdHJhZG9yIjtzOjU6ImVtYWlsIjtzOjIxOiJhZG1pbmlzdHJhZG9yQGhocnIuY28iO3M6ODoicGFzc3dvcmQiO3M6NjA6IiQyeSQxMCRydXNzZDBuaHhIYkNpMVpMTU95R1AuMzk5Y3A1U2k3enVya3FqMS9JWmY1c3AxYlozRnNxYSI7czoxNDoicGFzc3dvcmRfY2xlYXIiO3M6MDoiIjtzOjU6ImJsb2NrIjtzOjE6IjAiO3M6OToic2VuZEVtYWlsIjtzOjE6IjAiO3M6MTI6InJlZ2lzdGVyRGF0ZSI7czoxOToiMjAxNi0wNS0wNiAwMjozNDo0NCI7czoxMzoibGFzdHZpc2l0RGF0ZSI7czoxOToiMjAxNi0wNS0xMCAwOTo0Mjo1MiI7czoxMDoiYWN0aXZhdGlvbiI7czowOiIiO3M6NjoicGFyYW1zIjtzOjkyOiJ7ImFkbWluX3N0eWxlIjoiIiwiYWRtaW5fbGFuZ3VhZ2UiOiIiLCJsYW5ndWFnZSI6IiIsImVkaXRvciI6IiIsImhlbHBzaXRlIjoiIiwidGltZXpvbmUiOiIifSI7czo2OiJncm91cHMiO2E6Mjp7aToyO3M6MToiMiI7aToxMTtzOjI6IjExIjt9czo1OiJndWVzdCI7aTowO3M6MTM6Imxhc3RSZXNldFRpbWUiO3M6MTk6IjAwMDAtMDAtMDAgMDA6MDA6MDAiO3M6MTA6InJlc2V0Q291bnQiO3M6MToiMCI7czoxMjoicmVxdWlyZVJlc2V0IjtzOjE6IjAiO3M6MTA6IgAqAF9wYXJhbXMiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjo2OntzOjExOiJhZG1pbl9zdHlsZSI7czowOiIiO3M6MTQ6ImFkbWluX2xhbmd1YWdlIjtzOjA6IiI7czo4OiJsYW5ndWFnZSI7czowOiIiO3M6NjoiZWRpdG9yIjtzOjA6IiI7czo4OiJoZWxwc2l0ZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MDoiIjt9czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6MTQ6IgAqAF9hdXRoR3JvdXBzIjthOjQ6e2k6MDtpOjE7aToxO2k6MjtpOjQ7aToxMTtpOjU7aToxMjt9czoxNDoiACoAX2F1dGhMZXZlbHMiO2E6Mzp7aTowO2k6MTtpOjE7aToxO2k6MjtpOjI7fXM6MTU6IgAqAF9hdXRoQWN0aW9ucyI7TjtzOjEyOiIAKgBfZXJyb3JNc2ciO047czoxMzoiACoAdXNlckhlbHBlciI7TzoxODoiSlVzZXJXcmFwcGVySGVscGVyIjowOnt9czoxMDoiACoAX2Vycm9ycyI7YTowOnt9czozOiJhaWQiO2k6MDtzOjY6Im90cEtleSI7czowOiIiO3M6NDoib3RlcCI7czowOiIiO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=";', 250, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -1802,7 +1834,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_tags` (
 
 INSERT INTO `rrhh_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`, `publish_up`, `publish_down`) VALUES
 (1, 0, 0, 3, 0, '', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2011-01-01 00:00:01', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 1, 1, 2, 1, 'joomla', 'Joomla', 'joomla', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 849, '2013-11-16 00:00:00', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(2, 1, 1, 2, 1, 'joomla', 'Joomla', 'joomla', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 849, '2013-11-16 00:00:00', '', 0, '0000-00-00 00:00:00', '', '', 2, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1997,10 +2029,10 @@ CREATE TABLE IF NOT EXISTS `rrhh_update_sites` (
 --
 
 INSERT INTO `rrhh_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1462501734, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1462501734, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1462806125, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1462806125, ''),
 (3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, '');
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1462806122, '');
 
 -- --------------------------------------------------------
 
@@ -2094,9 +2126,9 @@ CREATE TABLE IF NOT EXISTS `rrhh_users` (
 --
 
 INSERT INTO `rrhh_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-06 02:28:51', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-09 15:00:13', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (249, 'Manager', 'manager', 'manager@hhrr.co', '$2y$10$gS1ExlZUxahKVeJYy.68.OqJSsUc/FoMNqdsxwyM7o0rMfp.9Hsv2', 0, 1, '2016-05-06 02:32:53', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
-(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-10 10:49:56', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (251, 'Consulta', 'consulta', 'consulta123@rrhh.co', '$2y$10$MWxRuqlxT97B5vrz.QQ3/.L9zKHeshK7WiCh3r688i7ui2m4ePsFa', 0, 0, '2016-05-06 02:35:42', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
