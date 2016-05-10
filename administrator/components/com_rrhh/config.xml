@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="articles"
+		label="RRHH"
+		description="COM_RRHH_CONFIG_SETTINGS_DESC">		
+		
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			class="inputbox"
+			validate="rules"
+			filter="rules"
+			component="com_rrhh"
+			section="component" />
+	</fieldset>
+</config>

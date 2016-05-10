@@ -207,16 +207,16 @@ body {
 	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	line-height: 18px;
-	color: #333;
+	color: #278dad;
 	background-color: #fff;
 }
 a {
-	color: #08c;
+	color: #278dad;
 	text-decoration: none;
 }
 a:hover,
 a:focus {
-	color: #005580;
+	color: #278dad;
 	text-decoration: underline;
 }
 .img-rounded {
@@ -7039,27 +7039,27 @@ h6 {
 	margin: 12px 0;
 }
 h1 {
-	font-size: 26px;
+	font-size: 35px;
 	line-height: 28px;
 }
 h2 {
-	font-size: 22px;
+	font-size: 31px;
 	line-height: 24px;
 }
 h3 {
-	font-size: 18px;
+	font-size: 27px;
 	line-height: 20px;
 }
 h4 {
-	font-size: 14px;
+	font-size: 21px;
 	line-height: 16px;
 }
 h5 {
-	font-size: 13px;
+	font-size: 19px;
 	line-height: 15px;
 }
 h6 {
-	font-size: 12px;
+	font-size: 17px;
 	line-height: 14px;
 }
 .module-header {
@@ -7532,3 +7532,27 @@ body.modal-open {
 ::-moz-placeholder { color:#ACACAC; font-size:23px} /* firefox 19+ */
 :-ms-input-placeholder { color:#ACACAC; font-size:23px} /* ie */
 input:-moz-placeholder { color:#ACACAC; font-size:23px}
+
+
+.lvertical{
+	border-right: 1px solid #278dad;
+	padding-right: 30px;
+}
+
+.cuadrou{
+	border: 1px solid #ddd; margin: 0px 20px; border-radius: 5px; padding: 30px;
+}
+
+.cuadros{
+	padding: 25px 20px;
+	text-align: center; 
+}
+
+.nombre{
+	color: #000000; 
+}
+
+.fl{
+	float: left;
+}
+
