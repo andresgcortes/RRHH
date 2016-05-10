@@ -11,6 +11,13 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
+if(!JFactory::getUser()->authorise('core.manage', 'com_rrhh')){
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
+// Include dependancies
+JLoader::register('RrhhHelper', dirname(__FILE__) . '/helpers/rrhh.php');
+
 jimport('joomla.application.component.controller');
 
 // Create the controller

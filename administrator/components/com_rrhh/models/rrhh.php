@@ -13,10 +13,8 @@ defined('_JEXEC') or die('Restricted access');
 
 
 jimport('joomla.application.component.modellist');
+
 class RrhhModelRrhh extends JModelList
 {
 	
-}
-
-
-?>
+} ?>

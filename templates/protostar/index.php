@@ -75,19 +75,27 @@ else
 }
 
 // Logo file or site title param
-if ($this->params->get('logoFile'))
-{
-	$logo = '<img src="' . JUri::root() . $this->params->get('logoFile') . '" alt="' . $sitename . '" />';
-}
-elseif ($this->params->get('sitetitle'))
-{
+if ($this->params->get('logoFile')){
+	
+	$user	= JFactory::getUser();
+	
+	if($user->guest == 1){
+		$logol = $this->params->get('logoFile');
+	}else{
+		$logol = 'images\Logo2.png';
+	}
+	
+	$logo = '<img src="' . JUri::root() . $logol . '" alt="' . $sitename . '" />';
+
+}elseif ($this->params->get('sitetitle')){
+	
 	$logo = '<span class="site-title" title="' . $sitename . '">' . htmlspecialchars($this->params->get('sitetitle')) . '</span>';
-}
-else
-{
+
+}else{
+
 	$logo = '<span class="site-title" title="' . $sitename . '">' . $sitename . '</span>';
-}
-?>
+
+} ?> 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>

@@ -11,10 +11,7 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-
-jimport( 'joomla.application.component.view');
-class RrhhViewRrhh extends JViewLegacy
-{
+class RrhhViewRrhh extends JViewLegacy{
 	function display ($tpl = null)
 	{
 		// Assign data to the view
@@ -32,12 +29,20 @@ class RrhhViewRrhh extends JViewLegacy
 		parent::display($tpl);
 	}
 
-	protected function addToolBar()
-	{
-		JToolBarHelper::title(JText::_('COM_Rrhh_TOOLBAR'));
-	}
+	protected function addToolbar(){
 
-}
+		// Initialise variables.
+	
+		$canDo	= RrhhHelper::getActions(0);
 
+		JToolBarHelper::title(JText::_( 'COM_RRHH' ), 'generic.png' );
+	    
+		if ($canDo->get('core.admin')) {
 
-?>
+			JToolBarHelper::preferences('com_rrhh');
+
+		}
+
+	}//function
+
+} ?>
