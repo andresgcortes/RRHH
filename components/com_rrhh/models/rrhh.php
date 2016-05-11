@@ -37,7 +37,7 @@ class RrhhModelRrhh extends JModelItem
 		JModelLegacy::addIncludePath(JPATH_SITE.'/components/com_rrhh/models');
 		$categoriesModel = JModelLegacy::getInstance( 'Cargos', 'RrhhModel');
 		
-		$this->html = $categoriesModel->getArbolCardos();
+		$this->html = $categoriesModel->getArbolCargos('core_areas', 1);
 
 
 		/*$this->html='

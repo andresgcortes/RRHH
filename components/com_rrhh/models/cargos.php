@@ -26,14 +26,14 @@ class RrhhModelCargos extends JModelItem{
 		return $this->msg;
 	}
 
-	public function getArbolCardos(){
+	public function getArbolCargos($tabla, $tipo){
 
 		$db = JFactory::getDbo();
 
 		$this->html = '';
 
-		$query = "SELECT parent_id as id, nombre as nombre
-				  FROM rrhh_core_areas 
+	 	$query = "SELECT parent_id as id, nombre as nombre
+				  FROM rrhh_".$tabla."
 				  WHERE parent_id != 0 
 				  GROUP BY parent_id";
 
@@ -46,11 +46,12 @@ class RrhhModelCargos extends JModelItem{
 
   			$datosAlbol = min($area);
 
+  			//$cabeceraPrincipal = $this->getArbolCargosCabecera($tabla, $datosAlbol->id, $tipo);
+  			
 
-
-  			$herecia = $this->getArbolCardosSub($datosAlbol->id);
-
-  				$this->html  .='
+  			$herecia = $this->getArbolCargosSub($datosAlbol->id, $tipo);
+  				if ($tipo == 1) {
+  					$this->html  .='
 				    <li>
 				       
 				        <div class="cuadroc">
@@ -60,6 +61,23 @@ class RrhhModelCargos extends JModelItem{
 				     </li>
 				     
 				    ';
+  				}
+  				
+  				if ($tipo == 2) {
+  					$this->html  .='
+				    <li>
+				       <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				        <div class="cdescrip ccolar"><p>
+				        	'.$datosAlbol->nombre.'</p>
+				        </div>
+				        <div class="fdescrip fcolar"><hr/>
+				          <p >(00/00,0/000/00/XX/XX)</p>
+				        </div>
+				        '.$herecia.'
+				     </li>
+				     
+				    ';
+  				}
 
 
   			
@@ -74,7 +92,7 @@ class RrhhModelCargos extends JModelItem{
 
   		}
 
-  		public function getArbolCardosSub($id){
+  		public function getArbolCargosSub($id, $tipo){
 
   			
   			$id = $id + 1 ;
@@ -97,12 +115,30 @@ class RrhhModelCargos extends JModelItem{
 	  			$htmlD .= '<ul>';
 
 	  			 foreach ($dato as $key => $datoValue) {
-	  			 	$htmlD .= '<li >
+	  			 	if ($tipo == 1){
+
+	  			 		$htmlD .= '<li >
 					       
 						        <div class="cuadroc">
 						        	<p>'.$datoValue->nombre.'</p>
 						        </div>
 					         </li>';
+	  			 	}
+
+	  			 	if ($tipo == 2){
+
+	  			 		$htmlD .= '<li >
+					       
+						        <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				        		<div class="cdescrip ccolar"><p>
+						        	<p>'.$datoValue->nombre.'</p>
+						        </div>
+						        <div class="fdescrip fcolar"><hr/>
+				          <p >(00/00,0/000/00/XX/XX)</p>
+				        </div>
+					         </li>';
+	  			 	}
+	  			 	
 	  			 }
 
 				 
@@ -112,6 +148,21 @@ class RrhhModelCargos extends JModelItem{
 
 			}
 			return $htmlD;
+  		}
+
+  		public function getArbolCargosCabecera($tabla, $id, $tipo){
+
+  			$db = JFactory::getDbo();
+			$query = "SELECT a.parent_id as id, a.nombre as nombre
+				  FROM rrhh_".$tabla."  as a
+				  WHERE a.parent_id =".$id."
+				  ORDER BY a.parent_id";
+
+
+			$db->setQuery($query);
+	  		$dato =  $db->loadObjectList();
+
+	  		return count($dato);
   		}
 
   		
