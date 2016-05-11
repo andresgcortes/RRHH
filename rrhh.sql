@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2016 a las 11:02:15
+-- Tiempo de generación: 11-05-2016 a las 05:32:15
 -- Versión del servidor: 5.7.9
 -- Versión de PHP: 5.6.16
 
@@ -539,6 +539,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `id_area` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
+  `parent_id` int(11) NOT NULL,
   `disabled` tinyint(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -551,16 +552,37 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
 -- Volcado de datos para la tabla `rrhh_core_cargos`
 --
 
-INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
-(1, 2, 'Dirección Ejecutiva', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(2, 2, 'Dirección Comercial\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(3, 2, 'Dirección Planta Nobsa\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(4, 2, 'Dirección Asuntos Corporativos y RRHH\r\n\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(5, 2, 'CFO', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(6, 2, 'Gerente Abastecimiento\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(7, 2, 'Gerencia Nacional de OH&S\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(8, 2, 'Gerente Legal\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(9, 2, 'Gerente Planeación Estratégica\r\n', 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
+INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `parent_id`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 2, 'Dirección Ejecutiva', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(2, 2, 'Dirección Comercial\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(3, 2, 'Dirección Planta Nobsa\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(4, 2, 'Dirección Asuntos Corporativos y RRHH\r\n\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(5, 2, 'CFO', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(6, 2, 'Gerente Abastecimiento\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(7, 2, 'Gerencia Nacional de OH&S\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(8, 2, 'Gerente Legal\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(9, 2, 'Gerente Planeación Estratégica\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rrhh_core_cargos_rel_users`
+--
+
+DROP TABLE IF EXISTS `rrhh_core_cargos_rel_users`;
+CREATE TABLE IF NOT EXISTS `rrhh_core_cargos_rel_users` (
+  `id_cargo` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_tiempo` int(11) NOT NULL,
+  UNIQUE KEY `unico` (`id_cargo`,`id_user`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_cargos_rel_users`
+--
+
+INSERT INTO `rrhh_core_cargos_rel_users` (`id_cargo`, `id_user`, `id_tiempo`) VALUES
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -577,6 +599,33 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_log_searches` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rrhh_core_tiempos`
+--
+
+DROP TABLE IF EXISTS `rrhh_core_tiempos`;
+CREATE TABLE IF NOT EXISTS `rrhh_core_tiempos` (
+  `id_tiempo` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `alias` varchar(15) NOT NULL,
+  `color` varchar(7) NOT NULL,
+  `disabled` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_tiempo`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_tiempos`
+--
+
+INSERT INTO `rrhh_core_tiempos` (`id_tiempo`, `nombre`, `alias`, `color`, `disabled`) VALUES
+(1, 'Encargado', 'E', '#FFDF00', 0),
+(2, 'Menor a 1 año', '< 1', '#A4F220', 0),
+(3, '1 a 3 años', '1 a 3', '#5ADDE0', 0),
+(4, '3 a 5 años', '3 a 5', '#9999FF', 0),
+(5, 'Mayor a 5 años', '> 5', '#CC99FF', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `rrhh_core_user`
 --
 
@@ -586,6 +635,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_user` (
   `id_area` int(11) NOT NULL,
   `id_cargo` int(11) NOT NULL,
   `date_cargo` date NOT NULL COMMENT 'Fecha de ocupación del cargo',
+  `date_ingreso` date NOT NULL,
   `codigo` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `foto` varchar(200) NOT NULL,
@@ -596,7 +646,37 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_user` (
   `modified_by` int(11) NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_user`
+--
+
+INSERT INTO `rrhh_core_user` (`id_user`, `id_area`, `id_cargo`, `date_cargo`, `date_ingreso`, `codigo`, `nombre`, `foto`, `nota`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 1, 1, '2015-11-10', '2015-02-22', 1221, 'Andres Cortes', '1221.png', '2', 0, 0, '2016-05-10 00:00:00', 0, '2016-05-10 00:00:00'),
+(2, 1, 2, '2016-05-10', '2015-02-22', 1221, 'Andres Cortes 2', '1221.png', '2', 0, 0, '2016-05-10 00:00:00', 0, '2016-05-10 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rrhh_core_user_cargos`
+--
+
+DROP TABLE IF EXISTS `rrhh_core_user_cargos`;
+CREATE TABLE IF NOT EXISTS `rrhh_core_user_cargos` (
+  `id_user` int(11) NOT NULL,
+  `id_cargo` int(11) NOT NULL,
+  `date_inicio` date NOT NULL,
+  `date_fin` date NOT NULL,
+  KEY `id_user` (`id_user`,`id_cargo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rrhh_core_user_cargos`
+--
+
+INSERT INTO `rrhh_core_user_cargos` (`id_user`, `id_cargo`, `date_inicio`, `date_fin`) VALUES
+(2, 8, '2016-05-01', '2016-05-31');
 
 -- --------------------------------------------------------
 
@@ -1778,7 +1858,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_session` (
 --
 
 INSERT INTO `rrhh_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('3dm2i5iu58q9ook3ng5lkqcnk6', 0, 0, '1462877832', 'joomla|s:2568:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo5O3M6NToidG9rZW4iO3M6MzI6IkRZNVlRR3ZRUzl6bHlZNVNPZGlwdTZ1amFWOW51VHBMIjtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0NjI4NzczOTY7czo0OiJsYXN0IjtpOjE0NjI4Nzc4MDU7czozOiJub3ciO2k6MTQ2Mjg3NzgzMjt9fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InVzZXJzIjtPOjg6InN0ZENsYXNzIjoxOntzOjU6ImxvZ2luIjtPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImZvcm0iO086ODoic3RkQ2xhc3MiOjI6e3M6NDoiZGF0YSI7YToxOntzOjY6InJldHVybiI7czozOToiaW5kZXgucGhwP29wdGlvbj1jb21fdXNlcnMmdmlldz1wcm9maWxlIjt9czo2OiJyZXR1cm4iO3M6MjU6ImluZGV4LnBocD9vcHRpb249Y29tX3JyaGgiO319fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoyODp7czo5OiIAKgBpc1Jvb3QiO2I6MDtzOjI6ImlkIjtzOjM6IjI1MCI7czo0OiJuYW1lIjtzOjEzOiJBZG1pbmlzdHJhZG9yIjtzOjg6InVzZXJuYW1lIjtzOjEzOiJhZG1pbmlzdHJhZG9yIjtzOjU6ImVtYWlsIjtzOjIxOiJhZG1pbmlzdHJhZG9yQGhocnIuY28iO3M6ODoicGFzc3dvcmQiO3M6NjA6IiQyeSQxMCRydXNzZDBuaHhIYkNpMVpMTU95R1AuMzk5Y3A1U2k3enVya3FqMS9JWmY1c3AxYlozRnNxYSI7czoxNDoicGFzc3dvcmRfY2xlYXIiO3M6MDoiIjtzOjU6ImJsb2NrIjtzOjE6IjAiO3M6OToic2VuZEVtYWlsIjtzOjE6IjAiO3M6MTI6InJlZ2lzdGVyRGF0ZSI7czoxOToiMjAxNi0wNS0wNiAwMjozNDo0NCI7czoxMzoibGFzdHZpc2l0RGF0ZSI7czoxOToiMjAxNi0wNS0xMCAwOTo0Mjo1MiI7czoxMDoiYWN0aXZhdGlvbiI7czowOiIiO3M6NjoicGFyYW1zIjtzOjkyOiJ7ImFkbWluX3N0eWxlIjoiIiwiYWRtaW5fbGFuZ3VhZ2UiOiIiLCJsYW5ndWFnZSI6IiIsImVkaXRvciI6IiIsImhlbHBzaXRlIjoiIiwidGltZXpvbmUiOiIifSI7czo2OiJncm91cHMiO2E6Mjp7aToyO3M6MToiMiI7aToxMTtzOjI6IjExIjt9czo1OiJndWVzdCI7aTowO3M6MTM6Imxhc3RSZXNldFRpbWUiO3M6MTk6IjAwMDAtMDAtMDAgMDA6MDA6MDAiO3M6MTA6InJlc2V0Q291bnQiO3M6MToiMCI7czoxMjoicmVxdWlyZVJlc2V0IjtzOjE6IjAiO3M6MTA6IgAqAF9wYXJhbXMiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjo2OntzOjExOiJhZG1pbl9zdHlsZSI7czowOiIiO3M6MTQ6ImFkbWluX2xhbmd1YWdlIjtzOjA6IiI7czo4OiJsYW5ndWFnZSI7czowOiIiO3M6NjoiZWRpdG9yIjtzOjA6IiI7czo4OiJoZWxwc2l0ZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MDoiIjt9czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6MTQ6IgAqAF9hdXRoR3JvdXBzIjthOjQ6e2k6MDtpOjE7aToxO2k6MjtpOjQ7aToxMTtpOjU7aToxMjt9czoxNDoiACoAX2F1dGhMZXZlbHMiO2E6Mzp7aTowO2k6MTtpOjE7aToxO2k6MjtpOjI7fXM6MTU6IgAqAF9hdXRoQWN0aW9ucyI7TjtzOjEyOiIAKgBfZXJyb3JNc2ciO047czoxMzoiACoAdXNlckhlbHBlciI7TzoxODoiSlVzZXJXcmFwcGVySGVscGVyIjowOnt9czoxMDoiACoAX2Vycm9ycyI7YTowOnt9czozOiJhaWQiO2k6MDtzOjY6Im90cEtleSI7czowOiIiO3M6NDoib3RlcCI7czowOiIiO319fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=";', 250, 'administrador');
+('lm5596gcsklqfcev263i2v9rk4', 0, 0, '1462944405', 'joomla|s:2488:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo3NztzOjU6InRva2VuIjtzOjMyOiIzeWlyOTNISjd3UEhzc0ZHQ05wbjVYOWVtMG1XME9TayI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDYyOTM3NzYwO3M6NDoibGFzdCI7aToxNDYyOTQ0MzU4O3M6Mzoibm93IjtpOjE0NjI5NDQ0MDU7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MDp7fXM6NjoicmV0dXJuIjtzOjI1OiJpbmRleC5waHA/b3B0aW9uPWNvbV9ycmhoIjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6Mjg6e3M6OToiACoAaXNSb290IjtiOjA7czoyOiJpZCI7czozOiIyNTAiO3M6NDoibmFtZSI7czoxMzoiQWRtaW5pc3RyYWRvciI7czo4OiJ1c2VybmFtZSI7czoxMzoiYWRtaW5pc3RyYWRvciI7czo1OiJlbWFpbCI7czoyMToiYWRtaW5pc3RyYWRvckBoaHJyLmNvIjtzOjg6InBhc3N3b3JkIjtzOjYwOiIkMnkkMTAkcnVzc2Qwbmh4SGJDaTFaTE1PeUdQLjM5OWNwNVNpN3p1cmtxajEvSVpmNXNwMWJaM0ZzcWEiO3M6MTQ6InBhc3N3b3JkX2NsZWFyIjtzOjA6IiI7czo1OiJibG9jayI7czoxOiIwIjtzOjk6InNlbmRFbWFpbCI7czoxOiIwIjtzOjEyOiJyZWdpc3RlckRhdGUiO3M6MTk6IjIwMTYtMDUtMDYgMDI6MzQ6NDQiO3M6MTM6Imxhc3R2aXNpdERhdGUiO3M6MTk6IjIwMTYtMDUtMTEgMDA6NDY6MTUiO3M6MTA6ImFjdGl2YXRpb24iO3M6MDoiIjtzOjY6InBhcmFtcyI7czo5MjoieyJhZG1pbl9zdHlsZSI6IiIsImFkbWluX2xhbmd1YWdlIjoiIiwibGFuZ3VhZ2UiOiIiLCJlZGl0b3IiOiIiLCJoZWxwc2l0ZSI6IiIsInRpbWV6b25lIjoiIn0iO3M6NjoiZ3JvdXBzIjthOjI6e2k6MjtzOjE6IjIiO2k6MTE7czoyOiIxMSI7fXM6NToiZ3Vlc3QiO2k6MDtzOjEzOiJsYXN0UmVzZXRUaW1lIjtzOjE5OiIwMDAwLTAwLTAwIDAwOjAwOjAwIjtzOjEwOiJyZXNldENvdW50IjtzOjE6IjAiO3M6MTI6InJlcXVpcmVSZXNldCI7czoxOiIwIjtzOjEwOiIAKgBfcGFyYW1zIjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Njp7czoxMToiYWRtaW5fc3R5bGUiO3M6MDoiIjtzOjE0OiJhZG1pbl9sYW5ndWFnZSI7czowOiIiO3M6ODoibGFuZ3VhZ2UiO3M6MDoiIjtzOjY6ImVkaXRvciI7czowOiIiO3M6ODoiaGVscHNpdGUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjA6IiI7fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjE0OiIAKgBfYXV0aEdyb3VwcyI7YTo0OntpOjA7aToxO2k6MTtpOjI7aTo0O2k6MTE7aTo1O2k6MTI7fXM6MTQ6IgAqAF9hdXRoTGV2ZWxzIjthOjM6e2k6MDtpOjE7aToxO2k6MTtpOjI7aToyO31zOjE1OiIAKgBfYXV0aEFjdGlvbnMiO047czoxMjoiACoAX2Vycm9yTXNnIjtOO3M6MTM6IgAqAHVzZXJIZWxwZXIiO086MTg6IkpVc2VyV3JhcHBlckhlbHBlciI6MDp7fXM6MTA6IgAqAF9lcnJvcnMiO2E6MDp7fXM6MzoiYWlkIjtpOjA7czo2OiJvdHBLZXkiO3M6MDoiIjtzOjQ6Im90ZXAiO3M6MDoiIjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 250, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -2128,7 +2208,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_users` (
 INSERT INTO `rrhh_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
 (248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-09 15:00:13', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (249, 'Manager', 'manager', 'manager@hhrr.co', '$2y$10$gS1ExlZUxahKVeJYy.68.OqJSsUc/FoMNqdsxwyM7o0rMfp.9Hsv2', 0, 1, '2016-05-06 02:32:53', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
-(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-10 10:49:56', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-11 03:36:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (251, 'Consulta', 'consulta', 'consulta123@rrhh.co', '$2y$10$MWxRuqlxT97B5vrz.QQ3/.L9zKHeshK7WiCh3r688i7ui2m4ePsFa', 0, 0, '2016-05-06 02:35:42', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------

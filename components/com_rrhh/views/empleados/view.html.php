@@ -19,7 +19,7 @@ class RrhhViewEmpleados extends JViewLegacy{
 
 	function display ($tpl = null){
 		
-		$this->items         = $this->get('Items');
+		$this->item         = $this->get('Item');
 		$this->state         = $this->get('State');
 				
 		// Check for errors.
