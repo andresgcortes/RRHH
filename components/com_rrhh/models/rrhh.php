@@ -13,10 +13,13 @@ defined('_JEXEC') or die('Restricted access');
 
 
 jimport('joomla.application.component.modelitem');
+jimport('joomla.application.component.model');
 class RrhhModelRrhh extends JModelItem
 {
 	protected $msg;
 	protected $html;
+
+	
 
 	public function getMsg()
 	{
@@ -31,7 +34,13 @@ class RrhhModelRrhh extends JModelItem
 //Probando Albol
 	public function getArbol(){
 
-		$this->html='
+		JModelLegacy::addIncludePath(JPATH_SITE.'/components/com_rrhh/models');
+		$categoriesModel = JModelLegacy::getInstance( 'Cargos', 'RrhhModel');
+		
+		$this->html = $categoriesModel->getArbolCardos();
+
+
+		/*$this->html='
 		
 			<ul id="org" style="display:none">
 				    <li>
@@ -192,7 +201,7 @@ class RrhhModelRrhh extends JModelItem
 				   <div class="well">
 				   <div id="chart" class="orgChart"></div>	 
 				   <div>           
-				    ';
+				    ';*/
 
 		return $this->html;   
 
