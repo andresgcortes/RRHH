@@ -52,13 +52,9 @@ class RrhhModelCargos extends JModelItem{
 
   				$this->html  .='
 				    <li>
-				       <div class="tcargo tcolar"><p><p><hr/></div>
 				       
-				        <div class="cdescrip ccolar">
-				        	<p>'.$datosAlbol->nombre.'</p>
-				        </div>
-				        <div class="fdescrip fcolar"><hr/>
-				          <p ></p>
+				        <div class="cuadroc">
+				        	'.$datosAlbol->nombre.'
 				        </div>
 				        '.$herecia.'
 				     </li>
@@ -102,13 +98,9 @@ class RrhhModelCargos extends JModelItem{
 
 	  			 foreach ($dato as $key => $datoValue) {
 	  			 	$htmlD .= '<li >
-					            <div class="tcargo tcolar"><p><p><hr/></div>
 					       
-						        <div class="cdescrip ccolar">
+						        <div class="cuadroc">
 						        	<p>'.$datoValue->nombre.'</p>
-						        </div>
-						        <div class="fdescrip fcolar"><hr/>
-						          <p ></p>
 						        </div>
 					         </li>';
 	  			 }
