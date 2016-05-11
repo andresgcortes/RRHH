@@ -10,13 +10,16 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+
 $document = JFactory::getDocument();
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
-//JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
-JHtml::script(Juri::base() . 'templates/protostar/css/customcargo.css');
 JHtml::script(Juri::base() . 'templates/protostar/css/prettifycargo.css');
+JHtml::script(Juri::base() . 'templates/protostar/css/customcargo.css');
+
+//JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
 
 JFactory::getDocument()->addScriptDeclaration('
  jQuery(document).ready(function() {
@@ -25,14 +28,12 @@ JFactory::getDocument()->addScriptDeclaration('
             dragAndDrop  : true
         });
     });
-');
+');  ?>
 
-
-?>
 <style type="text/css">
 /* Basic styling */
 /* Draw the lines */
-.jOrgChart .line {
+.jOrgChart .line{
   height                : 20px;
   width                 : 4px;
 }
@@ -192,28 +193,35 @@ a:hover{
 	.ccolar{
 		color: #AEB0B3;
 	}
-.jOrgChart .node {
-    font-size: 14px;
+
+.jOrgChart .node{
+	
+    font-size: 20px;
     background-color: #CAC9C9;
     border-radius: 8px;
     border: 1px solid #BBBBBB;
     color: #F6F8FB;
     -moz-border-radius: 8px;
     text-align: center;
+
 }
+
 .jOrgChart .node {
+	
     background-color: #8A8A8C;
     display: inline-block;
-    width: 172px;
-    height: 43px;
+    width: 190px;
+    height: 90px;
+    text-align: left;
+    padding: 20px;
+    line-height: 22px;
 }
-
-.cuadroc{
-	    padding-top: 5%;
-}
-
 
 </style>
-<h1><?php echo $this->html; ?></h1>
 
+<div style="margin-left: auto; margin-right:auto" >
+	
+	<?php echo $this->html; ?>
+
+</div>
 
