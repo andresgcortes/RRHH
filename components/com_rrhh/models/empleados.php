@@ -36,6 +36,7 @@ class RrhhModelEmpleados extends JModelItem{
 		$query->join('inner','#__core_cargos AS c ON c.id_cargo = a.id_cargo');
 		$query->join('inner','#__core_areas AS d ON d.id_area = c.id_area');
 		$query->where('a.id_user = '. $id_user);
+		$query->order('b.id_tiempo ASC');
 		$db->setQuery($query);	
 		$this->item->sucesion = $db->loadObjectList();
 		
@@ -48,6 +49,7 @@ class RrhhModelEmpleados extends JModelItem{
 		$this->item->cargos = $db->loadObjectList();
 				
 		return $this->item;
+	
 	
 	}
 

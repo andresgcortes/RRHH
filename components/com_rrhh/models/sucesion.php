@@ -35,11 +35,13 @@ class RrhhModelSucesion extends JModelItem{
 		$query->join('inner','#__core_user AS c ON a.id_user = c.id_user');
 		$query->join('inner','#__core_tiempos AS d ON a.id_tiempo = d.id_tiempo');
 		$query->where('a.id_cargo = '. $id_cargo);
+		$query->order('d.id_tiempo ASC');
 		$db->setQuery($query);	
 		$this->item->sucesion = $db->loadObjectList();
 				
 		return $this->item;
 	
 	}
+
 
 } ?>
