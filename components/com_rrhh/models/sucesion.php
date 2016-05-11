@@ -43,4 +43,5 @@ class RrhhModelSucesion extends JModelItem{
 	
 	}
 
+
 } ?>

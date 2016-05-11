@@ -126,6 +126,7 @@ class RrhhModelCargos extends JModelItem{
 		 	
  	}
 
+
   	public function getArbolCargosCabecera($tabla, $id, $tipo){
 
  		$db = JFactory::getDbo();

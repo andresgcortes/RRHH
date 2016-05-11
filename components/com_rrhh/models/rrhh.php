@@ -28,6 +28,7 @@ class RrhhModelRrhh extends JModelItem{
 		
 		$this->html = $categoriesModel->getArbolCargos('core_areas', 1, 1, true);
 
+
 		/*$this->html='
 		
 			<ul id="org" style="display:none">

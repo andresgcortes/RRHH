@@ -50,6 +50,7 @@ class RrhhModelEmpleados extends JModelItem{
 				
 		return $this->item;
 	
+	
 	}
 
 } ?>

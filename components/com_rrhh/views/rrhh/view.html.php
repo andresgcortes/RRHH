@@ -32,7 +32,4 @@ class RrhhViewRrhh extends JViewLegacy
 	}
 
 
-}
-
-
-?>
+} ?>
