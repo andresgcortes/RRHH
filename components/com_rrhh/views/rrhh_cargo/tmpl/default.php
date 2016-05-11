@@ -14,9 +14,6 @@ $document = JFactory::getDocument();
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
-//JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
-JHtml::script(Juri::base() . 'templates/protostar/css/customcargo.css');
-JHtml::script(Juri::base() . 'templates/protostar/css/prettifycargo.css');
 
 JFactory::getDocument()->addScriptDeclaration('
  jQuery(document).ready(function() {
@@ -185,6 +182,17 @@ a:hover{
 		padding 		: 2px;
 	}
 
+	.tcolar {
+		color: #FFFFFF;
+	}
+
+	.tcargo {
+		background: #278dad;
+		border-top-left-radius:: 6px;
+		border-top-right-radius: 6px;
+    	text-align: center;
+    	padding-top: 9px;
+	}
 	.cdescrip{
 		background: #FFFFFF;
 	} 
@@ -192,25 +200,18 @@ a:hover{
 	.ccolar{
 		color: #AEB0B3;
 	}
-.jOrgChart .node {
-    font-size: 14px;
-    background-color: #CAC9C9;
-    border-radius: 8px;
-    border: 1px solid #BBBBBB;
-    color: #F6F8FB;
-    -moz-border-radius: 8px;
-    text-align: center;
-}
-.jOrgChart .node {
-    background-color: #8A8A8C;
-    display: inline-block;
-    width: 172px;
-    height: 43px;
-}
 
-.cuadroc{
-	    padding-top: 5%;
-}
+	.fdescrip{
+		background: #AEB0B3;
+		border-top-left-radius:: 6px;
+		border-top-right-radius: 6px;
+
+	}
+
+
+	.fcolar{
+		color: #278dad;
+	}
 
 
 </style>
