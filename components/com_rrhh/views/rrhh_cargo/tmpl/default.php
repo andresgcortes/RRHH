@@ -18,10 +18,19 @@ JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
 
 JFactory::getDocument()->addScriptDeclaration('
  jQuery(document).ready(function() {
+ 	$(".contustiemp").css("display", "none");
         $("#org").jOrgChart({
           chartElement : \'#chart\',
             dragAndDrop  : true
         });
+		$(".infousutiemp").hover(function(){
+			
+            $(".contustiemp").css("display", "block");
+        }, function(){
+            
+            $(".contustiemp").css("display", "none");
+        });
+		
 		
     });
 ');
@@ -58,7 +67,7 @@ JFactory::getDocument()->addScriptDeclaration('
 .jOrgChart .node {
   background-color 		: #35363B;
   display               : inline-block;
-  width                 : 171px;
+  width                 : 192px;
   height                : 100%;
   z-index 				: 10;
   margin               : 0 2px;
@@ -180,12 +189,45 @@ a:hover{
 	}
 	.fcolar{
 		color: #278dad;
+		padding-bottom: 10px;
 	}
 
 	.jOrgChart .node {
-    text-align: center; 
-    padding: 0px;
+	    text-align: center; 
+	    padding: 0px;
 	}
+	.contustiemp {
+	    position: absolute;
+	    width: 171px;
+	    height: 128px;
+	    margin-left: 194px;
+	    margin-top: -140px;
+	    border-radius: 8px;
+	}
+
+	.tabletc {     
+		font-family: "Lucida Sans Unicode", "Lucida Grande",Sans-Serif;
+    	font-size: 9px;  
+    	text-align: left;    
+    	border-collapse: collapse; 
+    	width: 171px;
+    }
+
+    .thtc {     
+    	font-size: 9px;     
+    	font-weight: normal;    
+    	width: 20%;
+    }
+
+	.tdtc {        
+		background: #FFFFFF;     
+		border-bottom: 1px solid #fff;
+    	color: #000000;    
+    	border-top: 1px solid transparent; 
+    }
+
+
+.trtc:hover .tdtc { background: #d0dafd; color: #339; }
 </style>
 <h1><?php echo $this->html; ?></h1>
 

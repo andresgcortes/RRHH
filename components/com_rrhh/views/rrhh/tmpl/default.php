@@ -31,6 +31,11 @@ JFactory::getDocument()->addScriptDeclaration('
     		$(location).attr("href","?option=com_rrhh&view=rrhh_cargo");
 
     	});
+        $(".redire").hover(function(){
+            $(this).css("background-color", "#278dad");
+        }, function(){
+            $(this).css("background-color", "#8A8A8C");
+        });
     });
 ');  ?>
 
