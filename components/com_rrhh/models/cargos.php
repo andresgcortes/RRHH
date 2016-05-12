@@ -46,7 +46,7 @@ class RrhhModelCargos extends JModelItem{
   				
   				foreach($area AS $key => $idc){
   					
-  					echo '<li id="tole">			       
+  					echo '<li class="redire">	 		       
 				    	'.$idc->nombre;					
 						echo $this->getArbolCargosSub($idc->id, $tipo, $tabla);
 				    echo '</li>';

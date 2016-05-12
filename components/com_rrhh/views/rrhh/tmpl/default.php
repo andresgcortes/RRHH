@@ -27,6 +27,10 @@ JFactory::getDocument()->addScriptDeclaration('
             chartElement : \'#chart\',
             dragAndDrop  : true
         });
+		$(".redire").click(function(){
+    		$(location).attr("href","?option=com_rrhh&view=rrhh_cargo");
+
+    	});
     });
 ');  ?>
 
