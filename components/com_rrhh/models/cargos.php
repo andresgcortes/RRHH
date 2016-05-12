@@ -20,29 +20,35 @@ class RrhhModelCargos extends JModelItem{
 		$db = JFactory::getDbo();
 		
 		$this->html = '';
-				
-	 	$query = "SELECT id_area as id, nombre as nombre
+	    if ($tipo == 1) {
+	    			$idt = "id_area";	
+	    }	
+
+	    if ($tipo == 2) {
+	    		$idt = "id_cargo";	
+	    }	
+
+	 	$query = "SELECT ".$idt." as id, nombre as nombre
 			FROM #__".$tabla."
 			WHERE parent_id = ". $id;
-
 		$db->setQuery($query);
 		$area =  $db->loadObjectList();
 
   		if(count($area) > 0){	
-			
-			if($inicial === true){
+		
+			if($inicial === true){ 
   				echo '<ul id="org" style="display:none">';
-			}else{
+			}else{ 
   				echo '<ul>';				
 			}
-	
+				
   			if($tipo == 1){
   				
   				foreach($area AS $key => $idc){
   					
   					echo '<li>			       
 				    	'.$idc->nombre;					
-						echo $this->getArbolCargosSub($idc->id, $tipo);
+						echo $this->getArbolCargosSub($idc->id, $tipo, $tabla);
 				    echo '</li>';
   				
   				}
@@ -50,17 +56,20 @@ class RrhhModelCargos extends JModelItem{
   			}
   				
 			if($tipo == 2) {
-				$this->html  .='
-			    <li>
-			       <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
-			        <div class="cdescrip ccolar"><p>
-			        	'.$datosAlbol->nombre.'</p>
-			        </div>
-			        <div class="fdescrip fcolar"><hr/>
-			          <p >(00/00,0/000/00/XX/XX)</p>
-			        </div>
-			        '.$herecia.'
-			     </li>';
+					
+				foreach($area AS $key => $datosAlbol){
+					echo '
+				    <li>
+				       <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				        <div class="cdescrip ccolar"><p>
+				        	'.$datosAlbol->nombre.'</p>
+				        </div>
+				        <div class="fdescrip fcolar"><hr/>
+				          <p >(00/00,0/000/00/XX/XX)</p>
+				        </div>';
+				    echo $this->getArbolCargosSub($datosAlbol->id, $tipo, $tabla);
+				    echo '</li>';
+			 	}
 			}
 
 	    	echo '</ul>';
@@ -79,13 +88,21 @@ class RrhhModelCargos extends JModelItem{
 
   	}
 
-	public function getArbolCargosSub($id, $tipo){
+	public function getArbolCargosSub($id, $tipo, $tabla){
   		
   		$htmlD = '';
   			
   		$db = JFactory::getDbo();
-		$query = "SELECT a.id_area as id, a.nombre as nombre
-			FROM #__core_areas  as a
+		if ($tipo == 1) {
+	    			$idt = "id_area";	
+	    }	
+
+	    if ($tipo == 2) {
+	    		$idt = "id_cargo";	
+	    }	
+
+	 	$query = "SELECT ".$idt." as id, nombre as nombre
+			FROM #__".$tabla."  as a
 			WHERE a.parent_id = ".$id;
 		$db->setQuery($query);
 		$dato =  $db->loadObjectList();
@@ -100,22 +117,25 @@ class RrhhModelCargos extends JModelItem{
 
   			 		echo '<li >
 					    '.$datoValue->nombre;
-					    echo $this->getArbolCargos('core_areas', 1, $datoValue->id);
+					    echo $this->getArbolCargos('core_areas', $tipo, $datoValue->id);
 				    echo '</li>';
   			 	
   			 	}
 
   			 	if ($tipo == 2){
 
-  			 		$htmlD .= '<li >
+  			 		echo '<li >
 				    	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
-			        		<div class="cdescrip ccolar"><p>
-					        	<p>'.$datoValue->nombre.'</p>
+			        		<div class="cdescrip ccolar">
+					        	<p>';
+					        echo $datoValue->nombre;
+					        echo'</p>
 					        </div>
 					        <div class="fdescrip fcolar"><hr/>
-			          <p >(00/00,0/000/00/XX/XX)</p>
-			        </div>
-				         </li>';
+				          <p >(00/00,0/000/00/XX/XX)</p>
+				        </div>';
+				        echo $this->getArbolCargos('core_cargos', $tipo, $datoValue->id);
+				     echo '</li>';
   			 	}
   			 	
   			}
@@ -131,8 +151,16 @@ class RrhhModelCargos extends JModelItem{
 
  		$db = JFactory::getDbo();
 		
-		$query = "SELECT a.parent_id as id, a.nombre as nombre
-		FROM #__".$tabla."  as a
+		if ($tipo == 1) {
+	    			$idt = "id_area";	
+	    }	
+
+	    if ($tipo == 2) {
+	    		$idt = "id_cargo";	
+	    }	
+
+	 	$query = "SELECT ".$idt." as id, nombre as nombre
+		FROM ·#__".$tabla."  as a
 		WHERE a.parent_id = ".$id."
 		ORDER BY a.parent_id";
 
