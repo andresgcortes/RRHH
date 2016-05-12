@@ -18,9 +18,10 @@ JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
 JFactory::getDocument()->addScriptDeclaration('
  jQuery(document).ready(function() {
         $("#org").jOrgChart({
-            chartElement : \'#chart\',
+          chartElement : \'#chart\',
             dragAndDrop  : true
         });
+		
     });
 ');
 

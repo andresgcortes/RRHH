@@ -46,7 +46,7 @@ class RrhhModelCargos extends JModelItem{
   				
   				foreach($area AS $key => $idc){
   					
-  					echo '<li>			       
+  					echo '<li id="tole">			       
 				    	'.$idc->nombre;					
 						echo $this->getArbolCargosSub($idc->id, $tipo, $tabla);
 				    echo '</li>';
@@ -58,14 +58,18 @@ class RrhhModelCargos extends JModelItem{
 			if($tipo == 2) {
 					
 				foreach($area AS $key => $datosAlbol){
+					 $datoscargo = $this->getInfoCargo($datosAlbol->id);
+					
+					 $dotosInfo = $datoscargo[0];
+					
 					echo '
 				    <li>
-				       <div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				       <div class="tcargo tcolar"><p>'.$datosAlbol->nombre.'<p><hr/></div>
 				        <div class="cdescrip ccolar"><p>
-				        	'.$datosAlbol->nombre.'</p>
+				        	'.$dotosInfo->nombre.'</p>
 				        </div>
 				        <div class="fdescrip fcolar"><hr/>
-				          <p >(00/00,0/000/00/XX/XX)</p>
+				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
 				        </div>';
 				    echo $this->getArbolCargosSub($datosAlbol->id, $tipo, $tabla);
 				    echo '</li>';
@@ -117,24 +121,34 @@ class RrhhModelCargos extends JModelItem{
 
   			 		echo '<li >
 					    '.$datoValue->nombre;
-					    echo $this->getArbolCargos('core_areas', $tipo, $datoValue->id);
+					    echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
 				    echo '</li>';
   			 	
   			 	}
 
   			 	if ($tipo == 2){
+  			 		$datoscargo = $this->getInfoCargo($datoValue->id);
+  			 		
+  			 		if (count($datoscargo) == 0) {
+  			 			$dotosInfo->nombre = "No hay nombre registrado";
+  			 			$dotosInfo->fecha = "1999-00-00";
+  			 		}else{
+  			 			$dotosInfo = $datoscargo[0];
+  			 		}
 
   			 		echo '<li >
-				    	<div class="tcargo tcolar"><p>Nombre completo del cargo<p><hr/></div>
+				    	<div class="tcargo tcolar"><p>';
+				    	echo $datoValue->nombre;
+				    echo '<p><hr/></div>
 			        		<div class="cdescrip ccolar">
 					        	<p>';
-					        echo $datoValue->nombre;
+					        echo $dotosInfo->nombre;
 					        echo'</p>
 					        </div>
 					        <div class="fdescrip fcolar"><hr/>
-				          <p >(00/00,0/000/00/XX/XX)</p>
+				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
 				        </div>';
-				        echo $this->getArbolCargos('core_cargos', $tipo, $datoValue->id);
+				        echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
 				     echo '</li>';
   			 	}
   			 	
@@ -168,6 +182,23 @@ class RrhhModelCargos extends JModelItem{
   		$dato =  $db->loadObjectList();
 
   		return count($dato);
+  	}
+
+  	private function getInfoCargo($id_cargo){
+
+  		
+  		$db = JFactory::getDbo();
+
+  		$tabla = "core_user";
+
+  		$query = "SELECT  date_cargo as fecha, nombre as nombre
+			FROM rrhh_".$tabla."  as a
+			WHERE a.id_cargo = ".$id_cargo;
+			
+		$db->setQuery($query);
+		$dato =  $db->loadObjectList();
+		
+		return $dato;
   	}
 
 } ?>
