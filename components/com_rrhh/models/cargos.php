@@ -68,9 +68,13 @@ class RrhhModelCargos extends JModelItem{
 				        <div class="cdescrip ccolar"><p>
 				        	'.$dotosInfo->nombre.'</p>
 				        </div>
-				        <div class="fdescrip fcolar"><hr/>
-				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
-				        </div>';
+
+				        <div class="fdescrip fcolar infousutiemp"><hr/>
+				          <p  >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
+				        </div> <div class="contustiemp" >';
+				        echo $this->getUsuariosTtiempo($datosAlbol->id);
+
+				    echo '</div>';
 				    echo $this->getArbolCargosSub($datosAlbol->id, $tipo, $tabla);
 				    echo '</li>';
 			 	}
@@ -119,7 +123,7 @@ class RrhhModelCargos extends JModelItem{
 
   			 	if ($tipo == 1){
 
-  			 		echo '<li >
+  			 		echo '<li class="redire">
 					    '.$datoValue->nombre;
 					    echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
 				    echo '</li>';
@@ -199,6 +203,38 @@ class RrhhModelCargos extends JModelItem{
 		$dato =  $db->loadObjectList();
 		
 		return $dato;
+  	}
+
+  	private function getUsuariosTtiempo($id_cargo){
+  		
+  		$db = JFactory::getDbo();
+  		$query = $db->getQuery(true);		
+		$query->select('c.id_user, c.nombre as nombre, d.alias, d.color');
+		$query->from('#__core_cargos_rel_users AS a');
+		$query->join('inner','#__core_user AS c ON a.id_user = c.id_user');
+		$query->join('inner','#__core_tiempos AS d ON a.id_tiempo = d.id_tiempo');
+		$query->where('a.id_cargo = '. $id_cargo);
+		$query->order('d.id_tiempo ASC');
+		$db->setQuery($query);	
+		$dato = $db->loadObjectList();
+
+		if(count($dato)){
+			echo '<table class="tabletc postable">';
+
+			foreach ($dato as $key => $datoTabla) {
+
+				echo '<tr class="trtc">
+						<th class="thtc" style="background: '.$datoTabla->color.';">'.$datoTabla->alias.'</th>
+						<td class="tdtc">'.$datoTabla->nombre.'</th>
+					   </tr>';
+				
+			}
+			echo'</table>';	
+
+		}else{
+			echo 'No';
+		}
+		
   	}
 
 } ?>
