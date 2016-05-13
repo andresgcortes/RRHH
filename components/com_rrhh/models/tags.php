@@ -16,7 +16,7 @@ use Joomla\Registry\Registry;
  *
  * @since  3.1
  */
-class TagsModelTags extends JModelList
+class RrhhModelTags extends JModelList
 {
 	/**
 	 * Model context string.
@@ -24,7 +24,7 @@ class TagsModelTags extends JModelList
 	 * @var    string
 	 * @since  3.1
 	 */
-	public $_context = 'com_tags.tags';
+	public $_context = 'com_rrh.tags';
 
 	/**
 	 * Method to auto-populate the model state.

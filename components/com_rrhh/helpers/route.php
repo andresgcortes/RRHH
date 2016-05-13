@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
  *
  * @since  3.1
  */
-class TagsHelperRoute extends JHelperRoute
+class RrhhHelperRoute extends JHelperRoute
 {
 	protected static $lookup;
 

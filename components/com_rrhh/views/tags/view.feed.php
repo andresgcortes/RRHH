@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
  *
  * @since  3.1
  */
-class TagsViewTags extends JViewLegacy
+class RrhhViewTags extends JViewLegacy
 {
 	/**
 	 * Execute and display a template script.
