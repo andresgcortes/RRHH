@@ -16,7 +16,7 @@ use Joomla\Registry\Registry;
  *
  * @since  3.1
  */
-class TagsViewTags extends JViewLegacy
+class RrhhViewTags extends JViewLegacy
 {
 	protected $state;
 
@@ -138,7 +138,7 @@ class TagsViewTags extends JViewLegacy
 		}
 
 		$this->_prepareDocument();
-
+		
 		parent::display($tpl);
 	}
 

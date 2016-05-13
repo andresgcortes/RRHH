@@ -28,10 +28,6 @@ $controller->execute($input->getCmd('task'));
 
 
 
-$controller = JControllerLegacy::getInstance('Tags');
-$controller->execute(JFactory::getApplication()->input->get('task'));
-
-
 // Redirect if set by the controller
 $controller->redirect();
 

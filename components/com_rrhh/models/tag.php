@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
  *
  * @since  3.1
  */
-class TagsModelTag extends JModelList
+class RrhhModelTag extends JModelList
 {
 	/**
 	 * The tags that apply.

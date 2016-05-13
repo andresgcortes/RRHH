@@ -16,7 +16,7 @@ use Joomla\Registry\Registry;
  *
  * @since  3.1
  */
-class TagsViewTag extends JViewLegacy
+class RrhhViewTag extends JViewLegacy
 {
 	protected $state;
 
