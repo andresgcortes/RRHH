@@ -15,25 +15,31 @@ class RrhhModelCargos extends JModelItem{
 	
 	protected $html;
 
-	public function getArbolCargos($tabla, $tipo, $id, $inicial = false){
+	public function getArbolCargos($tabla, $tipo, $id, $inicial = false, $id_area = null){
 
 		$db = JFactory::getDbo();
 		
 		$this->html = '';
 	    if ($tipo == 1) {
-	    			$idt = "id_area";	
+	    	$idt = "id_area";	
 	    }	
 
 	    if ($tipo == 2) {
 	    		$idt = "id_cargo";	
 	    }	
-
-	 	$query = "SELECT ".$idt." as id, nombre as nombre
-			FROM #__".$tabla."
-			WHERE parent_id = ". $id;
+		
+		$query = $db->getQuery(true);		
+		$query->select( $idt.' as id, nombre as nombre');
+		$query->from('#__'.$tabla);
+		$query->where("parent_id = ". $id);
+		
+		if(!is_null($id_area)){
+			$query->where("id_area = ". $id_area);	
+		}		
+		
 		$db->setQuery($query);
 		$area =  $db->loadObjectList();
-
+		
   		if(count($area) > 0){	
 		
 			if($inicial === true){ 
@@ -58,12 +64,11 @@ class RrhhModelCargos extends JModelItem{
 			if($tipo == 2) {
 					
 				foreach($area AS $key => $datosAlbol){
-					 $datoscargo = $this->getInfoCargo($datosAlbol->id);
-					
+			
+					 $datoscargo = $this->getInfoCargo($datosAlbol->id);					
 					 $dotosInfo = $datoscargo[0];
 					
-					echo '
-				    <li>
+					echo '<li>
 				       <div class="tcargo tcolar"><p>'.$datosAlbol->nombre.'<p><hr/></div>
 				        <div class="cdescrip ccolar"><p>
 				        	'.$dotosInfo->nombre.'</p>
@@ -102,14 +107,14 @@ class RrhhModelCargos extends JModelItem{
   			
   		$db = JFactory::getDbo();
 		if ($tipo == 1) {
-	    			$idt = "id_area";	
+	    	$idt = "id_area";	
 	    }	
 
 	    if ($tipo == 2) {
 	    		$idt = "id_cargo";	
 	    }	
 
-	 	$query = "SELECT ".$idt." as id, nombre as nombre
+	 	$query = "SELECT ".$idt." as id, nombre as nombre, id_area
 			FROM #__".$tabla."  as a
 			WHERE a.parent_id = ".$id;
 		$db->setQuery($query);
@@ -131,6 +136,7 @@ class RrhhModelCargos extends JModelItem{
   			 	}
 
   			 	if ($tipo == 2){
+  			 		
   			 		$datoscargo = $this->getInfoCargo($datoValue->id);
   			 		
   			 		if (count($datoscargo) == 0) {
@@ -152,7 +158,7 @@ class RrhhModelCargos extends JModelItem{
 					        <div class="fdescrip fcolar"><hr/>
 				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
 				        </div>';
-				        echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
+				        echo $this->getArbolCargos($tabla, $tipo, $datoValue->id, false, $datoValue->id_area);
 				     echo '</li>';
   			 	}
   			 	
@@ -163,7 +169,6 @@ class RrhhModelCargos extends JModelItem{
 		}
 		 	
  	}
-
 
   	public function getArbolCargosCabecera($tabla, $id, $tipo){
 
