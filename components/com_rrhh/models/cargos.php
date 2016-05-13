@@ -1,8 +1,8 @@
 <?php
 /**
 * @package Author
-* @author 
-* @website 
+* @author  Jorge Angarita
+* @website //
 * @email 
 * @copyright 
 * @license 
@@ -237,7 +237,7 @@ class RrhhModelCargos extends JModelItem{
 			echo'</table>';	
 
 		}else{
-			echo 'No';
+			echo '';
 		}
 		
   	}
