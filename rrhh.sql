@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2016 a las 05:32:15
+-- Tiempo de generación: 13-05-2016 a las 03:54:27
 -- Versión del servidor: 5.7.9
 -- Versión de PHP: 5.6.16
 
@@ -94,7 +94,7 @@ INSERT INTO `rrhh_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `ti
 (47, 18, 58, 59, 2, 'com_modules.module.13', 'Admin Submenu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (48, 18, 60, 61, 2, 'com_modules.module.14', 'User Status', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (49, 18, 62, 63, 2, 'com_modules.module.15', 'Title', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(50, 18, 64, 65, 2, 'com_modules.module.16', 'Login Form', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(50, 18, 64, 65, 2, 'com_modules.module.16', 'Login Form', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
 (51, 18, 66, 67, 2, 'com_modules.module.17', 'Breadcrumbs', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (52, 18, 68, 69, 2, 'com_modules.module.79', 'Multilanguage status', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (53, 18, 70, 71, 2, 'com_modules.module.86', 'Joomla Version', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
@@ -546,7 +546,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
   `modified_by` int(11) NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id_cargo`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rrhh_core_cargos`
@@ -561,7 +561,61 @@ INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `parent_id`, `d
 (6, 2, 'Gerente Abastecimiento\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
 (7, 2, 'Gerencia Nacional de OH&S\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
 (8, 2, 'Gerente Legal\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(9, 2, 'Gerente Planeación Estratégica\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
+(9, 2, 'Gerente Planeación Estratégica\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(10, 3, 'Dirección Comercial', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(11, 3, 'Gerente Ventas Bogotá', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(12, 3, 'Gerente Ventas Norte\r\n', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(13, 3, 'Gerente Comercial Proyectos y Zona Centro', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(14, 3, 'Gerente Nacional Op. RMX', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(15, 3, 'Gerente Mercadeo e Innovación', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(16, 3, 'Gerente Logística', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(17, 3, 'Head Coach', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(18, 4, 'CFO\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(19, 4, 'Jefe Tesorería\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(20, 4, 'Gerente Contraloría\r\n\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(21, 4, 'Jefe Contraloría\r\n\r\n\r\n\r\n', 20, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(22, 4, 'Coordinador IT\r\n\r\n\r\n\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(23, 5, 'Dirección Asuntos Corporativos y RRHH', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(24, 5, 'Jefe Compensación y Beneficios', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(25, 5, 'Jefe Talento\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(26, 5, 'Jefe Rel Laborales y Adm de Personal\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(27, 5, 'Coordinador RRHH Boyacá\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(28, 5, 'Dirección Fundación Social\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(29, 5, 'Coordinador Seguridad\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(30, 5, 'Coordinador Comunicaciones\r\n\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(31, 6, 'Dirección Planta Nobsa', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(32, 6, 'Gerente AFR\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(33, 6, 'Gerente Producción\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(34, 6, 'Gerente Mantenimiento\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(35, 6, 'Gerente Materias Primas\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(36, 6, 'Gerente Mina\r\n', 35, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(37, 6, 'Coord. Proyectos\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(38, 6, 'Coordinador Control de Calidad\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(39, 6, 'Coord. Medio Ambiente\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(40, 7, 'Gerente Producción\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(41, 7, 'Jefe Producción Clincker\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(42, 7, 'Coordinador Ingeniería de Proceso\r\n\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(43, 7, 'Jefe Producción Molienda\r\n\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(44, 7, 'Jefe Automatización\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(45, 7, 'Ingeniería Producción\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(46, 7, 'Jefe Sala de Control 1\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(47, 7, 'Jefe Sala de Control 2\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(48, 7, 'Jefe Sala de Control 3\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(49, 7, 'Jefe Sala de Control 4\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(50, 8, 'Gerente Mantenimiento\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(51, 8, 'Jefe Mantenimiento Eléctrico\r\n\r\n', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(52, 8, 'Jefe Mantenimiento Predictivo', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(53, 8, 'Jefe Mantenimiento Mecánico', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(54, 8, 'Instrumentación 1\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(55, 8, 'Instrumentación 2\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(56, 8, 'Instrumentación 3\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(57, 9, 'Gerente Materias Primas\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(58, 9, 'Gerente Mina\r\n', 57, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(59, 9, 'Ingeniería Planeación Minera\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(60, 9, 'Jefe Minas Externas\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(61, 9, 'Jefe Mina Nobsa 1\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(62, 9, 'Jefe Mina Nobsa 2\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(63, 9, 'Jefe Mina Nobsa 3\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1646,7 +1700,7 @@ INSERT INTO `rrhh_modules` (`id`, `asset_id`, `title`, `note`, `content`, `order
 (13, 47, 'Admin Submenu', '', '', 1, 'submenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_submenu', 3, 1, '', 1, '*'),
 (14, 48, 'User Status', '', '', 2, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_status', 3, 1, '', 1, '*'),
 (15, 49, 'Title', '', '', 1, 'title', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'),
-(16, 50, 'Login Form', '', '', 7, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_login', 1, 1, '{"greeting":"1","name":"0"}', 0, '*'),
+(16, 50, 'Login Form', '', '', 1, 'position-0', 248, '2016-05-12 01:07:59', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_login', 1, 1, '{"pretext":"","posttext":"","login":"","logout":"","greeting":"1","name":"0","usesecure":"0","usetext":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (17, 51, 'Breadcrumbs', '', '', 1, 'position-2', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_breadcrumbs', 1, 1, '{"moduleclass_sfx":"","showHome":"1","homeText":"","showComponent":"1","separator":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
 (79, 52, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
 (86, 53, 'Joomla Version', '', '', 1, 'footer', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 3, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
@@ -1858,7 +1912,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_session` (
 --
 
 INSERT INTO `rrhh_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('lm5596gcsklqfcev263i2v9rk4', 0, 0, '1462944405', 'joomla|s:2488:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo3NztzOjU6InRva2VuIjtzOjMyOiIzeWlyOTNISjd3UEhzc0ZHQ05wbjVYOWVtMG1XME9TayI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDYyOTM3NzYwO3M6NDoibGFzdCI7aToxNDYyOTQ0MzU4O3M6Mzoibm93IjtpOjE0NjI5NDQ0MDU7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MDp7fXM6NjoicmV0dXJuIjtzOjI1OiJpbmRleC5waHA/b3B0aW9uPWNvbV9ycmhoIjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6Mjg6e3M6OToiACoAaXNSb290IjtiOjA7czoyOiJpZCI7czozOiIyNTAiO3M6NDoibmFtZSI7czoxMzoiQWRtaW5pc3RyYWRvciI7czo4OiJ1c2VybmFtZSI7czoxMzoiYWRtaW5pc3RyYWRvciI7czo1OiJlbWFpbCI7czoyMToiYWRtaW5pc3RyYWRvckBoaHJyLmNvIjtzOjg6InBhc3N3b3JkIjtzOjYwOiIkMnkkMTAkcnVzc2Qwbmh4SGJDaTFaTE1PeUdQLjM5OWNwNVNpN3p1cmtxajEvSVpmNXNwMWJaM0ZzcWEiO3M6MTQ6InBhc3N3b3JkX2NsZWFyIjtzOjA6IiI7czo1OiJibG9jayI7czoxOiIwIjtzOjk6InNlbmRFbWFpbCI7czoxOiIwIjtzOjEyOiJyZWdpc3RlckRhdGUiO3M6MTk6IjIwMTYtMDUtMDYgMDI6MzQ6NDQiO3M6MTM6Imxhc3R2aXNpdERhdGUiO3M6MTk6IjIwMTYtMDUtMTEgMDA6NDY6MTUiO3M6MTA6ImFjdGl2YXRpb24iO3M6MDoiIjtzOjY6InBhcmFtcyI7czo5MjoieyJhZG1pbl9zdHlsZSI6IiIsImFkbWluX2xhbmd1YWdlIjoiIiwibGFuZ3VhZ2UiOiIiLCJlZGl0b3IiOiIiLCJoZWxwc2l0ZSI6IiIsInRpbWV6b25lIjoiIn0iO3M6NjoiZ3JvdXBzIjthOjI6e2k6MjtzOjE6IjIiO2k6MTE7czoyOiIxMSI7fXM6NToiZ3Vlc3QiO2k6MDtzOjEzOiJsYXN0UmVzZXRUaW1lIjtzOjE5OiIwMDAwLTAwLTAwIDAwOjAwOjAwIjtzOjEwOiJyZXNldENvdW50IjtzOjE6IjAiO3M6MTI6InJlcXVpcmVSZXNldCI7czoxOiIwIjtzOjEwOiIAKgBfcGFyYW1zIjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Njp7czoxMToiYWRtaW5fc3R5bGUiO3M6MDoiIjtzOjE0OiJhZG1pbl9sYW5ndWFnZSI7czowOiIiO3M6ODoibGFuZ3VhZ2UiO3M6MDoiIjtzOjY6ImVkaXRvciI7czowOiIiO3M6ODoiaGVscHNpdGUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjA6IiI7fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjE0OiIAKgBfYXV0aEdyb3VwcyI7YTo0OntpOjA7aToxO2k6MTtpOjI7aTo0O2k6MTE7aTo1O2k6MTI7fXM6MTQ6IgAqAF9hdXRoTGV2ZWxzIjthOjM6e2k6MDtpOjE7aToxO2k6MTtpOjI7aToyO31zOjE1OiIAKgBfYXV0aEFjdGlvbnMiO047czoxMjoiACoAX2Vycm9yTXNnIjtOO3M6MTM6IgAqAHVzZXJIZWxwZXIiO086MTg6IkpVc2VyV3JhcHBlckhlbHBlciI6MDp7fXM6MTA6IgAqAF9lcnJvcnMiO2E6MDp7fXM6MzoiYWlkIjtpOjA7czo2OiJvdHBLZXkiO3M6MDoiIjtzOjQ6Im90ZXAiO3M6MDoiIjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 250, 'administrador');
+('tq7ts7pl4rhru949tnupjkahq0', 0, 0, '1463111477', 'joomla|s:2568:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo1MDtzOjU6InRva2VuIjtzOjMyOiI3aFB5UUlPUXRTY1VFNjBGaGh2ZU51WGthMmRPMTV3RSI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDYzMTA0NjU5O3M6NDoibGFzdCI7aToxNDYzMTExNDU4O3M6Mzoibm93IjtpOjE0NjMxMTE0Nzc7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MTp7czo2OiJyZXR1cm4iO3M6Mzk6ImluZGV4LnBocD9vcHRpb249Y29tX3VzZXJzJnZpZXc9cHJvZmlsZSI7fXM6NjoicmV0dXJuIjtzOjI1OiJpbmRleC5waHA/b3B0aW9uPWNvbV9ycmhoIjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6Mjg6e3M6OToiACoAaXNSb290IjtiOjA7czoyOiJpZCI7czozOiIyNTAiO3M6NDoibmFtZSI7czoxMzoiQWRtaW5pc3RyYWRvciI7czo4OiJ1c2VybmFtZSI7czoxMzoiYWRtaW5pc3RyYWRvciI7czo1OiJlbWFpbCI7czoyMToiYWRtaW5pc3RyYWRvckBoaHJyLmNvIjtzOjg6InBhc3N3b3JkIjtzOjYwOiIkMnkkMTAkcnVzc2Qwbmh4SGJDaTFaTE1PeUdQLjM5OWNwNVNpN3p1cmtxajEvSVpmNXNwMWJaM0ZzcWEiO3M6MTQ6InBhc3N3b3JkX2NsZWFyIjtzOjA6IiI7czo1OiJibG9jayI7czoxOiIwIjtzOjk6InNlbmRFbWFpbCI7czoxOiIwIjtzOjEyOiJyZWdpc3RlckRhdGUiO3M6MTk6IjIwMTYtMDUtMDYgMDI6MzQ6NDQiO3M6MTM6Imxhc3R2aXNpdERhdGUiO3M6MTk6IjIwMTYtMDUtMTIgMjE6MjE6NTMiO3M6MTA6ImFjdGl2YXRpb24iO3M6MDoiIjtzOjY6InBhcmFtcyI7czo5MjoieyJhZG1pbl9zdHlsZSI6IiIsImFkbWluX2xhbmd1YWdlIjoiIiwibGFuZ3VhZ2UiOiIiLCJlZGl0b3IiOiIiLCJoZWxwc2l0ZSI6IiIsInRpbWV6b25lIjoiIn0iO3M6NjoiZ3JvdXBzIjthOjI6e2k6MjtzOjE6IjIiO2k6MTE7czoyOiIxMSI7fXM6NToiZ3Vlc3QiO2k6MDtzOjEzOiJsYXN0UmVzZXRUaW1lIjtzOjE5OiIwMDAwLTAwLTAwIDAwOjAwOjAwIjtzOjEwOiJyZXNldENvdW50IjtzOjE6IjAiO3M6MTI6InJlcXVpcmVSZXNldCI7czoxOiIwIjtzOjEwOiIAKgBfcGFyYW1zIjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Njp7czoxMToiYWRtaW5fc3R5bGUiO3M6MDoiIjtzOjE0OiJhZG1pbl9sYW5ndWFnZSI7czowOiIiO3M6ODoibGFuZ3VhZ2UiO3M6MDoiIjtzOjY6ImVkaXRvciI7czowOiIiO3M6ODoiaGVscHNpdGUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjA6IiI7fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjE0OiIAKgBfYXV0aEdyb3VwcyI7YTo0OntpOjA7aToxO2k6MTtpOjI7aTo0O2k6MTE7aTo1O2k6MTI7fXM6MTQ6IgAqAF9hdXRoTGV2ZWxzIjthOjM6e2k6MDtpOjE7aToxO2k6MTtpOjI7aToyO31zOjE1OiIAKgBfYXV0aEFjdGlvbnMiO047czoxMjoiACoAX2Vycm9yTXNnIjtOO3M6MTM6IgAqAHVzZXJIZWxwZXIiO086MTg6IkpVc2VyV3JhcHBlckhlbHBlciI6MDp7fXM6MTA6IgAqAF9lcnJvcnMiO2E6MDp7fXM6MzoiYWlkIjtpOjA7czo2OiJvdHBLZXkiO3M6MDoiIjtzOjQ6Im90ZXAiO3M6MDoiIjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 250, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -2109,10 +2163,10 @@ CREATE TABLE IF NOT EXISTS `rrhh_update_sites` (
 --
 
 INSERT INTO `rrhh_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1462806125, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1462806125, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1463106015, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1463106015, ''),
 (3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1462806122, '');
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1463106013, '');
 
 -- --------------------------------------------------------
 
@@ -2206,9 +2260,9 @@ CREATE TABLE IF NOT EXISTS `rrhh_users` (
 --
 
 INSERT INTO `rrhh_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-09 15:00:13', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-13 02:20:12', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (249, 'Manager', 'manager', 'manager@hhrr.co', '$2y$10$gS1ExlZUxahKVeJYy.68.OqJSsUc/FoMNqdsxwyM7o0rMfp.9Hsv2', 0, 1, '2016-05-06 02:32:53', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
-(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-11 03:36:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-13 01:57:55', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (251, 'Consulta', 'consulta', 'consulta123@rrhh.co', '$2y$10$MWxRuqlxT97B5vrz.QQ3/.L9zKHeshK7WiCh3r688i7ui2m4ePsFa', 0, 0, '2016-05-06 02:35:42', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------

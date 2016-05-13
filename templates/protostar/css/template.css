@@ -7563,6 +7563,31 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 	float: left;
 }
 
+.header-search{
+	
+	margin-top: 5.5%;
+    margin-right: 3%;
+}
+
+.reset{
+	background: #D8D8D8;
+    width: 15%;
+    height: 38px;
+    border-radius: 3px;
+    line-height: 36px;
+    font-size: 18px;
+    background-image:url('../images/recordar.png');
+    background-repeat: no-repeat;
+    background-position-x: 8px;
+    background-position-y: 1px;
+    text-indent: 16px;
+    
+}
+
+.letrar{
+	color: #ffffff;
+}
+
 jOrgChart .line{
   height                : 20px;
   width                 : 4px;
@@ -7613,56 +7638,7 @@ jOrgChart .line{
   border-color 			: #E05E00 !important;
 }
 
-body, html, div, p, span, a, h1, h2, h3, h4, h5{
-	margin 				: 0;
-	padding 			: 0;
-}
 
-body, html{	
-	width 				: 100%;
-}
-
-body{
-	background 			: url('../images/bkgd.png') repeat top left;
-	color 				: white;
-	font-family 		: tahoma;
-	font-weight 		: lighter;
-	padding-top 		: 40px;
-}
-
-	body p{
-		font-size 		: 14px;
-	}
-	
-		body p a{
-			font-size	: 16px;
-		}
-
-h1 {
-	color 				: #AEB0B3;	
-	font-style 			: italic;
-}
-
-a{
-	color 				: #AEB0B3;	
-	text-decoration		: none;
-}
-
-a:hover{
-	text-decoration		: underline;
-}
-
-/* general */
-.clear {
-	clear: both;
-}
-
-/* Header */
-.brand{
-	color 				: #AEB0B3 !important;	
-	font-family 		: georgia;
-	font-style 			: italic;
-}
 
 /* list stuff */
 #org{
@@ -7690,7 +7666,6 @@ a:hover{
   padding               : 20px;
 }
 
-
 .jOrgChart .node {
     font-size: 14px;
     background-color: #FFFFFF;
@@ -7700,29 +7675,20 @@ a:hover{
     -moz-border-radius: 8px;
 }
 
-/* Custom node styling 
-.jOrgChart .node {
-	font-size 			: 14px;
-	background-color 	: #35363B;
-	border-radius 		: 8px;
-	border 				: 5px solid white;
-	color 				: #F38630;
-	-moz-border-radius 	: 8px;
-}*/
-	.node p{
-		font-family 	: sans-serif;
-		font-size 		: 12px;
-		line-height 	: 11px;
-		padding 		: 2px;
-	}
+.node p{
+	font-family 	: sans-serif;
+	font-size 		: 12px;
+	line-height 	: 11px;
+	padding 		: 2px;
+}
 
-	.cdescrip{
-		background: #FFFFFF;
-	} 
+.cdescrip{
+	background: #FFFFFF;
+} 
 
-	.ccolar{
-		color: #AEB0B3;
-	}
+.ccolar{
+	color: #AEB0B3;
+}
 
 .jOrgChart .node{
 	
@@ -7736,7 +7702,6 @@ a:hover{
 
 }
 
-
 .jOrgChart .node {
 	
     background-color: #8A8A8C;
@@ -7747,4 +7712,3 @@ a:hover{
     padding: 20px;
     line-height: 22px;
 }
-

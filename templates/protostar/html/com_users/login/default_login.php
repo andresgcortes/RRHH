@@ -82,9 +82,9 @@ JHtml::_('behavior.keepalive');
 			<?php echo JHtml::_('form.token'); ?>
 			
 			<div class="control-group">
-				<div class="controls">
-				<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
-						<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?>
+				<div class="controls reset">
+					<a class="letrar" href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+						Recordar contraseña
 					</a>
 				</div>		
 				
