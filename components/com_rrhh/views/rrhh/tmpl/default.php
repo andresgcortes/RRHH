@@ -22,14 +22,15 @@ JHtml::script(Juri::base() . 'templates/protostar/css/customcargo.css');
 //JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
 
 JFactory::getDocument()->addScriptDeclaration('
- jQuery(document).ready(function() {
+	
+	jQuery(document).ready(function() {
+ 	
         $("#org").jOrgChart({
             chartElement : \'#chart\',
             dragAndDrop  : true
         });
 		$(".redire").click(function(){
     		$(location).attr("href","?option=com_rrhh&view=rrhh_cargo");
-
     	});
         $(".redire").hover(function(){
             $(this).css("background-color", "#278dad");
@@ -37,7 +38,8 @@ JFactory::getDocument()->addScriptDeclaration('
             $(this).css("background-color", "#8A8A8C");
         });
     });
-');  ?>
+
+'); ?>
 
 <div style="margin-left: auto; margin-right:auto" >
 	

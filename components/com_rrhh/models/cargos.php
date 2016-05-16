@@ -1,8 +1,8 @@
 <?php
 /**
 * @package Author
-* @author  Jorge Angarita
-* @website //
+* @author 
+* @website 
 * @email 
 * @copyright 
 * @license 
@@ -146,7 +146,7 @@ class RrhhModelCargos extends JModelItem{
   			 			$dotosInfo = $datoscargo[0];
   			 		}
 
-  			 		echo '<li >
+  			 		echo '<li class="redire">
 				    	<div class="tcargo tcolar"><p>';
 				    	echo $datoValue->nombre;
 				    echo '<p><hr/></div>
@@ -237,7 +237,7 @@ class RrhhModelCargos extends JModelItem{
 			echo'</table>';	
 
 		}else{
-			echo '';
+			echo 'No';
 		}
 		
   	}
