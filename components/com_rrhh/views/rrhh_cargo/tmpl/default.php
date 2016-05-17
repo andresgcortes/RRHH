@@ -29,7 +29,8 @@ JFactory::getDocument()->addScriptDeclaration('
 	    });
 	    
 	    $(".redire").click(function(){
-    		$(location).attr("href","?option=com_rrhh&view=sucesion");
+	    	var id_cargo = jQuery(this).children().data("idcargo");				
+    		$(location).attr("href","?option=com_rrhh&view=sucesion&id_cargo="+id_cargo);
     	});
 	    
 		$(".infousutiemp").hover(function(){			

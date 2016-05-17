@@ -16,8 +16,6 @@ $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
 
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
-JHtml::script(Juri::base() . 'templates/protostar/css/prettifycargo.css');
-JHtml::script(Juri::base() . 'templates/protostar/css/customcargo.css');
 
 //JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
 
@@ -27,11 +25,14 @@ JFactory::getDocument()->addScriptDeclaration('
  	
         $("#org").jOrgChart({
             chartElement : \'#chart\',
-            dragAndDrop  : true
+            dragAndDrop  : true,                         
         });
-		$(".redire").click(function(){
-    		$(location).attr("href","?option=com_rrhh&view=rrhh_cargo");
+        
+		$(".redire").click(function(){			
+			var id_area = jQuery(this).children().data("idcargo");
+			$(location).attr("href","?option=com_rrhh&view=rrhh_cargo&id_area="+id_area);
     	});
+    	
         $(".redire").hover(function(){
             $(this).css("background-color", "#278dad");
         }, function(){

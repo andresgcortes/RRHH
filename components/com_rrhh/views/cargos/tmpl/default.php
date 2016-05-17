@@ -29,13 +29,12 @@ if ($saveOrder){
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 } ?>
 
-
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
   	<h1 class="panel-heading">Relación de Cargos</h1>
   	<div class="panel-body">
-    	<p>...</p>
+    	<p>Cargos de la compañia</p>
   	</div>
 	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
@@ -65,7 +64,7 @@ if ($saveOrder){
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th>
-							<?php echo JHtml::_('searchtools.sort', 'COM_BANNERS_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
 						
 					</tr>
@@ -88,27 +87,35 @@ if ($saveOrder){
 						$canEdit    = $user->authorise('core.edit',       'com_rrhh');
 						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; ?>
 						
-						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->catid; ?>">
-							
+						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_cargo; ?>">
+							<td>
+								<?php $iconClass = '';
+								if (!$canEdit){
+									$iconClass = ' inactive';
+								}elseif (!$saveOrder){
+									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
+								} ?>
+								
+								<span class="sortable-handler <?php echo $iconClass ?>">
+									<span class="icon-menu"></span>
+								</span>
+								<?php if ($canEdit){ ?>
+									<input type="text" style="display:none" name="order[]" size="5"
+										value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
+								<?php }; ?>
+							</td>
+							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
+							<td>
+								<div class="btn-group">
+									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
+								</div>
+							</td>
+							<td><?php echo $item->nombre ?></td>
 						</tr>
 
 					<?php } ?>
 				</tbody>
-			</table>
-			
-			<?php // Load the batch processing form. ?>
-			<?php if ($user->authorise('core.create', 'com_rrhh') && $user->authorise('core.edit', 'com_rrhh')){ ?>
-				
-				<?php echo JHtml::_(
-					'bootstrap.renderModal',
-					'collapseModal',
-					array(
-						'title' => JText::_('COM_BANNERS_BATCH_OPTIONS'),
-						'footer' => $this->loadTemplate('batch_footer')
-					),
-					$this->loadTemplate('batch_body')
-				); ?>
-			<?php } ?>
+			</table>			
 			
 		<?php } ?>
 		
