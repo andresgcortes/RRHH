@@ -91,12 +91,12 @@ if ($saveOrder){
 							<td>
 								<div style="display: none" > <?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></div>
 								<div class="btn-group">
-									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
+									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'rrhh.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
 							<td><?php echo $item->nombre ?></td>
-							<td><?php echo $item->nombre ?></td>
-							<td><?php echo $item->nombre ?></td>
+							<td><?php echo $item->area ?></td>
+							<td><?php echo $item->cargo ?></td>
 						</tr>
 
 					<?php } ?>
