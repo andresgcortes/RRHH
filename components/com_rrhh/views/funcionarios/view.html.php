@@ -11,7 +11,7 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-class RrhhViewAreas extends JViewLegacy{
+class RrhhViewFuncionarios extends JViewLegacy{
 	
 	protected $state;
 	protected $items;
@@ -30,10 +30,6 @@ class RrhhViewAreas extends JViewLegacy{
 			
 			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
 			return false;
-		}
-		
-		foreach ($this->items as &$item){
-			$this->ordering[$item->parent_id][] = $item->id_area;
 		}
 
 		// Display the view
