@@ -32,9 +32,9 @@ if ($saveOrder){
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
-  	<h1 class="panel-heading">Relación de Cargos</h1>
-  	<div class="panel-body">
-    	<p>Cargos de la compañia</p>
+  	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Relación de Áeas</h1>
+  	<div class="panel-body" style="text-indent: 45px;">
+    	<p>Áreas de la compañia</p>
   	</div>
 	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
@@ -51,7 +51,7 @@ if ($saveOrder){
 			</div>
 		<?php }else{ ?>
 			
-			<table class="table table-striped" id="articleList">
+			<table class="table table-striped" id="articleList" style="width: 95%" >
 				<thead>
 					<tr>
 						<th width="1%" class="nowrap center hidden-phone">
@@ -61,10 +61,13 @@ if ($saveOrder){
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
 						<th width="1%" class="nowrap center">
-							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.disabled', $listDirn, $listOrder); ?>
 						</th>
 						<th>
-							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre del Área', 'a.nombre', $listDirn, $listOrder); ?>
+						</th>
+						<th>
+							<?php echo JHtml::_('searchtools.sort', 'Cargo Responsable', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
 						
 					</tr>
@@ -72,7 +75,7 @@ if ($saveOrder){
 
 				<tfoot>
 					<tr>
-						<td colspan="4">
+						<td colspan="5">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -87,7 +90,7 @@ if ($saveOrder){
 						$canEdit    = $user->authorise('core.edit',       'com_rrhh');
 						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; ?>
 						
-						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_cargo; ?>">
+						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>">
 							<td>
 								<?php $iconClass = '';
 								if (!$canEdit){
@@ -104,13 +107,14 @@ if ($saveOrder){
 										value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
 								<?php }; ?>
 							</td>
-							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
+							<td><?php echo JHtml::_('grid.id', $i, $item->id_area); ?></td>
 							<td>
 								<div class="btn-group">
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
 							<td><?php echo $item->nombre ?></td>
+							<td><?php echo $item->cargo ?></td>
 						</tr>
 
 					<?php } ?>

@@ -14,12 +14,14 @@
 (function($) {
 
   $.fn.jOrgChart = function(options) {
+  	
     var opts = $.extend({}, $.fn.jOrgChart.defaults, options);
     var $appendTo = $(opts.chartElement);
-
-    // build the tree
+	
+	// build the tree
     $this = $(this);
     var $container = $("<div class='" + opts.chartClass + "'/>");
+    
     if($this.is("ul")) {
       buildNode($this.find("li:first"), $container, 0, opts);
     }
@@ -104,7 +106,8 @@
 	
   var nodeCount = 0;
   // Method that recursively builds the tree
-  function buildNode($node, $appendTo, level, opts) {
+  function buildNode($node, $appendTo, level, opts){
+  	
     var $table = $("<table cellpadding='0' cellspacing='0' border='0'/>");
     var $tbody = $("<tbody/>");
 
@@ -125,12 +128,13 @@
                             .end()
                             .html();
 	
-      //Increaments the node count which is used to link the source list and the org chart
+	  //Increaments the node count which is used to link the source list and the org chart
   	nodeCount++;
   	$node.data("tree-node", nodeCount);
+  	$node.data("cargo", 3);
   	$nodeDiv = $("<div>").addClass("node")
-                                     .data("tree-node", nodeCount)
-                                     .append($nodeContent);
+        .data("tree-node", nodeCount)
+        .append($nodeContent);
 
     // Expand and contract nodes
     if ($childNodes.length > 0) {

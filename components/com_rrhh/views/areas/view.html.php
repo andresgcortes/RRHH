@@ -11,7 +11,7 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-class RrhhViewCargos extends JViewLegacy{
+class RrhhViewAreas extends JViewLegacy{
 	
 	protected $state;
 	protected $items;

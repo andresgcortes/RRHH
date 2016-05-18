@@ -4,7 +4,7 @@
 
 defined('_JEXEC') or die('=;)');
 
-class RrhhModelCargos extends JModelList{
+class RrhhModelAreas extends JModelList{
 
 	public function __construct($config = array()){	
 
@@ -28,10 +28,7 @@ class RrhhModelCargos extends JModelList{
 	protected function populateState($ordering = null, $direction = null)	{
 	
 		$this->setState('filter.search', $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search'));
-			
-		$id_area = $this->getUserStateFromRequest($this->context . '.filter.id_area', 'filter_id_area');
-		$this->setState('filter.id_area', $id_area);
-
+		
 		// Load the parameters.
 		$this->setState('params', JComponentHelper::getParams('com_rrhh'));
 
@@ -58,23 +55,26 @@ class RrhhModelCargos extends JModelList{
 		$query = $db->getQuery(true);
 
 		$query->select(
-			$this->getState('list.select', '*')
+			$this->getState('list.select', 'a.*, b.nombre as cargo')
 		);
 
-		$query->from('#__core_cargos AS a');		
+		$query->from('#__core_areas AS a');
+		$query->join('inner', '#__core_cargos AS b ON a.id_cargo = b.id_cargo');		
 		
 		$search = $this->getState('filter.search');
 		
 		if (!empty($search)){
 			if (stripos($search, 'id:') === 0){
-				$query->where('a.id_cargo = '.(int) substr($search, 3));
+				$query->where('a.id_area = '.(int) substr($search, 3));
 			}else {
 				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 				$query->where('(a.nombre LIKE '.$search.')');
 			}
 		}
 		
-		$query->order($db->qn($db->escape($this->getState('list.ordering', 'a.nombre'))) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
+		$query->where('a.id_area != 1');
+		 
+		$query->order($db->qn($db->escape($this->getState('list.ordering', 'a.ordering'))) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
 		
 		return $query;
 

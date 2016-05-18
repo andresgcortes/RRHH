@@ -11,32 +11,40 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 $document = JFactory::getDocument();
+
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
 
 
 JFactory::getDocument()->addScriptDeclaration('
- jQuery(document).ready(function() {
- 	$(".contustiemp").css("display", "none");
-        $("#org").jOrgChart({
-          chartElement : \'#chart\',
-            dragAndDrop  : true
-        });
-		$(".infousutiemp").hover(function(){
+
+	jQuery(document).ready(function() {
+ 	
+	 	$(".contustiemp").css("display", "none");
+	        
+	    $("#org").jOrgChart({
+	      chartElement : \'#chart\',
+	        dragAndDrop  : true
+	    });
+	    
+	    $(".redire").click(function(){
+	    	var id_cargo = jQuery(this).children().data("idcargo");				
+    		$(location).attr("href","?option=com_rrhh&view=sucesion&id_cargo="+id_cargo);
+    	});
+	    
+		$(".infousutiemp").hover(function(){			
+	        $(".contustiemp").css("display", "block");
+	    }, function(){            
+	        $(".contustiemp").css("display", "none");
+	    });
 			
-            $(".contustiemp").css("display", "block");
-        }, function(){
-            
-            $(".contustiemp").css("display", "none");
-        });
-		
-		
-    });
-');
+			
+	}); 
+
+'); ?>
 
 
-?>
 <style type="text/css">
 /* Basic styling */
 /* Draw the lines */

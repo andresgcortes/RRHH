@@ -7594,8 +7594,10 @@ jOrgChart .line{
 }
 
 .jOrgChart .down {
-  background-color 		: #888888;	
-  margin 				: 0px auto;
+  	background-color 	: #888888;	
+  	margin 				: 0px auto;
+	height				: 35px;
+    width				: 2px;
 }
 
 .jOrgChart .top {

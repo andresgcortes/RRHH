@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2016 a las 03:54:27
+-- Tiempo de generación: 17-05-2016 a las 22:23:53
 -- Versión del servidor: 5.7.9
--- Versión de PHP: 5.6.16
+-- Versión de PHP: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -83,7 +83,7 @@ INSERT INTO `rrhh_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `ti
 (36, 1, 111, 112, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
 (37, 1, 113, 114, 1, 'com_ajax', 'com_ajax', '{}'),
 (38, 1, 115, 116, 1, 'com_postinstall', 'com_postinstall', '{}'),
-(39, 18, 42, 43, 2, 'com_modules.module.1', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(39, 18, 42, 43, 2, 'com_modules.module.1', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
 (40, 18, 44, 45, 2, 'com_modules.module.2', 'Login', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (41, 18, 46, 47, 2, 'com_modules.module.3', 'Popular Articles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (42, 18, 48, 49, 2, 'com_modules.module.4', 'Recently Added Articles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
@@ -503,6 +503,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_areas` (
   `parent_id` int(11) NOT NULL,
   `lft` int(11) NOT NULL,
   `rgt` int(11) NOT NULL,
+  `ordering` int(11) NOT NULL,
   `id_cargo` int(11) NOT NULL,
   `columnas` int(11) NOT NULL,
   `disabled` tinyint(1) NOT NULL,
@@ -517,16 +518,16 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_areas` (
 -- Volcado de datos para la tabla `rrhh_core_areas`
 --
 
-INSERT INTO `rrhh_core_areas` (`id_area`, `nombre`, `parent_id`, `lft`, `rgt`, `id_cargo`, `columnas`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
-(1, 'root', 0, 0, 17, 0, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(2, 'Dirección Ejecutiva', 1, 1, 2, 1, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(3, 'Dirección Comercial\r\n', 2, 3, 4, 2, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(4, 'Dirección Financiera\r\n\r\n', 2, 5, 6, 3, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(5, 'Dirección Asuntos Corporativos y RRHH', 2, 7, 8, 4, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(6, 'Dirección de Planta', 2, 9, 10, 4, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(7, 'Gerencia de Producción', 6, 11, 12, 5, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(8, 'Gerencia de Mantenimiento', 6, 13, 14, 6, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
-(9, 'Gerencia Materias Primas\r\n', 6, 15, 16, 7, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00');
+INSERT INTO `rrhh_core_areas` (`id_area`, `nombre`, `parent_id`, `lft`, `rgt`, `ordering`, `id_cargo`, `columnas`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 'root', 0, 0, 17, 0, 0, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(2, 'Dirección Ejecutiva', 1, 1, 2, 1, 1, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(3, 'Dirección Comercial\r\n', 2, 3, 4, 2, 2, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(4, 'Dirección Financiera\r\n\r\n', 2, 5, 6, 3, 5, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(5, 'Dirección Asuntos Corporativos y RRHH', 2, 7, 8, 4, 4, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(6, 'Dirección de Planta', 2, 9, 10, 5, 3, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(7, 'Gerencia de Producción', 6, 11, 12, 6, 33, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(8, 'Gerencia de Mantenimiento', 6, 13, 14, 7, 34, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00'),
+(9, 'Gerencia Materias Primas\r\n', 6, 15, 16, 8, 35, 0, 0, 0, '2016-05-08 00:00:00', 0, '2016-05-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -540,6 +541,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
   `id_area` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `parent_id` int(11) NOT NULL,
+  `ordering` int(11) NOT NULL,
   `disabled` tinyint(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -552,70 +554,70 @@ CREATE TABLE IF NOT EXISTS `rrhh_core_cargos` (
 -- Volcado de datos para la tabla `rrhh_core_cargos`
 --
 
-INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `parent_id`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
-(1, 2, 'Dirección Ejecutiva', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(2, 2, 'Dirección Comercial\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(3, 2, 'Dirección Planta Nobsa\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(4, 2, 'Dirección Asuntos Corporativos y RRHH\r\n\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(5, 2, 'CFO', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(6, 2, 'Gerente Abastecimiento\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(7, 2, 'Gerencia Nacional de OH&S\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(8, 2, 'Gerente Legal\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(9, 2, 'Gerente Planeación Estratégica\r\n', 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(10, 3, 'Dirección Comercial', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(11, 3, 'Gerente Ventas Bogotá', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(12, 3, 'Gerente Ventas Norte\r\n', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(13, 3, 'Gerente Comercial Proyectos y Zona Centro', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(14, 3, 'Gerente Nacional Op. RMX', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(15, 3, 'Gerente Mercadeo e Innovación', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(16, 3, 'Gerente Logística', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(17, 3, 'Head Coach', 10, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(18, 4, 'CFO\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(19, 4, 'Jefe Tesorería\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(20, 4, 'Gerente Contraloría\r\n\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(21, 4, 'Jefe Contraloría\r\n\r\n\r\n\r\n', 20, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(22, 4, 'Coordinador IT\r\n\r\n\r\n\r\n\r\n', 18, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(23, 5, 'Dirección Asuntos Corporativos y RRHH', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(24, 5, 'Jefe Compensación y Beneficios', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(25, 5, 'Jefe Talento\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(26, 5, 'Jefe Rel Laborales y Adm de Personal\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(27, 5, 'Coordinador RRHH Boyacá\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(28, 5, 'Dirección Fundación Social\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(29, 5, 'Coordinador Seguridad\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(30, 5, 'Coordinador Comunicaciones\r\n\r\n\r\n', 23, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(31, 6, 'Dirección Planta Nobsa', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(32, 6, 'Gerente AFR\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(33, 6, 'Gerente Producción\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(34, 6, 'Gerente Mantenimiento\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(35, 6, 'Gerente Materias Primas\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(36, 6, 'Gerente Mina\r\n', 35, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(37, 6, 'Coord. Proyectos\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(38, 6, 'Coordinador Control de Calidad\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(39, 6, 'Coord. Medio Ambiente\r\n', 31, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(40, 7, 'Gerente Producción\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(41, 7, 'Jefe Producción Clincker\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(42, 7, 'Coordinador Ingeniería de Proceso\r\n\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(43, 7, 'Jefe Producción Molienda\r\n\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(44, 7, 'Jefe Automatización\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(45, 7, 'Ingeniería Producción\r\n', 40, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(46, 7, 'Jefe Sala de Control 1\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(47, 7, 'Jefe Sala de Control 2\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(48, 7, 'Jefe Sala de Control 3\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(49, 7, 'Jefe Sala de Control 4\r\n', 42, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(50, 8, 'Gerente Mantenimiento\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(51, 8, 'Jefe Mantenimiento Eléctrico\r\n\r\n', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(52, 8, 'Jefe Mantenimiento Predictivo', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(53, 8, 'Jefe Mantenimiento Mecánico', 50, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(54, 8, 'Instrumentación 1\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(55, 8, 'Instrumentación 2\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(56, 8, 'Instrumentación 3\r\n', 51, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(57, 9, 'Gerente Materias Primas\r\n', 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(58, 9, 'Gerente Mina\r\n', 57, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(59, 9, 'Ingeniería Planeación Minera\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(60, 9, 'Jefe Minas Externas\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(61, 9, 'Jefe Mina Nobsa 1\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(62, 9, 'Jefe Mina Nobsa 2\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
-(63, 9, 'Jefe Mina Nobsa 3\r\n\r\n', 58, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
+INSERT INTO `rrhh_core_cargos` (`id_cargo`, `id_area`, `nombre`, `parent_id`, `ordering`, `disabled`, `created_by`, `created`, `modified_by`, `modified`) VALUES
+(1, 2, 'Dirección Ejecutiva', 0, 1, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(2, 2, 'Dirección Comercial\r\n', 1, 2, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(3, 2, 'Dirección Planta Nobsa\r\n', 1, 3, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(4, 2, 'Dirección Asuntos Corporativos y RRHH\r\n\r\n', 1, 4, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(5, 2, 'CFO', 1, 5, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(6, 2, 'Gerente Abastecimiento\r\n', 1, 6, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(7, 2, 'Gerencia Nacional de OH&S\r\n', 1, 7, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(8, 2, 'Gerente Legal\r\n', 1, 8, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(9, 2, 'Gerente Planeación Estratégica\r\n', 1, 9, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(10, 3, 'Dirección Comercial', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(11, 3, 'Gerente Ventas Bogotá', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(12, 3, 'Gerente Ventas Norte\r\n', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(13, 3, 'Gerente Comercial Proyectos y Zona Centro', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(14, 3, 'Gerente Nacional Op. RMX', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(15, 3, 'Gerente Mercadeo e Innovación', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(16, 3, 'Gerente Logística', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(17, 3, 'Head Coach', 10, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(18, 4, 'CFO\r\n', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(19, 4, 'Jefe Tesorería\r\n\r\n', 18, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(20, 4, 'Gerente Contraloría\r\n\r\n\r\n', 18, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(21, 4, 'Jefe Contraloría\r\n\r\n\r\n\r\n', 20, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(22, 4, 'Coordinador IT\r\n\r\n\r\n\r\n\r\n', 18, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(23, 5, 'Dirección Asuntos Corporativos y RRHH', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(24, 5, 'Jefe Compensación y Beneficios', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(25, 5, 'Jefe Talento\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(26, 5, 'Jefe Rel Laborales y Adm de Personal\r\n\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(27, 5, 'Coordinador RRHH Boyacá\r\n\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(28, 5, 'Dirección Fundación Social\r\n\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(29, 5, 'Coordinador Seguridad\r\n\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(30, 5, 'Coordinador Comunicaciones\r\n\r\n\r\n', 23, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(31, 6, 'Dirección Planta Nobsa', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(32, 6, 'Gerente AFR\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(33, 6, 'Gerente Producción\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(34, 6, 'Gerente Mantenimiento\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(35, 6, 'Gerente Materias Primas\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(36, 6, 'Gerente Mina\r\n', 35, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(37, 6, 'Coord. Proyectos\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(38, 6, 'Coordinador Control de Calidad\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(39, 6, 'Coord. Medio Ambiente\r\n', 31, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(40, 7, 'Gerente Producción\r\n', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(41, 7, 'Jefe Producción Clincker\r\n', 40, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(42, 7, 'Coordinador Ingeniería de Proceso\r\n\r\n', 40, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(43, 7, 'Jefe Producción Molienda\r\n\r\n', 40, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(44, 7, 'Jefe Automatización\r\n', 40, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(45, 7, 'Ingeniería Producción\r\n', 40, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(46, 7, 'Jefe Sala de Control 1\r\n', 42, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(47, 7, 'Jefe Sala de Control 2\r\n', 42, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(48, 7, 'Jefe Sala de Control 3\r\n', 42, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(49, 7, 'Jefe Sala de Control 4\r\n', 42, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(50, 8, 'Gerente Mantenimiento\r\n', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(51, 8, 'Jefe Mantenimiento Eléctrico\r\n\r\n', 50, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(52, 8, 'Jefe Mantenimiento Predictivo', 50, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(53, 8, 'Jefe Mantenimiento Mecánico', 50, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(54, 8, 'Instrumentación 1\r\n', 51, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(55, 8, 'Instrumentación 2\r\n', 51, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(56, 8, 'Instrumentación 3\r\n', 51, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(57, 9, 'Gerente Materias Primas\r\n', 0, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(58, 9, 'Gerente Mina\r\n', 57, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(59, 9, 'Ingeniería Planeación Minera\n', 58, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(60, 9, 'Jefe Minas Externas\r\n', 58, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(61, 9, 'Jefe Mina Nobsa 1\r\n\r\n', 58, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(62, 9, 'Jefe Mina Nobsa 2\r\n\r\n', 58, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00'),
+(63, 9, 'Jefe Mina Nobsa 3\r\n\r\n', 58, 0, 0, 0, '2016-05-06 00:00:00', 0, '2016-05-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -787,7 +789,7 @@ INSERT INTO `rrhh_extensions` (`extension_id`, `name`, `type`, `element`, `folde
 (17, 'com_newsfeeds', 'component', 'com_newsfeeds', '', 1, 1, 1, 0, '', '{"newsfeed_layout":"_:default","save_history":"1","history_limit":5,"show_feed_image":"1","show_feed_description":"1","show_item_description":"1","feed_character_count":"0","feed_display_order":"des","float_first":"right","float_second":"right","show_tags":"1","category_layout":"_:default","show_category_title":"1","show_description":"1","show_description_image":"1","maxLevel":"-1","show_empty_categories":"0","show_subcat_desc":"1","show_cat_items":"1","show_cat_tags":"1","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_items_cat":"1","filter_field":"1","show_pagination_limit":"1","show_headings":"1","show_articles":"0","show_link":"1","show_pagination":"1","show_pagination_results":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (18, 'com_plugins', 'component', 'com_plugins', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (19, 'com_search', 'component', 'com_search', '', 1, 1, 1, 0, '', '{"enabled":"0","show_date":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '', '{"template_positions_display":"0","upload_limit":"2","image_formats":"gif,bmp,jpg,jpeg,png","source_formats":"txt,less,ini,xml,js,php,css","font_formats":"woff,ttf,otf","compressed_formats":"zip"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '', '{"template_positions_display":"1","upload_limit":"2","image_formats":"gif,bmp,jpg,jpeg,png","source_formats":"txt,less,ini,xml,js,php,css","font_formats":"woff,ttf,otf","compressed_formats":"zip"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (22, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '', '{"article_layout":"_:default","show_title":"1","link_titles":"1","show_intro":"1","show_category":"1","link_category":"1","show_parent_category":"0","link_parent_category":"0","show_author":"1","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"1","show_item_navigation":"1","show_vote":"0","show_readmore":"1","show_readmore_title":"1","readmore_limit":"100","show_icons":"1","show_print_icon":"1","show_email_icon":"1","show_hits":"1","show_noauth":"0","show_publishing_options":"1","show_article_options":"1","save_history":"1","history_limit":10,"show_urls_images_frontend":"0","show_urls_images_backend":"1","targeta":0,"targetb":0,"targetc":0,"float_intro":"left","float_fulltext":"left","category_layout":"_:blog","show_category_title":"0","show_description":"0","show_description_image":"0","maxLevel":"1","show_empty_categories":"0","show_no_articles":"1","show_subcat_desc":"1","show_cat_num_articles":"0","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_num_articles_cat":"1","num_leading_articles":"1","num_intro_articles":"4","num_columns":"2","num_links":"4","multi_column_order":"0","show_subcategory_content":"0","show_pagination_limit":"1","filter_field":"hide","show_headings":"1","list_show_date":"0","date_format":"","list_show_hits":"1","list_show_author":"1","orderby_pri":"order","orderby_sec":"rdate","order_date":"published","show_pagination":"2","show_pagination_results":"1","show_feed_link":"1","feed_summary":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (23, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '', '{"filters":{"1":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"6":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"7":{"filter_type":"NONE","filter_tags":"","filter_attributes":""},"2":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"3":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"4":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"5":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"10":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"12":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"8":{"filter_type":"NONE","filter_tags":"","filter_attributes":""}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (24, 'com_redirect', 'component', 'com_redirect', '', 1, 1, 0, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1556,41 +1558,39 @@ CREATE TABLE IF NOT EXISTS `rrhh_menu` (
   KEY `idx_alias` (`alias`),
   KEY `idx_path` (`path`(255)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rrhh_menu`
 --
 
 INSERT INTO `rrhh_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 57, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 51, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
 (5, 'menu', 'com_banners_clients', 'Clients', '', 'Banners/Clients', 'index.php?option=com_banners&view=clients', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-clients', 0, '', 6, 7, 0, '*', 1),
 (6, 'menu', 'com_banners_tracks', 'Tracks', '', 'Banners/Tracks', 'index.php?option=com_banners&view=tracks', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-tracks', 0, '', 8, 9, 0, '*', 1),
-(7, 'menu', 'com_contact', 'Contacts', '', 'Contacts', 'index.php?option=com_contact', 'component', 0, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 23, 28, 0, '*', 1),
-(8, 'menu', 'com_contact', 'Contacts', '', 'Contacts/Contacts', 'index.php?option=com_contact', 'component', 0, 7, 2, 8, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 24, 25, 0, '*', 1),
-(9, 'menu', 'com_contact_categories', 'Categories', '', 'Contacts/Categories', 'index.php?option=com_categories&extension=com_contact', 'component', 0, 7, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact-cat', 0, '', 26, 27, 0, '*', 1),
-(10, 'menu', 'com_messages', 'Messaging', '', 'Messaging', 'index.php?option=com_messages', 'component', 0, 1, 1, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages', 0, '', 29, 34, 0, '*', 1),
-(11, 'menu', 'com_messages_add', 'New Private Message', '', 'Messaging/New Private Message', 'index.php?option=com_messages&task=message.add', 'component', 0, 10, 2, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages-add', 0, '', 30, 31, 0, '*', 1),
-(12, 'menu', 'com_messages_read', 'Read Private Message', '', 'Messaging/Read Private Message', 'index.php?option=com_messages', 'component', 0, 10, 2, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages-read', 0, '', 32, 33, 0, '*', 1),
-(13, 'menu', 'com_newsfeeds', 'News Feeds', '', 'News Feeds', 'index.php?option=com_newsfeeds', 'component', 0, 1, 1, 17, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds', 0, '', 35, 40, 0, '*', 1),
-(14, 'menu', 'com_newsfeeds_feeds', 'Feeds', '', 'News Feeds/Feeds', 'index.php?option=com_newsfeeds', 'component', 0, 13, 2, 17, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds', 0, '', 36, 37, 0, '*', 1),
-(15, 'menu', 'com_newsfeeds_categories', 'Categories', '', 'News Feeds/Categories', 'index.php?option=com_categories&extension=com_newsfeeds', 'component', 0, 13, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds-cat', 0, '', 38, 39, 0, '*', 1),
-(16, 'menu', 'com_redirect', 'Redirect', '', 'Redirect', 'index.php?option=com_redirect', 'component', 0, 1, 1, 24, 0, '0000-00-00 00:00:00', 0, 0, 'class:redirect', 0, '', 41, 42, 0, '*', 1),
-(17, 'menu', 'com_search', 'Basic Search', '', 'Basic Search', 'index.php?option=com_search', 'component', 0, 1, 1, 19, 0, '0000-00-00 00:00:00', 0, 0, 'class:search', 0, '', 43, 44, 0, '*', 1),
-(18, 'menu', 'com_finder', 'Smart Search', '', 'Smart Search', 'index.php?option=com_finder', 'component', 0, 1, 1, 27, 0, '0000-00-00 00:00:00', 0, 0, 'class:finder', 0, '', 45, 46, 0, '*', 1),
-(19, 'menu', 'com_joomlaupdate', 'Joomla! Update', '', 'Joomla! Update', 'index.php?option=com_joomlaupdate', 'component', 1, 1, 1, 28, 0, '0000-00-00 00:00:00', 0, 0, 'class:joomlaupdate', 0, '', 47, 48, 0, '*', 1),
-(20, 'main', 'com_tags', 'Tags', '', 'Tags', 'index.php?option=com_tags', 'component', 0, 1, 1, 29, 0, '0000-00-00 00:00:00', 0, 1, 'class:tags', 0, '', 49, 50, 0, '', 1),
-(21, 'main', 'com_postinstall', 'Post-installation messages', '', 'Post-installation messages', 'index.php?option=com_postinstall', 'component', 0, 1, 1, 32, 0, '0000-00-00 00:00:00', 0, 1, 'class:postinstall', 0, '', 51, 52, 0, '*', 1),
-(101, 'mainmenu', 'Home', 'homepage', '', 'homepage', 'index.php?option=com_content&view=article&id=1', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"1","link_titles":"","show_intro":"","info_block_position":"0","show_category":"0","link_category":"0","show_parent_category":"0","link_parent_category":"0","show_author":"0","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"0","show_item_navigation":"0","show_vote":"","show_tags":"","show_icons":"0","show_print_icon":"0","show_email_icon":"0","show_hits":"0","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 53, 54, 0, '*', 0),
-(102, 'usermenu', 'Your Profile', 'your-profile', '', 'your-profile', 'index.php?option=com_users&view=profile&layout=edit', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 2, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 11, 12, 0, '*', 0),
-(103, 'usermenu', 'Site Administrator', '2013-11-16-23-26-41', '', '2013-11-16-23-26-41', 'administrator', 'url', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', 0, 6, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1}', 17, 18, 0, '*', 0),
-(104, 'usermenu', 'Submit an Article', 'submit-an-article', '', 'submit-an-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 3, '', 0, '{"enable_category":"0","catid":"2","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 13, 14, 0, '*', 0),
-(106, 'usermenu', 'Template Settings', 'template-settings', '', 'template-settings', 'index.php?option=com_config&view=templates&controller=config.display.templates', 'component', 1, 1, 1, 23, 0, '0000-00-00 00:00:00', 0, 6, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 19, 20, 0, '*', 0),
-(107, 'usermenu', 'Site Settings', 'site-settings', '', 'site-settings', 'index.php?option=com_config&view=config&controller=config.display.config', 'component', 1, 1, 1, 23, 0, '0000-00-00 00:00:00', 0, 6, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 21, 22, 0, '*', 0),
-(108, 'invisible', 'Home', 'home', '', 'home', 'index.php?option=com_users&view=login', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"login_redirect_url":"index.php?option=com_rrhh","logindescription_show":"1","login_description":"","login_image":"","logout_redirect_url":"","logoutdescription_show":"1","logout_description":"","logout_image":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 55, 56, 1, '*', 0);
+(7, 'menu', 'com_contact', 'Contacts', '', 'Contacts', 'index.php?option=com_contact', 'component', 0, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 17, 22, 0, '*', 1),
+(8, 'menu', 'com_contact', 'Contacts', '', 'Contacts/Contacts', 'index.php?option=com_contact', 'component', 0, 7, 2, 8, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 18, 19, 0, '*', 1),
+(9, 'menu', 'com_contact_categories', 'Categories', '', 'Contacts/Categories', 'index.php?option=com_categories&extension=com_contact', 'component', 0, 7, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact-cat', 0, '', 20, 21, 0, '*', 1),
+(10, 'menu', 'com_messages', 'Messaging', '', 'Messaging', 'index.php?option=com_messages', 'component', 0, 1, 1, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages', 0, '', 23, 28, 0, '*', 1),
+(11, 'menu', 'com_messages_add', 'New Private Message', '', 'Messaging/New Private Message', 'index.php?option=com_messages&task=message.add', 'component', 0, 10, 2, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages-add', 0, '', 24, 25, 0, '*', 1),
+(12, 'menu', 'com_messages_read', 'Read Private Message', '', 'Messaging/Read Private Message', 'index.php?option=com_messages', 'component', 0, 10, 2, 15, 0, '0000-00-00 00:00:00', 0, 0, 'class:messages-read', 0, '', 26, 27, 0, '*', 1),
+(13, 'menu', 'com_newsfeeds', 'News Feeds', '', 'News Feeds', 'index.php?option=com_newsfeeds', 'component', 0, 1, 1, 17, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds', 0, '', 29, 34, 0, '*', 1),
+(14, 'menu', 'com_newsfeeds_feeds', 'Feeds', '', 'News Feeds/Feeds', 'index.php?option=com_newsfeeds', 'component', 0, 13, 2, 17, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds', 0, '', 30, 31, 0, '*', 1),
+(15, 'menu', 'com_newsfeeds_categories', 'Categories', '', 'News Feeds/Categories', 'index.php?option=com_categories&extension=com_newsfeeds', 'component', 0, 13, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:newsfeeds-cat', 0, '', 32, 33, 0, '*', 1),
+(16, 'menu', 'com_redirect', 'Redirect', '', 'Redirect', 'index.php?option=com_redirect', 'component', 0, 1, 1, 24, 0, '0000-00-00 00:00:00', 0, 0, 'class:redirect', 0, '', 35, 36, 0, '*', 1),
+(17, 'menu', 'com_search', 'Basic Search', '', 'Basic Search', 'index.php?option=com_search', 'component', 0, 1, 1, 19, 0, '0000-00-00 00:00:00', 0, 0, 'class:search', 0, '', 37, 38, 0, '*', 1),
+(18, 'menu', 'com_finder', 'Smart Search', '', 'Smart Search', 'index.php?option=com_finder', 'component', 0, 1, 1, 27, 0, '0000-00-00 00:00:00', 0, 0, 'class:finder', 0, '', 39, 40, 0, '*', 1),
+(19, 'menu', 'com_joomlaupdate', 'Joomla! Update', '', 'Joomla! Update', 'index.php?option=com_joomlaupdate', 'component', 1, 1, 1, 28, 0, '0000-00-00 00:00:00', 0, 0, 'class:joomlaupdate', 0, '', 41, 42, 0, '*', 1),
+(20, 'main', 'com_tags', 'Tags', '', 'Tags', 'index.php?option=com_tags', 'component', 0, 1, 1, 29, 0, '0000-00-00 00:00:00', 0, 1, 'class:tags', 0, '', 43, 44, 0, '', 1),
+(21, 'main', 'com_postinstall', 'Post-installation messages', '', 'Post-installation messages', 'index.php?option=com_postinstall', 'component', 0, 1, 1, 32, 0, '0000-00-00 00:00:00', 0, 1, 'class:postinstall', 0, '', 45, 46, 0, '*', 1),
+(108, 'invisible', 'Home', 'home', '', 'home', 'index.php?option=com_users&view=login', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"login_redirect_url":"index.php?option=com_rrhh?view=rrhh","logindescription_show":"1","login_description":"","login_image":"","logout_redirect_url":"","logoutdescription_show":"1","logout_description":"","logout_image":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 47, 48, 1, '*', 0),
+(109, 'mainmenu', 'Cargos', 'cargos', '', 'cargos', 'index.php?option=com_rrhh&view=cargos', 'component', 1, 1, 1, 701, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 11, 12, 0, '*', 0),
+(110, 'invisible', 'Arbol Áreas', 'arbol-areas', '', 'arbol-areas', 'index.php?option=com_rrhh&view=rrhh', 'component', 1, 1, 1, 701, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 49, 50, 0, '*', 0),
+(111, 'mainmenu', 'Tags', 'tags', '', 'tags', 'index.php?option=com_rrhh&view=tags', 'component', 1, 1, 1, 701, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{"tag_columns":4,"all_tags_description":"","all_tags_show_description_image":"","all_tags_description_image":"","all_tags_orderby":"","all_tags_orderby_direction":"","all_tags_show_tag_image":"","all_tags_show_tag_description":"","all_tags_tag_maximum_characters":0,"all_tags_show_tag_hits":"","maximum":200,"filter_field":"","show_pagination_limit":"","show_pagination":"","show_pagination_results":"","show_feed_link":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 15, 16, 0, '*', 0),
+(112, 'mainmenu', 'Areas', 'areas', '', 'areas', 'index.php?option=com_rrhh&view=areas', 'component', 1, 1, 1, 701, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"menu_show":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 13, 14, 0, '*', 0);
 
 -- --------------------------------------------------------
 
@@ -1614,7 +1614,6 @@ CREATE TABLE IF NOT EXISTS `rrhh_menu_types` (
 
 INSERT INTO `rrhh_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 (1, 'mainmenu', 'Main Menu', 'The main menu for the site'),
-(2, 'usermenu', 'User Menu', 'A Menu for logged-in Users'),
 (3, 'invisible', 'Invisible', 'Invisible');
 
 -- --------------------------------------------------------
@@ -1689,7 +1688,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_modules` (
 --
 
 INSERT INTO `rrhh_modules` (`id`, `asset_id`, `title`, `note`, `content`, `ordering`, `position`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `published`, `module`, `access`, `showtitle`, `params`, `client_id`, `language`) VALUES
-(1, 39, 'Main Menu', '', '', 1, 'position-1', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 1, '{"menutype":"mainmenu","base":"","startLevel":"1","endLevel":"0","showAllChildren":"0","tag_id":"","class_sfx":" nav-pills","window_open":"","layout":"_:default","moduleclass_sfx":"_menu","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(1, 39, 'Main Menu', '', '', 1, 'position-1', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 2, 0, '{"menutype":"mainmenu","base":"","startLevel":"1","endLevel":"0","showAllChildren":"0","tag_id":"","class_sfx":" nav-pills","window_open":"","layout":"_:default","moduleclass_sfx":"_menu","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (2, 40, 'Login', '', '', 1, 'login', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_login', 1, 1, '', 1, '*'),
 (3, 41, 'Popular Articles', '', '', 3, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_popular', 3, 1, '{"count":"5","catid":"","user_id":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","automatic_title":"1"}', 1, '*'),
 (4, 42, 'Recently Added Articles', '', '', 4, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_latest', 3, 1, '{"count":"5","ordering":"c_dsc","catid":"","user_id":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","automatic_title":"1"}', 1, '*'),
@@ -1700,7 +1699,7 @@ INSERT INTO `rrhh_modules` (`id`, `asset_id`, `title`, `note`, `content`, `order
 (13, 47, 'Admin Submenu', '', '', 1, 'submenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_submenu', 3, 1, '', 1, '*'),
 (14, 48, 'User Status', '', '', 2, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_status', 3, 1, '', 1, '*'),
 (15, 49, 'Title', '', '', 1, 'title', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'),
-(16, 50, 'Login Form', '', '', 1, 'position-0', 248, '2016-05-12 01:07:59', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_login', 1, 1, '{"pretext":"","posttext":"","login":"","logout":"","greeting":"1","name":"0","usesecure":"0","usetext":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(16, 50, 'Login Form', '', '', 1, 'position-0', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_login', 2, 1, '{"pretext":"","posttext":"","login":"","logout":"","greeting":"1","name":"0","usesecure":"0","usetext":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (17, 51, 'Breadcrumbs', '', '', 1, 'position-2', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_breadcrumbs', 1, 1, '{"moduleclass_sfx":"","showHome":"1","homeText":"","showComponent":"1","separator":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
 (79, 52, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
 (86, 53, 'Joomla Version', '', '', 1, 'footer', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 3, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
@@ -1708,7 +1707,6 @@ INSERT INTO `rrhh_modules` (`id`, `asset_id`, `title`, `note`, `content`, `order
 (88, 55, 'Site Information', '', '', 3, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_stats_admin', 3, 1, '{"serverinfo":"1","siteinfo":"1","counter":"0","increase":"0","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
 (89, 56, 'Release News', '', '', 0, 'postinstall', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_feed', 1, 1, '{"rssurl":"http:\\/\\/www.joomla.org\\/announcements\\/release-news.feed","rssrtl":"0","rsstitle":"1","rssdesc":"1","rssimage":"1","rssitems":"3","rssitemdesc":"1","word_count":"0","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
 (90, 57, 'Latest Articles', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_articles_latest', 1, 1, '{"catid":[""],"count":"5","show_featured":"","ordering":"c_dsc","user_id":"0","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
-(91, 58, 'User Menu', '', '', 3, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_menu', 1, 1, '{"menutype":"usermenu","base":"","startLevel":"1","endLevel":"0","showAllChildren":"0","tag_id":"","class_sfx":"","window_open":"","layout":"_:default","moduleclass_sfx":"_menu","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (92, 59, 'Image Module', '', '<p><img src="images/headers/blue-flower.jpg" alt="Blue Flower" /></p>', 0, 'position-3', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_custom', 1, 0, '{"prepare_content":"1","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (93, 60, 'Search', '', '', 0, 'position-0', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_search', 1, 1, '{"label":"","width":"20","text":"","button":"0","button_pos":"right","imagebutton":"1","button_text":"","opensearch":"1","opensearch_title":"","set_itemid":"0","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
 
@@ -1912,7 +1910,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_session` (
 --
 
 INSERT INTO `rrhh_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('tq7ts7pl4rhru949tnupjkahq0', 0, 0, '1463111477', 'joomla|s:2568:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo1MDtzOjU6InRva2VuIjtzOjMyOiI3aFB5UUlPUXRTY1VFNjBGaGh2ZU51WGthMmRPMTV3RSI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDYzMTA0NjU5O3M6NDoibGFzdCI7aToxNDYzMTExNDU4O3M6Mzoibm93IjtpOjE0NjMxMTE0Nzc7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MTp7czo2OiJyZXR1cm4iO3M6Mzk6ImluZGV4LnBocD9vcHRpb249Y29tX3VzZXJzJnZpZXc9cHJvZmlsZSI7fXM6NjoicmV0dXJuIjtzOjI1OiJpbmRleC5waHA/b3B0aW9uPWNvbV9ycmhoIjt9fX19czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6Mjg6e3M6OToiACoAaXNSb290IjtiOjA7czoyOiJpZCI7czozOiIyNTAiO3M6NDoibmFtZSI7czoxMzoiQWRtaW5pc3RyYWRvciI7czo4OiJ1c2VybmFtZSI7czoxMzoiYWRtaW5pc3RyYWRvciI7czo1OiJlbWFpbCI7czoyMToiYWRtaW5pc3RyYWRvckBoaHJyLmNvIjtzOjg6InBhc3N3b3JkIjtzOjYwOiIkMnkkMTAkcnVzc2Qwbmh4SGJDaTFaTE1PeUdQLjM5OWNwNVNpN3p1cmtxajEvSVpmNXNwMWJaM0ZzcWEiO3M6MTQ6InBhc3N3b3JkX2NsZWFyIjtzOjA6IiI7czo1OiJibG9jayI7czoxOiIwIjtzOjk6InNlbmRFbWFpbCI7czoxOiIwIjtzOjEyOiJyZWdpc3RlckRhdGUiO3M6MTk6IjIwMTYtMDUtMDYgMDI6MzQ6NDQiO3M6MTM6Imxhc3R2aXNpdERhdGUiO3M6MTk6IjIwMTYtMDUtMTIgMjE6MjE6NTMiO3M6MTA6ImFjdGl2YXRpb24iO3M6MDoiIjtzOjY6InBhcmFtcyI7czo5MjoieyJhZG1pbl9zdHlsZSI6IiIsImFkbWluX2xhbmd1YWdlIjoiIiwibGFuZ3VhZ2UiOiIiLCJlZGl0b3IiOiIiLCJoZWxwc2l0ZSI6IiIsInRpbWV6b25lIjoiIn0iO3M6NjoiZ3JvdXBzIjthOjI6e2k6MjtzOjE6IjIiO2k6MTE7czoyOiIxMSI7fXM6NToiZ3Vlc3QiO2k6MDtzOjEzOiJsYXN0UmVzZXRUaW1lIjtzOjE5OiIwMDAwLTAwLTAwIDAwOjAwOjAwIjtzOjEwOiJyZXNldENvdW50IjtzOjE6IjAiO3M6MTI6InJlcXVpcmVSZXNldCI7czoxOiIwIjtzOjEwOiIAKgBfcGFyYW1zIjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Njp7czoxMToiYWRtaW5fc3R5bGUiO3M6MDoiIjtzOjE0OiJhZG1pbl9sYW5ndWFnZSI7czowOiIiO3M6ODoibGFuZ3VhZ2UiO3M6MDoiIjtzOjY6ImVkaXRvciI7czowOiIiO3M6ODoiaGVscHNpdGUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjA6IiI7fXM6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjE0OiIAKgBfYXV0aEdyb3VwcyI7YTo0OntpOjA7aToxO2k6MTtpOjI7aTo0O2k6MTE7aTo1O2k6MTI7fXM6MTQ6IgAqAF9hdXRoTGV2ZWxzIjthOjM6e2k6MDtpOjE7aToxO2k6MTtpOjI7aToyO31zOjE1OiIAKgBfYXV0aEFjdGlvbnMiO047czoxMjoiACoAX2Vycm9yTXNnIjtOO3M6MTM6IgAqAHVzZXJIZWxwZXIiO086MTg6IkpVc2VyV3JhcHBlckhlbHBlciI6MDp7fXM6MTA6IgAqAF9lcnJvcnMiO2E6MDp7fXM6MzoiYWlkIjtpOjA7czo2OiJvdHBLZXkiO3M6MDoiIjtzOjQ6Im90ZXAiO3M6MDoiIjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 250, 'administrador');
+('pjrd9rfethhbeobh62v01jam42', 0, 0, '1463486143', 'joomla|s:2856:"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjoyOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo2NTtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0NjM0ODI0MTg7czo0OiJsYXN0IjtpOjE0NjM0ODUzMDI7czozOiJub3ciO2k6MTQ2MzQ4NjE0Mzt9czo1OiJ0b2tlbiI7czozMjoiR1J0dkZWVk1qbzI5c2g0YTlEbjU2VE1KOGdpUVJHYWEiO31zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjI6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo1OiJ1c2VycyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsb2dpbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJmb3JtIjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImRhdGEiO2E6MTp7czo2OiJyZXR1cm4iO3M6Mzk6ImluZGV4LnBocD9vcHRpb249Y29tX3VzZXJzJnZpZXc9cHJvZmlsZSI7fXM6NjoicmV0dXJuIjtzOjM1OiJpbmRleC5waHA/b3B0aW9uPWNvbV9ycmhoP3ZpZXc9cnJoaCI7fX19czo4OiJjb21fcnJoaCI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo2OiJjYXJnb3MiO086ODoic3RkQ2xhc3MiOjI6e3M6ODoib3JkZXJjb2wiO047czoxMDoibGltaXRzdGFydCI7aTo0MDt9czo1OiJhcmVhcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo4OiJvcmRlcmNvbCI7Tjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoyODp7czo5OiIAKgBpc1Jvb3QiO2I6MDtzOjI6ImlkIjtzOjM6IjI1MCI7czo0OiJuYW1lIjtzOjEzOiJBZG1pbmlzdHJhZG9yIjtzOjg6InVzZXJuYW1lIjtzOjEzOiJhZG1pbmlzdHJhZG9yIjtzOjU6ImVtYWlsIjtzOjIxOiJhZG1pbmlzdHJhZG9yQGhocnIuY28iO3M6ODoicGFzc3dvcmQiO3M6NjA6IiQyeSQxMCRydXNzZDBuaHhIYkNpMVpMTU95R1AuMzk5Y3A1U2k3enVya3FqMS9JWmY1c3AxYlozRnNxYSI7czoxNDoicGFzc3dvcmRfY2xlYXIiO3M6MDoiIjtzOjU6ImJsb2NrIjtzOjE6IjAiO3M6OToic2VuZEVtYWlsIjtzOjE6IjAiO3M6MTI6InJlZ2lzdGVyRGF0ZSI7czoxOToiMjAxNi0wNS0wNiAwMjozNDo0NCI7czoxMzoibGFzdHZpc2l0RGF0ZSI7czoxOToiMjAxNi0wNS0xNyAwMzo0Nzo0MSI7czoxMDoiYWN0aXZhdGlvbiI7czowOiIiO3M6NjoicGFyYW1zIjtzOjkyOiJ7ImFkbWluX3N0eWxlIjoiIiwiYWRtaW5fbGFuZ3VhZ2UiOiIiLCJsYW5ndWFnZSI6IiIsImVkaXRvciI6IiIsImhlbHBzaXRlIjoiIiwidGltZXpvbmUiOiIifSI7czo2OiJncm91cHMiO2E6Mjp7aToyO3M6MToiMiI7aToxMTtzOjI6IjExIjt9czo1OiJndWVzdCI7aTowO3M6MTM6Imxhc3RSZXNldFRpbWUiO3M6MTk6IjAwMDAtMDAtMDAgMDA6MDA6MDAiO3M6MTA6InJlc2V0Q291bnQiO3M6MToiMCI7czoxMjoicmVxdWlyZVJlc2V0IjtzOjE6IjAiO3M6MTA6IgAqAF9wYXJhbXMiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mjp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjo2OntzOjExOiJhZG1pbl9zdHlsZSI7czowOiIiO3M6MTQ6ImFkbWluX2xhbmd1YWdlIjtzOjA6IiI7czo4OiJsYW5ndWFnZSI7czowOiIiO3M6NjoiZWRpdG9yIjtzOjA6IiI7czo4OiJoZWxwc2l0ZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MDoiIjt9czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6MTQ6IgAqAF9hdXRoR3JvdXBzIjthOjQ6e2k6MDtpOjE7aToxO2k6MjtpOjQ7aToxMTtpOjU7aToxMjt9czoxNDoiACoAX2F1dGhMZXZlbHMiO2E6Mzp7aTowO2k6MTtpOjE7aToxO2k6MjtpOjI7fXM6MTU6IgAqAF9hdXRoQWN0aW9ucyI7TjtzOjEyOiIAKgBfZXJyb3JNc2ciO047czoxMzoiACoAdXNlckhlbHBlciI7TzoxODoiSlVzZXJXcmFwcGVySGVscGVyIjowOnt9czoxMDoiACoAX2Vycm9ycyI7YTowOnt9czozOiJhaWQiO2k6MDtzOjY6Im90cEtleSI7czowOiIiO3M6NDoib3RlcCI7czowOiIiO31zOjExOiJhcHBsaWNhdGlvbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJxdWV1ZSI7Tjt9fX1zOjk6InNlcGFyYXRvciI7czoxOiIuIjt9";', 250, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -1968,7 +1966,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_tags` (
 
 INSERT INTO `rrhh_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`, `publish_up`, `publish_down`) VALUES
 (1, 0, 0, 3, 0, '', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2011-01-01 00:00:01', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 1, 1, 2, 1, 'joomla', 'Joomla', 'joomla', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 849, '2013-11-16 00:00:00', '', 0, '0000-00-00 00:00:00', '', '', 2, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(2, 1, 1, 2, 1, 'joomla', 'Joomla', 'joomla', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 849, '2013-11-16 00:00:00', '', 0, '0000-00-00 00:00:00', '', '', 5, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2163,10 +2161,10 @@ CREATE TABLE IF NOT EXISTS `rrhh_update_sites` (
 --
 
 INSERT INTO `rrhh_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1463106015, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1463106015, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1463456917, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1463456917, ''),
 (3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1463106013, '');
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1463456915, '');
 
 -- --------------------------------------------------------
 
@@ -2260,9 +2258,9 @@ CREATE TABLE IF NOT EXISTS `rrhh_users` (
 --
 
 INSERT INTO `rrhh_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-13 02:20:12', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(248, 'Super User', 'Admin', 'andres.cortesb@gmail.com', '$2y$10$pe7l7cyuf8G2q/oSlEfWaO3QaIt4J2DNyjkHiTCQlPSfCw5h7iE1e', 0, 1, '2016-04-27 02:51:04', '2016-05-17 11:13:41', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (249, 'Manager', 'manager', 'manager@hhrr.co', '$2y$10$gS1ExlZUxahKVeJYy.68.OqJSsUc/FoMNqdsxwyM7o0rMfp.9Hsv2', 0, 1, '2016-05-06 02:32:53', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
-(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-13 01:57:55', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(250, 'Administrador', 'administrador', 'administrador@hhrr.co', '$2y$10$russd0nhxHbCi1ZLMOyGP.399cp5Si7zurkqj1/IZf5sp1bZ3Fsqa', 0, 0, '2016-05-06 02:34:44', '2016-05-17 10:54:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (251, 'Consulta', 'consulta', 'consulta123@rrhh.co', '$2y$10$MWxRuqlxT97B5vrz.QQ3/.L9zKHeshK7WiCh3r688i7ui2m4ePsFa', 0, 0, '2016-05-06 02:35:42', '0000-00-00 00:00:00', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
@@ -2379,7 +2377,7 @@ CREATE TABLE IF NOT EXISTS `rrhh_viewlevels` (
 INSERT INTO `rrhh_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 (1, 'Public', 0, '[1]'),
 (2, 'Registered', 2, '[2,8]'),
-(3, 'Special', 3, '[8]'),
+(3, 'Administrador', 3, '[10,8]'),
 (5, 'Guest', 1, '[]'),
 (6, 'Super Users', 4, '[8]');
 
