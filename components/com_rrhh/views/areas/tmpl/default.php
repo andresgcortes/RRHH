@@ -52,7 +52,7 @@ if ($saveOrder){
 			</div>
 		<?php }else{ ?>
 			
-			<table class="table table-striped" id="articleList" style="width: 95%" >
+			<table class="table table-striped" id="articleList" style="width: 95%">
 				<thead>
 					<tr>
 						<th width="1%" class="nowrap center hidden-phone">

@@ -61,7 +61,7 @@ class RrhhModelFuncionarios extends JModelList{
 			$this->getState('list.select', '*')
 		);
 
-		$query->from('#__core_cargos AS a');		
+		$query->from('#__core_user AS a');		
 		
 		$search = $this->getState('filter.search');
 		
@@ -74,7 +74,7 @@ class RrhhModelFuncionarios extends JModelList{
 			}
 		}
 		
-		$listOrdering 	= $this->getState('list.ordering', 'a.lft');
+		$listOrdering 	= $this->getState('list.ordering', 'a.nombre');
 		$listDirn 		= $db->escape($this->getState('list.direction', 'ASC'));
 		
 		$query->order($db->escape($listOrdering) . ' ' . $listDirn);
