@@ -11,6 +11,12 @@ defined('_JEXEC') or die;
 
 use Joomla\String\Inflector;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+$document = JFactory::getDocument();
+
+$document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js');
+
+$document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js');
+JHtml::script(Juri::base() . 'components/com_rrhh/views/areas/js/scripts.js');
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
@@ -82,7 +88,7 @@ if ($saveOrder){
 					</tr>
 				</tfoot>
 
-				<tbody>
+				<tbody id="sortable">
 					
 					<?php foreach ($this->items as $i => $item){
 						$orderkey   = array_search($item->id_area, $this->ordering[$item->parent_id]);
@@ -117,7 +123,7 @@ if ($saveOrder){
 						}
 						?>
 						
-						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>">
+						<tr   class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>">
 							<td>
 								<?php $iconClass = '';
 								if (!$canEdit){
