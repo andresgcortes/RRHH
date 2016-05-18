@@ -9,7 +9,6 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\String\Inflector;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('bootstrap.tooltip');
@@ -33,9 +32,9 @@ if ($saveOrder){
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
-  	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Relación de Áeas</h1>
-  	<div class="panel-body" style="text-indent: 45px;">
-    	<p>Áreas de la compañia</p>
+  	<h1 class="panel-heading">Funcionarios</h1>
+  	<div class="panel-body">
+    	<p>Funcionarios de la compañia</p>
   	</div>
 	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
@@ -52,7 +51,7 @@ if ($saveOrder){
 			</div>
 		<?php }else{ ?>
 			
-			<table class="table table-striped" id="articleList" style="width: 95%" >
+			<table class="table table-striped" id="articleList">
 				<thead>
 					<tr>
 						<th width="1%" class="nowrap center hidden-phone">
@@ -62,13 +61,10 @@ if ($saveOrder){
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
 						<th width="1%" class="nowrap center">
-							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.disabled', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th>
-							<?php echo JHtml::_('searchtools.sort', 'Nombre del Área', 'a.nombre', $listDirn, $listOrder); ?>
-						</th>
-						<th>
-							<?php echo JHtml::_('searchtools.sort', 'Cargo Responsable', 'a.nombre', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
 						
 					</tr>
@@ -76,7 +72,7 @@ if ($saveOrder){
 
 				<tfoot>
 					<tr>
-						<td colspan="5">
+						<td colspan="4">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -85,39 +81,13 @@ if ($saveOrder){
 				<tbody>
 					
 					<?php foreach ($this->items as $i => $item){
-						$orderkey   = array_search($item->id_area, $this->ordering[$item->parent_id]);
+						
 						$ordering  = ($listOrder == 'ordering');
 						$canCreate  = $user->authorise('core.create',     'com_rrhh');
 						$canEdit    = $user->authorise('core.edit',       'com_rrhh');
-						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; 
+						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; ?>
 						
-						// Get the parents of item for sorting
-						if ($item->level > 1)
-						{
-							$parentsStr = "";
-							$_currentParentId = $item->parent_id;
-							$parentsStr = " " . $_currentParentId;
-							for ($i2 = 0; $i2 < $item->level; $i2++)
-							{
-								foreach ($this->ordering as $k => $v)
-								{
-									$v = implode("-", $v);
-									$v = "-" . $v . "-";
-									if (strpos($v, "-" . $_currentParentId . "-") !== false)
-									{
-										$parentsStr .= " " . $k;
-										$_currentParentId = $k;
-										break;
-									}
-								}
-							}
-						}else{
-							
-							$parentsStr = "";
-						}
-						?>
-						
-						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>">
+						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_cargo; ?>">
 							<td>
 								<?php $iconClass = '';
 								if (!$canEdit){
@@ -130,22 +100,17 @@ if ($saveOrder){
 									<span class="icon-menu"></span>
 								</span>
 								<?php if ($canEdit){ ?>
-									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey+ 1; ?>" class="width-20 text-area-order " />
+									<input type="text" style="display:none" name="order[]" size="5"
+										value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
 								<?php }; ?>
 							</td>
-							<td>							
-								<?php echo JHtml::_('grid.id', $i, $item->id_area); ?>
-							</td>
+							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
 							<td>
 								<div class="btn-group">
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
-							<td>
-								<?php echo str_repeat('<span class="gi">&mdash;</span>', $item->level - 1) ?>
-								<?php echo $item->nombre ?>
-							</td>
-							<td><?php echo $item->cargo ?></td>
+							<td><?php echo $item->nombre ?></td>
 						</tr>
 
 					<?php } ?>
