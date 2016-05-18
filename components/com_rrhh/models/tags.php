@@ -38,8 +38,7 @@ class RrhhModelTags extends JModelList
 	 *
 	 * @since   3.1
 	 */
-	protected function populateState($ordering = null, $direction = null)
-	{
+	protected function populateState($ordering = null, $direction = null){
 		$app = JFactory::getApplication('site');
 
 		// Load state from the request.
@@ -81,8 +80,8 @@ class RrhhModelTags extends JModelList
 	 *
 	 * @since   3.1
 	 */
-	public function getItems()
-	{
+	public function getItems(){
+		
 		// Invoke the parent getItems method to get the main list
 		$items = parent::getItems();
 
@@ -109,8 +108,8 @@ class RrhhModelTags extends JModelList
 	 *
 	 * @since   1.6
 	 */
-	protected function getListQuery()
-	{
+	protected function getListQuery(){
+		
 		$app            = JFactory::getApplication('site');
 		$user           = JFactory::getUser();
 		$groups         = implode(',', $user->getAuthorisedViewLevels());
@@ -129,8 +128,7 @@ class RrhhModelTags extends JModelList
 			->from($db->quoteName('#__tags') . ' AS a')
 			->where($db->quoteName('a.access') . ' IN (' . $groups . ')');
 
-		if (!empty($pid))
-		{
+		if (!empty($pid)){
 			$query->where($db->quoteName('a.parent_id') . ' = ' . $pid);
 		}
 

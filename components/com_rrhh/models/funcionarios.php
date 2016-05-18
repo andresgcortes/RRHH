@@ -58,10 +58,12 @@ class RrhhModelFuncionarios extends JModelList{
 		$query = $db->getQuery(true);
 
 		$query->select(
-			$this->getState('list.select', '*')
+			$this->getState('list.select', 'a.*, b.nombre as area, c.nombre as cargo')
 		);
 
-		$query->from('#__core_user AS a');		
+		$query->from('#__core_user AS a');
+		$query->join('inner','#__core_cargos AS c ON a.id_cargo = c.id_cargo');		
+		$query->join('inner','#__core_areas AS b ON b.id_area = c.id_area');
 		
 		$search = $this->getState('filter.search');
 		
