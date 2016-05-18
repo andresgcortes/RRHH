@@ -32,8 +32,8 @@ if ($saveOrder){
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
-  	<h1 class="panel-heading">Funcionarios</h1>
-  	<div class="panel-body">
+  	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Funcionarios</h1>
+  	<div class="panel-body" style="text-indent: 45px;">
     	<p>Funcionarios de la compañia</p>
   	</div>
 	
@@ -51,20 +51,20 @@ if ($saveOrder){
 			</div>
 		<?php }else{ ?>
 			
-			<table class="table table-striped" id="articleList">
+			<table class="table table-striped" id="articleList" style="width: 95%">
 				<thead>
 					<tr>
-						<th width="1%" class="nowrap center hidden-phone">
-							<?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
-						</th>
-						<th width="1%" class="center">
-							<?php echo JHtml::_('grid.checkall'); ?>
-						</th>
 						<th width="1%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th>
-							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre Funcionario', 'a.nombre', $listDirn, $listOrder); ?>
+						</th>
+						<th>
+							<?php echo JHtml::_('searchtools.sort', 'Area', 'cargo', $listDirn, $listOrder); ?>
+						</th>
+						<th>
+							<?php echo JHtml::_('searchtools.sort', 'Cargo', 'area', $listDirn, $listOrder); ?>
 						</th>
 						
 					</tr>
@@ -89,27 +89,13 @@ if ($saveOrder){
 						
 						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_cargo; ?>">
 							<td>
-								<?php $iconClass = '';
-								if (!$canEdit){
-									$iconClass = ' inactive';
-								}elseif (!$saveOrder){
-									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-								} ?>
-								
-								<span class="sortable-handler <?php echo $iconClass ?>">
-									<span class="icon-menu"></span>
-								</span>
-								<?php if ($canEdit){ ?>
-									<input type="text" style="display:none" name="order[]" size="5"
-										value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
-								<?php }; ?>
-							</td>
-							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
-							<td>
+								<div style="display: none" > <?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></div>
 								<div class="btn-group">
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
+							<td><?php echo $item->nombre ?></td>
+							<td><?php echo $item->nombre ?></td>
 							<td><?php echo $item->nombre ?></td>
 						</tr>
 
