@@ -14,6 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('behavior.modal');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -33,6 +34,10 @@ if ($saveOrder){
 	
 	  <!-- Default panel contents -->
   	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Funcionarios</h1>
+  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=" class="modal btn btn-primary">
+  		Nuevo Funcionario
+  	</a>
+  	
   	<div class="panel-body" style="text-indent: 45px;">
     	<p>Funcionarios de la compañia</p>
   	</div>
@@ -94,7 +99,11 @@ if ($saveOrder){
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'rrhh.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
-							<td><?php echo $item->nombre ?></td>
+							<td>
+								<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=<?php echo $item->id_user ?>" class="modal">
+									<?php echo $item->nombre ?>
+								</a>	
+								</td>
 							<td><?php echo $item->area ?></td>
 							<td><?php echo $item->cargo ?></td>
 						</tr>

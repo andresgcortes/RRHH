@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: category.xml 19638 2010-11-25 02:53:32Z ian $ -->
+<form>
+	
+	<fieldset>
+		
+		<field name = "id_cargo" type = "hidden"/>
+		
+		<field name = "nombre" type = "text"
+			label		= "Nombre Cargo"
+			description	= "Nombre Cargo"			
+			required	= "true"		
+			hint		= "Nombre Cargo"
+		/>
+		
+		<field name = "id_area" type = "areas"
+			label		= "Área"
+			description	= "Área"			
+			required	= "true"		
+		/>
+		
+		<field name = "parent_id" type = "parent"
+			label		= "Cargo Padre"
+			description	= "Cargo Padre"			
+			required	= "true"		
+		/>		
+			
+	</fieldset>
+
+</form>
