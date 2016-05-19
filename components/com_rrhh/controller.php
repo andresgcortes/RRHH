@@ -73,11 +73,8 @@ class RrhhController extends JControllerLegacy
 						}//If the user is already logged in, redirect to the profile page.
 						
 						// The user is a guest, load the registration model and show the registration page.
-						if($lName == 'default'){
 							$model = $this->getModel('empleados');
-						}else{
-							$model = $this->getModel('empleado');
-						}
+						
 						break;
 					
 					case 'funcionarios':
