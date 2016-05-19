@@ -34,14 +34,12 @@ class RrhhViewAreas extends JViewLegacy{
 		$this->activeFilters = $this->get('ActiveFilters');*/
 				
 		// Check for errors.
-		if (count($errors = $this->get('Errors'))){
-			
+		if (count($errors = $this->get('Errors'))){			
 			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
 			return false;
 		}
 		
-		if(!empty($this->items)){
-			
+		if(!empty($this->items)){			
 			foreach ($this->items as &$item){
 				$this->ordering[$item->parent_id][] = $item->id_area;
 			}

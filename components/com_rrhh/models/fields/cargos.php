@@ -8,9 +8,9 @@ jimport('joomla.form.helper');
 
 JFormHelper::loadFieldClass('list');
 
-class JFormFieldAreas extends JFormFieldlist{
+class JFormFieldCargos extends JFormFieldlist{
 
-	protected $type = 'Area';
+	protected $type = 'Cargo';
 
 	protected function getOptions(){
 		
@@ -19,10 +19,10 @@ class JFormFieldAreas extends JFormFieldlist{
 		$db = JFactory::getDbo();
 		
 		$query = $db->getQuery(true);
-		$query->select('a.id_area AS value, a.nombre AS text');
-		$query->from('#__core_areas AS a');				
-		$query->where('a.disabled = 0 AND a.id_area > 1');		
-		$query->order('a.id_area ASC'); 
+		$query->select('a.id_cargo AS value, a.nombre AS text');
+		$query->from('#__core_cargos AS a');				
+		$query->where('a.disabled = 0 AND a.id_cargo > 1');		
+		$query->order('a.id_cargo ASC'); 
 		
 		// Get the options.
 		$db->setQuery($query);
