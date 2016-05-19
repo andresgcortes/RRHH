@@ -12,7 +12,7 @@ class RrhhModelCargo extends JModelAdmin{
 	public function getForm($data = array(), $loadData = true){
 
 		// Get the form.
-		$form = $this->loadForm('com_rrhh.cargo', 'cargo', array('control' => 'jfomr', 'load_data' => $loadData));
+		$form = $this->loadForm('com_rrhh.cargos', 'cargos', array('control' => 'jform', 'load_data' => $loadData));
 
 		if (empty($form)) {
 

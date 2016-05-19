@@ -7,24 +7,24 @@
 		
 		<field name = "id_cargo" type = "hidden"/>
 		
-		<field name = "nombre" type = "text"
-			label		= "Nombre Cargo"
-			description	= "Nombre Cargo"			
-			required	= "true"		
-			hint		= "Nombre Cargo"
-		/>
-		
 		<field name = "id_area" type = "areas"
 			label		= "Área"
 			description	= "Área"			
 			required	= "true"		
 		/>
-		
-		<field name = "parent_id" type = "parent"
-			label		= "Cargo Padre"
-			description	= "Cargo Padre"			
+				
+		<field name = "parent_id" type = "cargos"
+			label		= "Cargo a Quien Reporta"
+			description	= "Cargo a Quien Reporta"			
 			required	= "true"		
 		/>		
+		
+		<field name = "nombre" type = "text"
+			label		= "Nombre Cargo"
+			description	= "Nombre Cargo"			
+			hint		= "Nombre Cargo"
+			required	= "true"		
+		/>
 			
 	</fieldset>
 

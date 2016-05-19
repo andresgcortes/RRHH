@@ -11,7 +11,7 @@ JHTML::_('behavior.formvalidation');
 
 	Joomla.submitbutton = function(task){
 		
-		if ((task == 'area.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
+		if ((task == 'cargo.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
 			
 			Joomla.submitform(task, document.getElementById('Formrrhh'));
 	  			
