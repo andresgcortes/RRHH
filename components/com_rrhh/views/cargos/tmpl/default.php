@@ -14,6 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('behavior.modal');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -33,6 +34,9 @@ if ($saveOrder){
 	
 	  <!-- Default panel contents -->
   	<h1 class="panel-heading">Relación de Cargos</h1>
+  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_user=" class="modal btn btn-primary">
+  		Nuevo Cargo
+  	</a>
   	<div class="panel-body">
     	<p>Cargos de la compañia</p>
   	</div>
@@ -110,7 +114,11 @@ if ($saveOrder){
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
 								</div>
 							</td>
-							<td><?php echo $item->nombre ?></td>
+							<td>
+								<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_cargo=<?php echo $item->id_cargo ?>" class="modal">
+									<?php echo $item->nombre ?>
+								</a>
+							</td>
 						</tr>
 
 					<?php } ?>
