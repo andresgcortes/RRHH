@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- $Id: category.xml 19638 2010-11-25 02:53:32Z ian $ -->
+<form>
+	
+	<fieldset>
+		
+		<field name = "id" type = "hidden"/>
+				
+		<field name = "title" type = "text"
+			label		= "Nombre Etiqueta"
+			description	= "Nombre Etiqueta"			
+			hint		= "Nombre Etiqueta"
+			required	= "true"		
+		/>
+			
+	</fieldset>
+
+</form>
