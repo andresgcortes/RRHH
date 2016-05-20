@@ -146,24 +146,14 @@ class RrhhController extends JControllerLegacy
 						}//If the user is already logged in, redirect to the profile page.
 						
 						// The user is a guest, load the registration model and show the registration page.
-						$model = $this->getModel('tags');
-						
-						break;
-					
-					case 'tag':
-					
-						if(!JFactory::getUser()->authorise('core.manage', 'com_rrhh')) {
-
-							$this->setRedirect(JRoute::_('index.php', false));
-							return;
-
-						}//If the user is already logged in, redirect to the profile page.
-						
 						// The user is a guest, load the registration model and show the registration page.
-						$model = $this->getModel('tag');
+						if($lName == 'default'){
+							$model = $this->getModel('tags');							
+						}else{
+							$model = $this->getModel('tag');
+						}
 						
 						break;
-					
 					
 					default:
 					
