@@ -34,6 +34,19 @@ if ($saveOrder){
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 } ?>
 
+<style>
+    #success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 10px;
+    font-size: 16px;
+    text-align: left;
+    width: auto;
+    }
+    
+</style>
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
@@ -57,7 +70,7 @@ if ($saveOrder){
 				<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php }else{ ?>
-			
+			<div id="success" style="display:none;"></div>
 			<table class="table table-striped" id="articleList" style="width: 95%">
 
 				<thead>
@@ -88,10 +101,11 @@ if ($saveOrder){
 						</td>
 					</tr>
 				</tfoot>
-
+                                
 				<tbody id="sortable">
 					
-					<?php foreach ($this->items as $i => $item){
+					<?php
+                                            foreach ($this->items as $i => $item){
 						$orderkey   = array_search($item->id_area, $this->ordering[$item->parent_id]);
 						$ordering  = ($listOrder == 'ordering');
 						$canCreate  = $user->authorise('core.create',     'com_rrhh');
@@ -124,7 +138,7 @@ if ($saveOrder){
 						}
 						?>
 						
-						<tr   class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>">
+						<tr   class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>" itemid ="1">
 							<td>
 								<?php $iconClass = '';
 								if (!$canEdit){
@@ -153,6 +167,7 @@ if ($saveOrder){
 									<?php echo str_repeat('<span class="gi">&mdash;</span>', $item->level - 1) ?>
 									<?php echo $item->nombre ?>
 								</a>
+                                                            <input type="hidden" value="<?php $item->id_area?>" name="id" id="idarea" >
 							</td>
 							<td><?php echo $item->cargo ?></td>
 						</tr>

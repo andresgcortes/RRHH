@@ -179,7 +179,7 @@ a:hover{
 	}
 	.tcargo {
 		background: #278dad;
-		border-top-left-radius:: 6px;
+		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
     	text-align: center;
     	padding-top: 9px;
@@ -192,7 +192,7 @@ a:hover{
 	}
 	.fdescrip{
 		background: #AEB0B3;
-		border-top-left-radius:: 6px;
+		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
 	}
 	.fcolar{

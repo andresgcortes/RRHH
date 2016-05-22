@@ -111,6 +111,71 @@ class rrhhControllerArea extends JControllerForm{
 
 		return true;
 	}
+        
+        function cambioPosicionAjax(){
+
+            $idarea = JRequest::getVar('nuevo_orden');
+            $value = 1;
+           
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true)
+			->select('id_area, lft')
+			->from($db->quoteName('#__core_areas'))
+                        //->where($db->quoteName('id_area').' IN ('.implode(',', $idarea).')');
+                        ->where($db->quoteName('level')."=".$db->quote($value))
+                        ->order('lft', 'ASC');
+            $db->setQuery($query);
+            $countList = $db->loadObjectList();
+           
+            $ListArray = array();
+            $i = 0;
+            foreach ($countList as $v){
+                $ListArray [$i] = $v->lft;
+                $i++;
+            }
+            
+            $p = 0;
+            foreach ($idarea as $vidArea) {
+                
+                $query1 = $db->getQuery(true)
+                            ->select('count(id_area)')
+                            ->from($db->quoteName('#__core_areas'))
+                            ->where($db->quoteName('level')."=".$db->quote($value))
+                            ->where($db->quoteName('id_area')."=".$db->quote($vidArea));
+                $db->setQuery($query1);
+                $countPos = $db->loadResult();
+                
+                if($countPos >0){
+                   
+                     //echo "ID = ".$vidArea." POS=".$ListArray[$p]."<br/>";
+                    // Fields to update.
+                   
+                    $query = $db->getQuery(true);
+                    $fields = array(
+                        $db->quoteName('lft') . ' = ' .$ListArray[$p]
+                    );
+                    
+                    $conditions = array(
+                            $db->quoteName('id_area') . ' = '.$vidArea
+                     );
+                    
+                    $query->update($db->quoteName('#__core_areas'))->set($fields)->where($conditions);
+ 
+                    $db->setQuery($query);
+                    $db->execute();
+                    
+                    $p++;
+                   
+                    
+                }
+                
+            }
+           
+          
+            exit;
+            
+
+        }
 	
 }
 	
