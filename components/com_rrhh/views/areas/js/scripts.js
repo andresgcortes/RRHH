@@ -7,9 +7,24 @@
  * @since       3.2
  */
 $(document).ready(function(){
-   	$( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
+
+    $('#sortable').sortable({
+        revert: true,
+        opacity: 0.6, 
+        cursor: 'move',
+        update: function() {
+            //var order = $("#idarea").sortable("serialize")+'&action=orderState';
+            var order = $("#sortable").sortable("toArray",{attribute: "sortable-group-id"});
+            $.post("index.php?option=com_rrhh&task=area.cambioPosicionAjax", {nuevo_orden: order}, function(theResponse){
+                $('#success').html('Gracias por ordenar!').slideDown('slow').delay(1000).slideUp('slow');
+            });
+        }
+    });
+
+
+        
 });
+
 
 	
 
