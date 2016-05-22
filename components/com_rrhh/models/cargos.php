@@ -58,10 +58,11 @@ class RrhhModelCargos extends JModelList{
 		$query = $db->getQuery(true);
 
 		$query->select(
-			$this->getState('list.select', '*')
+			$this->getState('list.select', 'a.*, b.nombre as area')
 		);
 
-		$query->from('#__core_cargos AS a');		
+		$query->from('#__core_cargos AS a');
+		$query->join('inner', '#__core_areas AS b ON a.id_area = b.id_area');		
 		
 		$search = $this->getState('filter.search');
 		
@@ -74,7 +75,7 @@ class RrhhModelCargos extends JModelList{
 			}
 		}
 		
-		$query->order($db->qn($db->escape($this->getState('list.ordering', 'a.nombre'))) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
+		$query->order($db->qn($db->escape($this->getState('list.ordering', 'b.id_area'))) . ', a.id_cargo ' . $db->escape($this->getState('list.direction', 'ASC')));
 		
 		return $query;
 

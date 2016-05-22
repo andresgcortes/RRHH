@@ -11,6 +11,10 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
+$document = JFactory::getDocument();
+$document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js');
+$document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js');
+JHtml::script(Juri::base() . 'components/com_rrhh/views/areas/js/scripts.js');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
@@ -33,11 +37,12 @@ if ($saveOrder){
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
-  	<h1 class="panel-heading">Relación de Cargos</h1>
-  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_user=" class="modal btn btn-primary">
+  	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Relación de Cargos</h1>
+  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 400, y: 300}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_user=" class="modal btn btn-primary">
   		Nuevo Cargo
   	</a>
-  	<div class="panel-body">
+  	
+  	<div class="panel-body" style="text-indent: 45px;">
     	<p>Cargos de la compañia</p>
   	</div>
 	
@@ -55,7 +60,7 @@ if ($saveOrder){
 			</div>
 		<?php }else{ ?>
 			
-			<table class="table table-striped" id="articleList">
+			<table class="table table-striped" id="articleList" style="width: 95%">
 				<thead>
 					<tr>
 						<th width="1%" class="nowrap center hidden-phone">
@@ -70,13 +75,16 @@ if ($saveOrder){
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
+						<th>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre del Area', 'area', $listDirn, $listOrder); ?>
+						</th>
 						
 					</tr>
 				</thead>
 
 				<tfoot>
 					<tr>
-						<td colspan="4">
+						<td colspan="5">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -115,9 +123,12 @@ if ($saveOrder){
 								</div>
 							</td>
 							<td>
-								<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_cargo=<?php echo $item->id_cargo ?>" class="modal">
+								<a rel="{handler: 'iframe', size: {x: 400, y: 300}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_cargo=<?php echo $item->id_cargo ?>" class="modal">
 									<?php echo $item->nombre ?>
 								</a>
+							</td>
+							<td>
+								<?php echo $item->area ?>
 							</td>
 						</tr>
 

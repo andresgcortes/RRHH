@@ -9,8 +9,8 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\String\Inflector;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
 $document = JFactory::getDocument();
 $document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js');
 $document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js');
@@ -54,6 +54,7 @@ if ($saveOrder){
   	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 400, y: 250}}"  href="index.php?option=com_rrhh&tmpl=component&view=areas&layout=edit&id_user=" class="modal btn btn-primary">
   		Nueva Área
   	</a>
+  	
   	<div class="panel-body" style="text-indent: 45px;">
     	<p>Áreas de la compañia</p>
   	</div>
