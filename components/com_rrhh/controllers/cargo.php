@@ -111,6 +111,70 @@ class rrhhControllerCargo extends JControllerForm{
 
 		return true;
 	}
+        
+        function cambioPosicionAjax(){
+
+            $idarea = JRequest::getVar('nuevo_orden');
+            $value = 1;
+           
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true)
+			->select('id_cargo, ordering')
+			->from($db->quoteName('#__core_cargos'))
+                        //->where($db->quoteName('id_area').' IN ('.implode(',', $idarea).')');
+                        ->where($db->quoteName('level')."=".$db->quote($value))
+                        ->order('ordering', 'ASC');
+            $db->setQuery($query);
+            $countList = $db->loadObjectList();
+
+            $ListArray = array();
+            $i = 0;
+            foreach ($countList as $v){
+                $ListArray [$i] = $v->ordering;
+                $i++;
+            }
+            
+            $p = 0;
+            foreach ($idarea as $vidArea) {
+                
+                $query1 = $db->getQuery(true)
+                            ->select('count(id_cargo)')
+                            ->from($db->quoteName('#__core_cargos'))
+                            ->where($db->quoteName('level')."=".$db->quote($value))
+                            ->where($db->quoteName('id_cargo')."=".$db->quote($vidArea));
+                $db->setQuery($query1);
+                $countPos = $db->loadResult();
+                
+                if($countPos >0){
+                   
+                     //echo "ID = ".$vidArea." POS=".$ListArray[$p]."<br/>";
+                    // Fields to update.
+                   
+                    $query = $db->getQuery(true);
+                    $fields = array(
+                        $db->quoteName('ordering') . ' = ' .$ListArray[$p]
+                    );
+                    
+                    $conditions = array(
+                            $db->quoteName('id_cargo') . ' = '.$vidArea
+                     );
+                    
+                    $query->update($db->quoteName('#__core_cargos'))->set($fields)->where($conditions);
+ 
+                    $db->setQuery($query);
+                    $result = $db->execute();
+                    print_r($result);
+                    
+                    $p++;
+                }
+                
+            }
+           
+          
+            exit;
+            
+
+        }
 	
 }
 	

@@ -15,7 +15,7 @@ $(document).ready(function(){
         update: function() {
             //var order = $("#idarea").sortable("serialize")+'&action=orderState';
             var order = $("#sortable").sortable("toArray",{attribute: "sortable-group-id"});
-            $.post("index.php?option=com_rrhh&task=area.cambioPosicionAjax", {nuevo_orden: order}, function(theResponse){
+            $.post("index.php?option=com_rrhh&task=cargo.cambioPosicionAjax", {nuevo_orden: order}, function(theResponse){
                 $('#success').html('Gracias por ordenar!').slideDown('slow').delay(1000).slideUp('slow');
             });
         }
