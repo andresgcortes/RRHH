@@ -5,18 +5,20 @@
 	
 	<fieldset>
 		
-		<field name = "id_cargo" type = "hidden"/>
+		<field name = "id_user" type = "hidden"/>
 		
 		<field name = "nombre" type = "text"
 			label		= "Nombre Funcionario"
 			description	= "Nombre Funcionario"			
 			required	= "true"		
 			hint		= "Nombre Funcionario"
+			size		= "80"
 		/>
 		
-		<field name = "id_area" type = "areas"
-			label		= "Área"
-			description	= "Área"			
+		<field name = "codigo" type = "text"
+			label		= "Código"
+			description	= "Código"		
+			hint		= "Código"	
 			required	= "true"		
 		/>
 		
@@ -24,6 +26,33 @@
 			label		= "Cargo"
 			description	= "Cargo"			
 			required	= "true"		
+		/>			
+		
+		<field name = "nota" type = "text"
+			label		= "Nota"
+			description	= "Nots"			
+			required	= "true"		
+		/>			
+		
+		<field name = "date_ingreso" type = "calendar"
+			label		= "Fecha Ingreso"
+			description	= "Fecha Ingreso"			
+			required	= "true"		
+			hint		= "AAAA/MM/DD"
+			size		= "12"
+		/>			
+		
+		<field name = "date_cargo" type = "calendar"
+			label		= "Fecha Ocupación Cargo"
+			description	= "Fecha Ocupación Cargo"			
+			required	= "true"
+			hint		= "AAAA/MM/DD"
+			size		= "12"			
+		/>			
+		
+		<field name = "foto" type = "file"
+			label		= "Foto"
+			description	= "Foto"			
 		/>			
 		
 	</fieldset>

@@ -34,7 +34,7 @@ if ($saveOrder){
 	
 	  <!-- Default panel contents -->
   	<h1 class="panel-heading" style="text-indent: 45px; margin-top: 20px">Funcionarios</h1>
-  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 1200, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=" class="modal btn btn-primary">
+  	<a style="margin-right: 56px; margin-top: -30px; float: right;" rel="{handler: 'iframe', size: {x: 400, y: 670}}"  href="index.php?option=com_rrhh&tmpl=component&view=funcionarios&layout=edit&id_user=" class="modal btn btn-primary">
   		Nuevo Funcionario
   	</a>
   	
@@ -100,7 +100,7 @@ if ($saveOrder){
 								</div>
 							</td>
 							<td>
-								<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=<?php echo $item->id_user ?>" class="modal">
+								<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=edit&funcionarios=1&id_user=<?php echo $item->id_user ?>" class="modal">
 									<?php echo $item->nombre ?>
 								</a>	
 								</td>
