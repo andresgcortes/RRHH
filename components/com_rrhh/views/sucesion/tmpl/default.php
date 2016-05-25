@@ -36,7 +36,7 @@ $user      = JFactory::getUser(); ?>
 				
 					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
 						<div>
-							<img src="../../../../../images/sucesionh.png" />
+							<img src="<?php echo $this->baseurl ?>/images/sucesionh.png" />
 						</div>
 						<div style="color: #fff; margin-top: 10px; font-size: 15px;">
 							<span>Cargo por asignar</span>
@@ -56,13 +56,13 @@ $user      = JFactory::getUser(); ?>
 					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
 						<div>
 							<?php if($this->item->foto){ ?>
-								<img src="../../../../../images/fotos/<?php echo $this->item->foto ?>" />								
+								<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $this->item->foto ?>" />								
 							<?php }else{ ?>
-								<img src="../../../../../images/sucesionh.png" />
+								<img src="<?php echo $this->baseurl ?>/images/sucesionh.png" />
 							<?php } ?>
 						</div>
 						<div style="margin-top: 10px; font-size: 15px;">
-							<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=<?php echo $this->item->id_user ?>" class="modal">
+							<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=edit&id_user=<?php echo $this->item->id_user ?>" class="modal">
 								<span style="color: #fff;"><?php echo $this->item->nombre ?></span>
 							</a>
 						</div>
@@ -88,13 +88,13 @@ $user      = JFactory::getUser(); ?>
 						<div style="width:16%; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #aaa; margin-bottom: 20px; float: left; margin-right: 10px;">
 							<div>
 								<?php if($sucesion->foto){ ?>
-									<img src=".././../../../images/fotos/<?php echo $sucesion->foto ?>" />								
+									<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $sucesion->foto ?>" />								
 								<?php }else{ ?>
-									<img src="../../../../../images/sucesionh.png" />
+									<img src="<?php echo $this->baseurl ?>/images/sucesionh.png" />
 								<?php } ?>
 							</div>
 							<div style="margin-top: 10px; font-size: 15px;">
-									<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=defult&id_user=<?php echo $sucesion->id_user ?>" class="modal">
+									<a rel="{handler: 'iframe', size: {x: 1200, y: 670}}" href="index.php?option=com_rrhh&tmpl=component&view=empleados&layout=edit&id_user=<?php echo $sucesion->id_user ?>" class="modal">
 										<span><?php echo $sucesion->nombre ?></span>
 									</a>
 							</div>

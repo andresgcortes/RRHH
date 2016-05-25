@@ -14,19 +14,19 @@ defined('_JEXEC') or die('Restricted access');
 class RrhhViewEmpleados extends JViewLegacy{
 	
 	protected $state;
-	protected $items;
-	protected $pagination;
+	protected $item;
+	protected $form;
 
 	function display ($tpl = null){
 		
-		$this->item         = $this->get('Item');
-		$this->state         = $this->get('State');
+		$this->item		= $this->get('Item');
+		$this->state	= $this->get('State');
+		$this->form		= $this->get('Form');
 				
 		// Check for errors.
-		if (count($errors = $this->get('Errors'))){
-			
+		if (count($errors = $this->get('Errors'))){			
 			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
-			return false;
+			return false;		
 		}
 
 		// Display the view

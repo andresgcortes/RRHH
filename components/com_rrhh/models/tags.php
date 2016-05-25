@@ -133,7 +133,7 @@ class RrhhModelTags extends JModelList
 		}
 
 		// Exclude the root.
-		$query->where($db->quoteName('a.parent_id') . ' <> 0');
+		$query->where($db->quoteName('a.parent_id') . ' not in  (0,1)');
 
 		// Optionally filter on language
 		if (empty($language))

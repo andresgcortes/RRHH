@@ -13,6 +13,13 @@
 			hint		= "Nombre Etiqueta"
 			required	= "true"		
 		/>
+		
+		<field name = "parent_id" type = "padres"
+			label		= "Categoria Etiqueta"
+			description	= "Categoria Etiqueta"			
+			hint		= "Categoria Etiqueta"
+			required	= "true"		
+		/>
 			
 	</fieldset>
 

@@ -29,6 +29,10 @@ JHTML::_('behavior.formvalidation');
 	<div class="box-content" style="margin: 20px;">
 		
 		<div>
+			<?php echo $this->form->getLabel('parent_id'); echo $this->form->getInput('parent_id'); ?> 
+		</div>
+		
+		<div>
 			<?php echo $this->form->getLabel('title'); echo $this->form->getInput('title'); ?> 
 		</div>
 		
