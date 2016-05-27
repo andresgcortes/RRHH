@@ -14,7 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 $document = JFactory::getDocument();
 $document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js');
 $document->addScript('https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js');
-JHtml::script(Juri::base() . 'components/com_rrhh/views/areas/js/scripts.js');
+JHtml::script(Juri::base() . 'components/com_rrhh/views/cargos/js/scripts.js');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
@@ -90,7 +90,7 @@ if ($saveOrder){
 					</tr>
 				</tfoot>
 
-				<tbody>
+				<tbody id="sortable">
 					
 					<?php foreach ($this->items as $i => $item){
 						
