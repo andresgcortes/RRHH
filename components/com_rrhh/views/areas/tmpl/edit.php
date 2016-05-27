@@ -29,11 +29,19 @@ JHTML::_('behavior.formvalidation');
 		<div class="box-content" style="margin: 20px;">
 			
 			<div>
+				<?php echo $this->form->getLabel('nombre'); echo $this->form->getInput('nombre'); ?> 
+			</div>
+			
+			<div>
 	    		<?php echo $this->form->getLabel('parent_id'); echo $this->form->getInput('parent_id'); ?> 
+	    	</div>
+	    	
+	    	<div>
+	    		<?php echo $this->form->getLabel('id_cargo'); echo $this->form->getInput('id_cargo'); ?> 
 	    	</div>
 			
 			<div>
-				<?php echo $this->form->getLabel('nombre'); echo $this->form->getInput('nombre'); ?> 
+				<?php echo $this->form->getLabel('columnas'); echo $this->form->getInput('columnas'); ?> 
 			</div>
 			
 		</div>

@@ -59,7 +59,7 @@ if ($saveOrder){
     	<p>Áreas de la compañia</p>
   	</div>
 	
-	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
+	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=areas'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
 	
 		<div id="j-main-container" class="span12">
 		
@@ -114,30 +114,29 @@ if ($saveOrder){
 						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; 
 						
 						// Get the parents of item for sorting
-						if ($item->level > 1)
-						{
-							$parentsStr = "";
-							$_currentParentId = $item->parent_id;
-							$parentsStr = " " . $_currentParentId;
-							for ($i2 = 0; $i2 < $item->level; $i2++)
-							{
-								foreach ($this->ordering as $k => $v)
-								{
+						if ($item->level > 1){
+							
+							$parentsStr 		= "";
+							$_currentParentId	= $item->parent_id;
+							$parentsStr 		= " " . $_currentParentId;
+							
+							for ($i2 = 0; $i2 < $item->level; $i2++){
+																
+								foreach ($this->ordering as $k => $v){
+									
 									$v = implode("-", $v);
 									$v = "-" . $v . "-";
-									if (strpos($v, "-" . $_currentParentId . "-") !== false)
-									{
+									if (strpos($v, "-" . $_currentParentId . "-") !== false){
+										
 										$parentsStr .= " " . $k;
 										$_currentParentId = $k;
 										break;
 									}
 								}
 							}
-						}else{
-							
+						}else{							
 							$parentsStr = "";
-						}
-						?>
+						} ?>
 						
 						<tr   class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>" itemid ="1">
 							<td>
@@ -160,7 +159,7 @@ if ($saveOrder){
 							</td>
 							<td>
 								<div class="btn-group">
-									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'area.', $canEdit, 'cb', $item->created); ?>
+									<?php echo JHtml::_('RrhhHtml.Areas.state', $item->disabled, $i, $canEdit, 'cb'); ?>
 								</div>
 							</td>
 							<td>
@@ -168,7 +167,7 @@ if ($saveOrder){
 									<?php echo str_repeat('<span class="gi">&mdash;</span>', $item->level - 1) ?>
 									<?php echo $item->nombre ?>
 								</a>
-                                                            <input type="hidden" value="<?php $item->id_area?>" name="id" id="idarea" >
+                                <input type="hidden" value="<?php $item->id_area?>" name="id" id="idarea" >
 							</td>
 							<td><?php echo $item->cargo ?></td>
 						</tr>

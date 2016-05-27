@@ -21,6 +21,35 @@ JHTML::_('behavior.formvalidation');
 		}	
 	
 	}
+	
+	jQuery(document).ready(function(){
+	
+		jQuery(".box-content").on("change", ".area", function(event){
+			
+			elemento	= jQuery(this).val();
+			
+			var dato = new FormData();
+				
+			dato.append('area', elemento);
+						
+			jQuery.ajax({
+					
+				url:'index.php?option=com_rrhh&task=cargo.getarea&tmpl=raw', //Url a donde la enviaremos 
+				type:'POST', //Metodo que usaremos		
+				contentType:false, //Debe estar en false para que pase el objeto sin procesar
+				data:dato, //Le pasamos el objeto que creamos con los archivos
+				processData:false, //Debe estar en false para que JQuery no 
+				cache:false
+				
+			}).done(function(msg){
+				
+				jQuery('.cargo').html(msg);
+
+			});
+			
+		});
+	
+	});
 
 </script>		
 
@@ -32,7 +61,7 @@ JHTML::_('behavior.formvalidation');
 	    		<?php echo $this->form->getLabel('id_area'); echo $this->form->getInput('id_area'); ?> 
 	    	</div>
 	    	
-	    	<div>
+	    	<div class = "cargo"> 
 	    		<?php echo $this->form->getLabel('parent_id'); echo $this->form->getInput('parent_id'); ?> 
 	    	</div>
 			

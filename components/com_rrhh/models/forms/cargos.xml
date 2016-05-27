@@ -10,7 +10,8 @@
 		<field name = "id_area" type = "areas"
 			label		= "Área"
 			description	= "Área"			
-			required	= "true"		
+			required	= "true"	
+			class		= "area"	
 		/>
 				
 		<field name = "parent_id" type = "cargos"

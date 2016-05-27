@@ -14,7 +14,8 @@ class JFormFieldCargos extends JFormFieldlist{
 
 	protected function getOptions(){
 		
-		$options = array();
+		$options 	= array();
+		$area		= JRequest::getVar('area');		
 
 		$db = JFactory::getDbo();
 		
@@ -22,6 +23,11 @@ class JFormFieldCargos extends JFormFieldlist{
 		$query->select('a.id_cargo AS value, a.nombre AS text');
 		$query->from('#__core_cargos AS a');				
 		$query->where('a.disabled = 0 AND a.id_cargo > 1');		
+		
+		if(!empty($area)){
+			$query->where('a.id_area = '. $area);		
+		}
+			
 		$query->order('a.id_cargo ASC'); 
 		
 		// Get the options.

@@ -21,7 +21,7 @@ class RrhhModelRrhh extends JModelItem{
 	//Probando Albol
 	public function getArbol(){
 
-		$id_area = JRequest::getVar('id_area'); 		
+		$id_area 	= JRequest::getVar('id_area'); 		
 		$this->html = $this->getArbolCargos('core_areas', 1, 1, true, $id_area);
 
 		return $this->html;   
@@ -33,18 +33,19 @@ class RrhhModelRrhh extends JModelItem{
 		$db = JFactory::getDbo();
 		
 		$this->html = '';
+	    
 	    if ($tipo == 1) {
 	    	$idt = "id_area";	
 	    }	
 
 	    if ($tipo == 2) {
-	    		$idt = "id_cargo";	
+	    	$idt = "id_cargo";	
 	    }	
 		
 		$query = $db->getQuery(true);		
 		$query->select( $idt.' as id, nombre as nombre, id_area');
 		$query->from('#__'.$tabla);
-		$query->where("parent_id = ". $id);
+		$query->where("disabled = 0 AND parent_id = ". $id);
 		
 		if(!is_null($id_area)){
 			$query->where("id_area = ". $id_area);	
@@ -138,7 +139,7 @@ class RrhhModelRrhh extends JModelItem{
 
 	 	$query = "SELECT ".$idt." as id, nombre as nombre, id_area
 			FROM #__".$tabla."  as a
-			WHERE a.parent_id = ".$id;
+			WHERE disabled = 0 AND a.parent_id = ".$id;
 		$db->setQuery($query);
 		$dato =  $db->loadObjectList();
 
@@ -195,16 +196,16 @@ class RrhhModelRrhh extends JModelItem{
  		$db = JFactory::getDbo();
 		
 		if ($tipo == 1) {
-	    			$idt = "id_area";	
+	    	$idt = "id_area";	
 	    }	
 
 	    if ($tipo == 2) {
-	    		$idt = "id_cargo";	
+	    	$idt = "id_cargo";	
 	    }	
 
 	 	$query = "SELECT ".$idt." as id, nombre as nombre
 		FROM ·#__".$tabla."  as a
-		WHERE a.parent_id = ".$id."
+		WHERE disabled = 0 AND a.parent_id = ".$id."
 		ORDER BY a.parent_id";
 
 		$db->setQuery($query);

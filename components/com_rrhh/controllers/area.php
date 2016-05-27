@@ -9,13 +9,10 @@
 
 defined('_JEXEC') or die;
 
-/**
- * The Tags List Controller
- *
- * @since  3.1
- */
+use Joomla\Utilities\ArrayHelper;
+
 class rrhhControllerArea extends JControllerForm{	
-	
+		
 	public function __construct($config = array()){
 
 		parent::__construct($config);
@@ -23,6 +20,7 @@ class rrhhControllerArea extends JControllerForm{
 		$this->registerTask('apply', 	'save');
 		$this->registerTask('block',	'changeBlock');
 		$this->registerTask('unblock',	'changeBlock');
+		$this->registerTask('unpublish', 'publish');
 
 	}
 		
@@ -112,7 +110,7 @@ class rrhhControllerArea extends JControllerForm{
 		return true;
 	}
         
-        function cambioPosicionAjax(){
+    function cambioPosicionAjax(){
 
             $idarea = JRequest::getVar('nuevo_orden');
             $value = 1;
@@ -177,5 +175,40 @@ class rrhhControllerArea extends JControllerForm{
 
         }
 	
+	public function publish(){
+		
+		// Check for request forgeries.
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$ids    = $this->input->get('cid', array(), 'array');
+		$values = array('publish' => 0, 'unpublish' => 1);
+		$task   = $this->getTask();
+		$value  = ArrayHelper::getValue($values, $task, 1, 'int');
+		
+		if (empty($ids)){
+			JError::raiseWarning(500, JText::_('No se selección un Area'));
+		}else{
+			// Get the model.
+			/** @var BannersModelBanner $model */
+			$model = $this->getModel();
+
+			// Change the state of the records.
+			if (!$model->stick($ids, $value)){
+				JError::raiseWarning(500, $model->getError());
+			}else{
+				
+				if ($value == 1){
+					$ntext = 'Area Deshabilitada';
+				}else{
+					$ntext = 'Area Habilitada';
+				}
+
+				$this->setMessage(JText::plural($ntext, count($ids)));
+			}
+		}
+
+		$this->setRedirect('index.php?option=com_rrhh&view=areas');
+	}
+
 }
 	
