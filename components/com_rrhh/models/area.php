@@ -60,6 +60,8 @@ class RrhhModelArea extends JModelAdmin{
  			$data['created'] 		= $datenow;
 
 		}
+		
+		$data['level'] = $this->getNivel($data['parent_id']); 
 
 		// Bind the data.
 		if (!$table->bind($data)){
@@ -98,7 +100,7 @@ class RrhhModelArea extends JModelAdmin{
 		
 	} 
 		
-	function block(&$pks, $value = 1){
+	function stick(&$pks, $value = 1){
 	
 		// Initialise variables.
 		$table		= $this->getTable();
@@ -111,15 +113,16 @@ class RrhhModelArea extends JModelAdmin{
 			if ($table->load($pk)){	
 															
 				// Skip changing of same state
-				if ($table->disable == $value) {
+				if ($table->disabled == $value) {
 					unset($pks[$i]);
 					continue;
 				}
 				
-				$table->disable = (int) $value;
+				$table->disabled = (int) $value;
 				
 				// Allow an exception to be thrown.
 				try{
+					
 					if (!$table->check()) {
 						$this->setError($table->getError());
 						return false;
@@ -152,4 +155,24 @@ class RrhhModelArea extends JModelAdmin{
 		return true;
 	}		
 
+	private function getNivel($area){
+		
+		if($area > 1){
+			
+			$db = $this->getDbo(); 
+			
+			$query = $db->getQuery(true);		
+			$query->select('level');
+			$query->from('#__core_areas');
+			$query->where("id_area = ". $area);		
+			$db->setQuery($query);
+			$area =  $db->loadResult();
+			$area++;
+		
+		}
+		
+		return $area;		
+		
+	}
+	
 } ?>

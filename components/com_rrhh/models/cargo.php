@@ -102,8 +102,8 @@ class RrhhModelCargo extends JModelAdmin{
 		return true;
 		
 	} 
-		
-	function block(&$pks, $value = 1){
+	
+	function stick(&$pks, $value = 1){
 	
 		// Initialise variables.
 		$table		= $this->getTable();
@@ -116,15 +116,16 @@ class RrhhModelCargo extends JModelAdmin{
 			if ($table->load($pk)){	
 															
 				// Skip changing of same state
-				if ($table->disable == $value) {
+				if ($table->disabled == $value) {
 					unset($pks[$i]);
 					continue;
 				}
 				
-				$table->disable = (int) $value;
+				$table->disabled = (int) $value;
 				
 				// Allow an exception to be thrown.
 				try{
+					
 					if (!$table->check()) {
 						$this->setError($table->getError());
 						return false;
@@ -156,5 +157,6 @@ class RrhhModelCargo extends JModelAdmin{
 
 		return true;
 	}		
-
+	
+	
 } ?>

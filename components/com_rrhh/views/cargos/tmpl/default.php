@@ -119,8 +119,8 @@ if ($saveOrder){
 							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
 							<td>
 								<div class="btn-group">
-									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'banners.', $canEdit, 'cb', $item->created); ?>
-								</div>
+									<?php echo JHtml::_('RrhhHtml.Cargos.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+								</div>								
 							</td>
 							<td>
 								<a rel="{handler: 'iframe', size: {x: 400, y: 300}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_cargo=<?php echo $item->id_cargo ?>" class="modal">

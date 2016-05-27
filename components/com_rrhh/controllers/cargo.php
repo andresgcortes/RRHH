@@ -21,8 +21,7 @@ class rrhhControllerCargo extends JControllerForm{
 		parent::__construct($config);
 		
 		$this->registerTask('apply', 	'save');
-		$this->registerTask('block',	'changeBlock');
-		$this->registerTask('unblock',	'changeBlock');
+		$this->registerTask('unpublish', 'publish');
 
 	}
 		
@@ -112,5 +111,57 @@ class rrhhControllerCargo extends JControllerForm{
 		return true;
 	}
 	
+	public function getArea(){
+		
+		$document = JFactory::getDocument();
+
+	    $document->setMimeEncoding('text/html');
+
+		$model	= $this->getModel(); // JModelForm
+		$form 	= $model->getForm();
+		$html 	= $form->getLabel('parent_id'). $form->getInput('parent_id');
+		
+		echo $html;
+		
+		die();
+	
+	}
+	
+	public function publish(){
+		
+		// Check for request forgeries.
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$ids    = $this->input->get('cid', array(), 'array');
+		$values = array('publish' => 0, 'unpublish' => 1);
+		$task   = $this->getTask();
+		$value  = ArrayHelper::getValue($values, $task, 1, 'int');
+		
+		if (empty($ids)){
+			JError::raiseWarning(500, JText::_('No se selecciono un Cargo'));
+		}else{
+			// Get the model.
+			/** @var BannersModelBanner $model */
+			$model = $this->getModel();
+
+			// Change the state of the records.
+			if (!$model->stick($ids, $value)){
+				JError::raiseWarning(500, $model->getError());
+			}else{
+				
+				if ($value == 1){
+					$ntext = 'Cargo Deshabilitado';
+				}else{
+					$ntext = 'Cargo Habilitado';
+				}
+
+				$this->setMessage(JText::plural($ntext, count($ids)));
+			}
+		}
+
+		$this->setRedirect('index.php?option=com_rrhh&view=cargos');
+	}
+
+		
 }
 	

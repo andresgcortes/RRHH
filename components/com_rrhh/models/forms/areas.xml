@@ -7,6 +7,18 @@
 		
 		<field name = "id_area" type = "hidden"/>
 		
+		<field name = "parent_id" type = "areas"
+			label		= "Área Padre"
+			description	= "Área Padre"			
+			required	= "true"		
+		/>
+		xzzz
+		<field name = "id_cargo" type = "cargos"
+			label		= "Cargo Responsable"
+			description	= "Cargo Responsable"			
+			required	= "true"		
+		/>		
+				
 		<field name = "nombre" type = "text"
 			label		= "Nombre Área"
 			description	= "Nombre Área"			
@@ -14,10 +26,11 @@
 			hint		= "Nombre Área"
 		/>
 		
-		<field name = "parent_id" type = "areas"
-			label		= "Área Padre"
-			description	= "Área Padre"			
+		<field name = "columnas" type = "number"
+			label		= "Niveles"
+			description	= "Niveles"			
 			required	= "true"		
+			hint		= "Niveles"
 		/>
 			
 	</fieldset>
