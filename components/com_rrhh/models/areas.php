@@ -74,7 +74,7 @@ class RrhhModelAreas extends JModelList{
 		
 		$query->where('a.id_area != 1');
 		
-		$listOrdering 	= $this->getState('list.ordering', 'a.lft');
+		$listOrdering 	= $this->getState('list.ordering', 'a.parent_id');
 		$listDirn 		= $db->escape($this->getState('list.direction', 'ASC'));
 		
 		$query->order($db->escape($listOrdering) . ' ' . $listDirn);

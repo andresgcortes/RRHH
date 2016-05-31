@@ -133,6 +133,7 @@ class rrhhControllerArea extends JControllerForm{
             }
             
             $p = 0;
+            
             foreach ($idarea as $vidArea) {
                 
                 $query1 = $db->getQuery(true)
@@ -167,8 +168,7 @@ class rrhhControllerArea extends JControllerForm{
                     
                 }
                 
-            }
-           
+            }           
           
             exit;
             
@@ -209,6 +209,41 @@ class rrhhControllerArea extends JControllerForm{
 
 		$this->setRedirect('index.php?option=com_rrhh&view=areas');
 	}
+	
+	public function delete(){
+		
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
+		$ids    = $this->input->get('cid', array(), 'array');
+		$db 	= JFactory::getDbo();
+        $query 	= $db->getQuery(true)
+			->select('count(id_area)')
+			->from($db->quoteName('#__core_areas'))
+			->where('parent_id = '. $ids[0]);
+        $db->setQuery($query);
+        $countList = $db->loadResult();
+    	
+        if($countList == 0){
+			
+			$query 	= $db->getQuery(true)
+				->delete($db->quoteName('#__core_areas'))
+				->where('id_area = '. $ids[0]);
+	        $db->setQuery($query);
+	        $db->execute();
+			
+			$message = JText::_('Area Borrada Correctamente');
+				
+		}else{
+
+			$message = JText::_('No se puede Borrar el área porque tiene un ');			
+		}    
+				
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=areas&layout=default'), $message);
+		
+		return false; 	
+		
+		
+	} 
+	
 }
 	

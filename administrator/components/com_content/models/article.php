@@ -692,7 +692,7 @@ class ContentModelArticle extends JModelAdmin
 	protected function getReorderConditions($table)
 	{
 		$condition = array();
-		$condition[] = 'catid = ' . (int) $table->catid;
+		$condition[] = 'catid = ' . (int)$table->catid;
 
 		return $condition;
 	}
