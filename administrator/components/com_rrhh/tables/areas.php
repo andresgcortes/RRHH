@@ -3,7 +3,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class RrhhTableAreas extends JTable{
+class RrhhTableAreas extends JTableNested{
 	
 	public function __construct(&$db){
 		parent::__construct('#__core_areas', 'id_area', $db);
