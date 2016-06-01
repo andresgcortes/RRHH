@@ -118,8 +118,10 @@ if ($saveOrder){
 							</td>
 							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
 							<td>
-								<div class="btn-group">
-									<?php echo JHtml::_('RrhhHtml.Cargos.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+								<div style="float: left; margin-left: 10px">
+								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','cargo.delete')" >
+										<span class="icon-delete"></span>
+									</a>
 								</div>								
 							</td>
 							<td>

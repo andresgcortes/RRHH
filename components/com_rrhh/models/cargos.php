@@ -77,6 +77,7 @@ class RrhhModelCargos extends JModelList{
 		
 		$query->order($db->qn($db->escape($this->getState('list.ordering', 'b.id_area'))) . ', a.id_cargo ' . $db->escape($this->getState('list.direction', 'ASC')));
 		
+
 		return $query;
 
 	}//function

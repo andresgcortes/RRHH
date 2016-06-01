@@ -96,6 +96,19 @@ class RrhhModelCargo extends JModelAdmin{
 		if (isset($table->$pkName)){
 			$this->setState($this->getName() . '.id', $table->$pkName);
 		}
+                
+                // Rebuild the path for the category:
+		if (!$table->rebuildPath($table->id_area)){
+			$this->setError($table->getError());
+
+			return false;
+		}
+		
+		if (!$table->rebuild($table->id_area, $table->lft, $table->level, $table->path))		{
+			$this->setError($table->getError());
+
+			return false;
+		}
 		
 		$this->setState($this->getName() . '.new', $isNew);
 
