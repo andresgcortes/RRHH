@@ -181,9 +181,6 @@ if ($saveOrder){
 								<?php echo JHtml::_('grid.id', $i, $item->id_area); ?>
 							</td>
 							<td>
-								<div class="btn-group" style="float: left">
-									<?php echo JHtml::_('RrhhHtml.Areas.state', $item->disabled, $i, $canEdit, 'cb'); ?>
-								</div>
 								<div style="float: left; margin-left: 10px">
 								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','area.delete')" >
 										<span class="icon-delete"></span>

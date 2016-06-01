@@ -225,6 +225,43 @@ class rrhhControllerCargo extends JControllerForm{
 
 		$this->setRedirect('index.php?option=com_rrhh&view=cargos');
 	}
+        
+        public function delete(){
+		
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$ids    = $this->input->get('cid', array(), 'array');
+		$db 	= JFactory::getDbo();
+        $query 	= $db->getQuery(true)
+			->select('count(id_cargo)')
+			->from($db->quoteName('#__core_cargos'))
+			->where('parent_id = '. $ids[0]);
+        
+        $db->setQuery($query);
+        $countList = $db->loadResult();
+   
+    	
+        if($countList == 0){
+			
+			$query 	= $db->getQuery(true)
+				->delete($db->quoteName('#__core_cargos'))
+				->where('id_cargo = '. $ids[0]);
+	        $db->setQuery($query);
+	        $db->execute();
+			
+			$message = JText::_('Cargo Borrada Correctamente');
+				
+		}else{
+
+			$message = JText::_('No se puede Borrar el cargo porque tiene un ');			
+		}    
+				
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=cargos&layout=default'), $message);
+		
+		return false; 	
+		
+		
+	}
 
 		
 }
