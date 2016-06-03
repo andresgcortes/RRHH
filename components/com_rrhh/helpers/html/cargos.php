@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die;
 
+
 //JLoader::register('MenusHelper', JPATH_SITE . '/components/com_conparametrizar/helpers/areas.php');
 
 /**
@@ -57,6 +58,6 @@ abstract class RrhhHtmlCargos{
 			),			
 		);
 
-		return JHtml::_('jgrid.state', $states, $value, $i, 'crgo.', $enabled, true, $checkbox);
+		return JHtml::_('jgrid.state', $states, $value, $i, 'cargo.', $enabled, true, $checkbox);
 	}
 }
