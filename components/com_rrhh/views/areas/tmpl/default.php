@@ -103,6 +103,9 @@ if ($saveOrder){
 						<th width="5%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.disabled', $listDirn, $listOrder); ?>
 						</th>
+                                                <th width="5%" class="nowrap center">
+							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.disabled', $listDirn, $listOrder); ?>
+						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Nombre del Área', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
@@ -180,6 +183,11 @@ if ($saveOrder){
 							<td>							
 								<?php echo JHtml::_('grid.id', $i, $item->id_area); ?>
 							</td>
+                                                        <td>
+                                                            <div class="btn-group" style="float: left">
+                        -                                     <?php echo JHtml::_('RrhhHtml.Areas.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+                        -                                   </div>
+                                                        </td>
 							<td>
 								<div style="float: left; margin-left: 10px">
 								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','area.delete')" >

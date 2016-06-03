@@ -13,7 +13,7 @@ use Joomla\Utilities\ArrayHelper;
 
 class rrhhControllerArea extends JControllerForm{	
 		
-	public function __construct($config = array()){
+    public function __construct($config = array()){
 
 		parent::__construct($config);
 		
@@ -24,7 +24,7 @@ class rrhhControllerArea extends JControllerForm{
 
 	}
 		
-	function save($key = NULL, $urlVar = NULL){
+    function save($key = NULL, $urlVar = NULL){
 				
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -175,7 +175,7 @@ class rrhhControllerArea extends JControllerForm{
 
         }
 	
-	public function publish(){
+    public function publish(){
 		
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -210,7 +210,7 @@ class rrhhControllerArea extends JControllerForm{
 		$this->setRedirect('index.php?option=com_rrhh&view=areas');
 	}
 	
-	public function delete(){
+    public function delete(){
 		
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 

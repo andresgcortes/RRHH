@@ -72,6 +72,9 @@ if ($saveOrder){
 						<th width="1%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
+                                                <th width="5%" class="nowrap center">
+							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.disabled', $listDirn, $listOrder); ?>
+						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Nombre del Cargo', 'a.nombre', $listDirn, $listOrder); ?>
 						</th>
@@ -117,6 +120,11 @@ if ($saveOrder){
 								<?php }; ?>
 							</td>
 							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
+                                                        <td>
+                                                            <div class="btn-group" style="float: left">
+                        -                                     <?php echo JHtml::_('RrhhHtml.Cargos.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+                        -                                   </div>
+                                                        </td>
 							<td>
 								<div style="float: left; margin-left: 10px">
 								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','cargo.delete')" >
@@ -129,6 +137,7 @@ if ($saveOrder){
 									<?php echo $item->nombre ?>
 								</a>
 							</td>
+                                                        <input type="hidden" value="<?php $item->id_cargo?>" name="id" id="idcargo" >
 							<td>
 								<?php echo $item->area ?>
 							</td>
