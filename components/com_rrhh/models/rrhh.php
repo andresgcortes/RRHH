@@ -9,10 +9,12 @@
 **/
 
 // no direct access
+require_once (JPATH_LIBRARIES.'/mpdf/mpdf.php');
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.modelitem');
 jimport('joomla.application.component.model');
+
 
 class RrhhModelRrhh extends JModelItem{
 	
@@ -262,6 +264,26 @@ class RrhhModelRrhh extends JModelItem{
 		}
 		
   	}
+        
+        private function pdf($informe, $nombredoc = "", $data, $data, $proceso = false ){
+            
+            $base       = JPATH_ROOT;
+            $stylesheet = file_get_contents($base.'/templates/protostar/css/template.css');
+            
+            if($informe == ''){
+                
+                $mpdf = new mPDF('utf-8', 'Legal-L');
+                $mpdf->SetDisplayMode('fullpage');
+                
+                $mpdf->WriteHTML($stylesheet);
+                
+                $db = JFactory::getDbo();
+                
+                
+                
+            }
+            
+        }
 
 	
 
