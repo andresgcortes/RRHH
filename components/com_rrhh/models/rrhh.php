@@ -23,13 +23,21 @@ class RrhhModelRrhh extends JModelItem{
 	//Probando Albol
 	public function getArbol(){
 
-		$id_area 	= JRequest::getVar('id_area'); 		
-		$this->html = $this->getArbolCargos('core_areas', 1, 1, true, $id_area);
+		$id_area 	= JRequest::getVar('id_area'); 	
+		$this->html .= $this->getImgpdf();
+		$this->html .= $this->getArbolCargos('core_areas', 1, 1, true, $id_area);
 
 		return $this->html;   
 
 	}
 	
+	public function getImgpdf(){
+
+		echo '<div id="imge"><img src="images/pdf.png" style="WIDTH: 5%;"></div><div id="successe"></div>';
+  			
+
+	}
+
 	public function getArbolCargos($tabla, $tipo, $id, $inicial = false, $id_area = null){
 
 		$db = JFactory::getDbo();
@@ -56,7 +64,7 @@ class RrhhModelRrhh extends JModelItem{
 		$db->setQuery($query);
 		$area =  $db->loadObjectList();
 		
-  		if(count($area) > 0){	
+		if(count($area) > 0){	
 		
 			if($inicial === true){ 
   				echo '<ul id="org" style="display:none">';
@@ -265,27 +273,5 @@ class RrhhModelRrhh extends JModelItem{
 		
   	}
         
-        private function pdf($informe, $nombredoc = "", $data, $data, $proceso = false ){
-            
-            $base       = JPATH_ROOT;
-            $stylesheet = file_get_contents($base.'/templates/protostar/css/template.css');
-            
-            if($informe == ''){
-                
-                $mpdf = new mPDF('utf-8', 'Legal-L');
-                $mpdf->SetDisplayMode('fullpage');
-                
-                $mpdf->WriteHTML($stylesheet);
-                
-                $db = JFactory::getDbo();
-                
-                
-                
-            }
-            
-        }
-
-	
-
 
 } ?>
