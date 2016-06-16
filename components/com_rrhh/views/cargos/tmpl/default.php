@@ -63,16 +63,13 @@ if ($saveOrder){
 			<table class="table table-striped" id="articleList" style="width: 95%">
 				<thead>
 					<tr>
-						<th width="1%" class="nowrap center hidden-phone">
+						<th width="2%" class="nowrap center hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 						</th>
-						<th width="1%" class="center">
-							<?php echo JHtml::_('grid.checkall'); ?>
-						</th>
-						<th width="1%" class="nowrap center">
+						<th width="2%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
-                                                <th width="5%" class="nowrap center">
+                        <th width="2%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.disabled', $listDirn, $listOrder); ?>
 						</th>
 						<th>
@@ -119,18 +116,18 @@ if ($saveOrder){
 										value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
 								<?php }; ?>
 							</td>
-							<td><?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></td>
-                                                        <td>
-                                                            <div class="btn-group" style="float: left">
-                        -                                     <?php echo JHtml::_('RrhhHtml.Cargos.state', $item->disabled, $i, $canEdit, 'cb'); ?>
-                        -                                   </div>
-                                                        </td>
-							<td>
-								<div style="float: left; margin-left: 10px">
-								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','cargo.delete')" >
-										<span class="icon-delete"></span>
-									</a>
-								</div>								
+							<td align="center">
+								<div style="display: none;">
+									<?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?>
+								</div>
+								<div class="btn-group">
+                        			<?php echo JHtml::_('RrhhHtml.Cargos.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+                        		</div>
+                            </td>
+							<td align="center">
+								<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','cargo.delete')" >
+									<span class="icon-delete"></span>
+								</a>
 							</td>
 							<td>
 								<a rel="{handler: 'iframe', size: {x: 400, y: 300}}"  href="index.php?option=com_rrhh&tmpl=component&view=cargos&layout=edit&id_cargo=<?php echo $item->id_cargo ?>" class="modal">

@@ -181,7 +181,6 @@ class RrhhModelTags extends JModelList
 			$query->where($db->quoteName('a.title') . ' LIKE ' . $db->quote('%' . $this->state->get('list.filter') . '%'));
 		}
 
-		$query->where($db->quoteName('a.published') . ' = ' . $published);
 
 		$query->order($db->quoteName($orderby) . ' ' . $orderDirection . ', a.title ASC');
 

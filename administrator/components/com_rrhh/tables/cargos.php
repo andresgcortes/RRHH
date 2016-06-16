@@ -7,7 +7,10 @@ class RrhhTableCargos extends JTable{
 	
 	public function __construct(&$db){
 		parent::__construct('#__core_cargos', 'id_cargo', $db);
-	}	public function check(){
+	}	
+	
+	public function check(){
+		
 		
 		/*$db = &JFactory::getDBO();
 				
@@ -25,9 +28,11 @@ class RrhhTableCargos extends JTable{
 		{
 			$this->setError(JText::_('Actividad en usu'));
 			return false;
-		}		*/	
+		}		
+		*/ 
 		
-		return true;
+		return true; 
+	
 	}
 		
 }

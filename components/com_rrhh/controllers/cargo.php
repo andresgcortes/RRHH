@@ -99,7 +99,7 @@ class rrhhControllerCargo extends JControllerForm{
 			
 			case 'apply':
 				$message = JText::_('Cargo Guardado Correctamente');
-				$this->setRedirect('index.php?option=com_rrhh&view=cargo&tmpl=component&layout=edit&id_cargo='.$model->GetState('cargos.id'), $message);
+				$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=cargo&tmpl=component&layout=edit&id_cargo='.$model->GetState('cargos.id')), $message);
 				break;
 
 			case 'save':
@@ -111,10 +111,10 @@ class rrhhControllerCargo extends JControllerForm{
 		return true;
 	}
         
-        function cambioPosicionAjax(){
+    function cambioPosicionAjax(){
 
-            $idarea = JRequest::getVar('nuevo_orden');
-            $value = 1;
+    	$idarea = JRequest::getVar('nuevo_orden');
+        $value = 1;
            
             $db = JFactory::getDbo();
             $query = $db->getQuery(true)
@@ -169,11 +169,9 @@ class rrhhControllerCargo extends JControllerForm{
                 
             }
            
-          
             exit;
-            
-
-        }
+           
+	}
 	
 	public function getArea(){
 		
@@ -223,10 +221,13 @@ class rrhhControllerCargo extends JControllerForm{
 			}
 		}
 
-		$this->setRedirect('index.php?option=com_rrhh&view=cargos');
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=cargos'));
+		
+		return true; 
+				
 	}
         
-        public function delete(){
+    public function delete(){
 		
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
@@ -258,11 +259,9 @@ class rrhhControllerCargo extends JControllerForm{
 				
 		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=cargos&layout=default'), $message);
 		
-		return false; 	
-		
+		return false; 		
 		
 	}
-
 		
 }
 	

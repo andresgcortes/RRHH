@@ -57,13 +57,17 @@ if ($saveOrder){
 		<?php }else{ ?>
 			
 			<table class="table table-striped" id="articleList" style="width: 95%">
+
 				<thead>
 					<tr>
-						<th width="1%" class="nowrap center">
+						<th  width="2%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
+						<th  width="2%" class="nowrap center">
+							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.state', $listDirn, $listOrder); ?>
+						</th>						
 						<th>
-							<?php echo JHtml::_('searchtools.sort', 'Nombre Funcionario', 'a.nombre', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort', 'Nombre', 'a.disabled', $listDirn, $listOrder); ?>
 						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Area', 'cargo', $listDirn, $listOrder); ?>
@@ -77,7 +81,7 @@ if ($saveOrder){
 
 				<tfoot>
 					<tr>
-						<td colspan="4">
+						<td colspan="5">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -92,11 +96,18 @@ if ($saveOrder){
 						$canEdit    = $user->authorise('core.edit',       'com_rrhh');
 						$canCheckin = $user->authorise('core.manage',     'com_rrhh') || $item->checked_out == $userId || $item->checked_out == 0; ?>
 						
-						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_cargo; ?>">
+						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_user; ?>">
 							<td>
-								<div style="display: none" > <?php echo JHtml::_('grid.id', $i, $item->id_cargo); ?></div>
+								<div style="display: none" > <?php echo JHtml::_('grid.id', $i, $item->id_user); ?></div>
 								<div class="btn-group">
 									<?php echo JHtml::_('jgrid.published', $item->disabled, $i, 'rrhh.', $canEdit, 'cb', $item->created); ?>
+								</div>
+							</td>
+							<td>
+								<div style="float: left; margin-left: 10px">
+								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','funcionario.delete')" >
+										<span class="icon-delete"></span>
+									</a>
 								</div>
 							</td>
 							<td>
@@ -110,6 +121,7 @@ if ($saveOrder){
 
 					<?php } ?>
 				</tbody>
+
 			</table>			
 			
 		<?php } ?>

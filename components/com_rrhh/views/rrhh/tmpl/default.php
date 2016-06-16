@@ -44,6 +44,8 @@ JFactory::getDocument()->addScriptDeclaration('
 
 <div style="margin-left: auto; margin-right:auto" >
 	
+	<div>Descargar PDf</div>
+	
 	<?php echo $this->html; ?>
 
 </div>
