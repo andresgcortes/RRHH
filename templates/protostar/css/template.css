@@ -7713,4 +7713,9 @@ jOrgChart .line{
     text-align: left;
     padding: 20px;
     line-height: 22px;
+
+}
+
+.calendario{
+	width: 75px !important;
 }

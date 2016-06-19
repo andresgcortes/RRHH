@@ -19,7 +19,7 @@
 			label		= "Código"
 			description	= "Código"		
 			hint		= "Código"	
-			required	= "true"		
+			required	= "false"		
 		/>
 		
 		<field name = "id_cargo" type = "cargos"
@@ -31,7 +31,7 @@
 		<field name = "nota" type = "text"
 			label		= "Nota"
 			description	= "Nots"			
-			required	= "true"		
+			required	= "false"		
 		/>			
 		
 		<field name = "date_ingreso" type = "calendar"
@@ -40,6 +40,7 @@
 			required	= "true"		
 			hint		= "AAAA/MM/DD"
 			size		= "12"
+			class		= "calendario"
 		/>			
 		
 		<field name = "date_cargo" type = "calendar"
@@ -48,6 +49,7 @@
 			required	= "true"
 			hint		= "AAAA/MM/DD"
 			size		= "12"			
+			class		= "calendario"
 		/>			
 		
 		<field name = "foto" type = "file"
@@ -55,6 +57,58 @@
 			description	= "Foto"			
 		/>			
 		
+		<field name = "tiempos" type = "tiempo"
+			label		= "Sucesión"
+			description	= "Sucesión"			
+		/>
+		
+		<field name = "id_cargos" type = "cargos"
+			label		= "Cargo para sucesión"
+			description	= "Cargo para sucesión"
+		/>
+		
+		<field name = "CPT_PN1_VE" type = "number"
+			label		= "Comportamiento 1"
+			description	= "Comportamiento 1"
+		/>
+		
+		<field name = "CPT_PN2_ARP" type = "number"
+			label		= "Comportamiento 2"
+			description	= "Comportamiento 2"
+		/>
+		<field name = "CPT_PN2_AFN" type = "number"
+			label		= "Comportamiento 3"
+			description	= "Comportamiento 3"
+		/>
+		<field name = "CPT_ER1_LE" type = "number"
+			label		= "Comportamiento 4"
+			description	= "Comportamiento 4"
+		/>
+		<field name = "CPT_ER2_EC" type = "number"
+			label		= "Comportamiento 5"
+			description	= "Comportamiento 5"
+		/>
+		<field name = "CPT_ER3_LD" type = "number"
+			label		= "Comportamiento 6"
+			description	= "Comportamiento 6"
+		/>
+		<field name = "CPT_CO1_IMO" type = "number"
+			label		= "Competencia 1"
+			description	= "Competencia 1"
+		/>
+		<field name = "CPT_CO2_AAO" type = "number"
+			label		= "Competencia 2"
+			description	= "Competencia 2"
+		/>
+		<field name = "CPT_CO3_ICR" type = "number"
+			label		= "Competencia 3"
+			description	= "Competencia 3"
+		/>
+		<field name = "CPT_CO4_MI" type = "number"
+			label		= "Competencia 4"
+			description	= "Competencia 4"
+		/>
+			
 	</fieldset>
 
 </form>

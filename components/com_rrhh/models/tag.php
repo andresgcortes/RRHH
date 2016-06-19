@@ -101,28 +101,29 @@ class RrhhModelTag extends JModelAdmin{
 		
 	} 
 		
-	function block(&$pks, $value = 1){
-	
+	function stick(&$pks, $value = 1){
+		
 		// Initialise variables.
 		$table		= $this->getTable();
 		$pks		= (array) $pks;
 		$user		= JFactory::getUser();		
-		
+		 
 		// Access checks.
 		foreach ($pks as $i => $pk){
 			
 			if ($table->load($pk)){	
-															
+			
 				// Skip changing of same state
-				if ($table->disable == $value) {
+				if ($table->published == $value) {
 					unset($pks[$i]);
 					continue;
 				}
 				
-				$table->disable = (int) $value;
-				
+				$table->published = (int) $value;
+										
 				// Allow an exception to be thrown.
 				try{
+					
 					if (!$table->check()) {
 						$this->setError($table->getError());
 						return false;

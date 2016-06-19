@@ -98,7 +98,7 @@ class RrhhModelCargo extends JModelAdmin{
 		}
                 
                 // Rebuild the path for the category:
-		if (!$table->rebuildPath($table->id_area)){
+		/*if (!$table->rebuildPath($table->id_area)){
 			$this->setError($table->getError());
 
 			return false;
@@ -108,7 +108,7 @@ class RrhhModelCargo extends JModelAdmin{
 			$this->setError($table->getError());
 
 			return false;
-		}
+		}*/
 		
 		$this->setState($this->getName() . '.new', $isNew);
 
