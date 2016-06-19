@@ -45,7 +45,7 @@ JFactory::getDocument()->addScriptDeclaration('
 '); ?>
 
 
-<style type="text/css">
+<!--<style type="text/css">
 /* Basic styling */
 /* Draw the lines */
 .jOrgChart .line {
@@ -236,7 +236,5 @@ a:hover{
 
 
 .trtc:hover .tdtc { background: #d0dafd; color: #339; }
-</style>
+</style>-->
 <h1><?php echo $this->html; ?></h1>
-
-

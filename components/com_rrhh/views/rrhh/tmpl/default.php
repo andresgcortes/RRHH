@@ -16,6 +16,7 @@ $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
 
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
+JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/script.js');
 
 //JHtml::script(Juri::base() . 'templates/protostar/css/jquery.jOrgChart.css');
 
