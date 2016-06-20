@@ -9,12 +9,7 @@
 **/
 
 // no direct access
-require_once (JPATH_LIBRARIES.'/mpdf/mpdf.php');
 defined('_JEXEC') or die('Restricted access');
-
-jimport('joomla.application.component.modelitem');
-jimport('joomla.application.component.model');
-
 
 class RrhhModelRrhh extends JModelItem{
 	
