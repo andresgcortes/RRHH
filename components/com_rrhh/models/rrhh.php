@@ -19,7 +19,7 @@ class RrhhModelRrhh extends JModelItem{
 	public function getArbol(){
 
 		$id_area 	= JRequest::getVar('id_area'); 	
-		$this->html .= $this->getImgpdf();
+		//$this->html .= $this->getImgpdf();
 		$this->html .= $this->getArbolCargos('core_areas', 1, 1, true, $id_area);
 
 		return $this->html;   
@@ -27,10 +27,7 @@ class RrhhModelRrhh extends JModelItem{
 	}
 	
 	public function getImgpdf(){
-
 		echo '<div id="imge"><img src="images/pdf.png" style="WIDTH: 5%;"></div><div id="successe"></div>';
-  			
-
 	}
 
 	public function getArbolCargos($tabla, $tipo, $id, $inicial = false, $id_area = null){
@@ -121,7 +118,7 @@ class RrhhModelRrhh extends JModelItem{
   			
 			echo '<div class="well">
 		   		<div id="chart" class="orgChart"></div>	 		   		
-		   	<div>';
+		   	</div>';
 		
 		}
 		 	

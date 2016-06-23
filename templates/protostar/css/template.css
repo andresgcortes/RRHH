@@ -685,9 +685,13 @@ ol ol,
 ol ul {
 	margin-bottom: 0;
 }
-li {
+
+li{
 	line-height: 18px;
+	list-style-type: none;	
+	    display: inline-block;
 }
+
 ul.unstyled,
 ol.unstyled {
 	margin-left: 0;
@@ -7515,7 +7519,6 @@ body.modal-open {
 	overflow-y: auto !important;
 }
 
-
 .sucesion{
 	background-image:url('../images/sucesion.png');
 	background-repeat: no-repeat;
@@ -7588,7 +7591,7 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 	color: #ffffff;
 }
 
-jOrgChart .line{
+.jOrgChart .line{
   height                : 20px;
   width                 : 4px;
 }
@@ -7666,15 +7669,6 @@ jOrgChart .line{
 .jOrgChart {
   margin                : 10px;
   padding               : 20px;
-}
-
-.jOrgChart .node {
-    font-size: 14px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    border: 1px solid #BBBBBB;
-    color: #AEB0B3;
-    -moz-border-radius: 8px;
 }
 
 .node p{
