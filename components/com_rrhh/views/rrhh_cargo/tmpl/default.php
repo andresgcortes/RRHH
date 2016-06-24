@@ -10,12 +10,15 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-$document = JFactory::getDocument();
 
+JHTML::_('behavior.formvalidation');
+
+$document = JFactory::getDocument();
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
 $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
-JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
 
+JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
+JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.js');
 
 JFactory::getDocument()->addScriptDeclaration('
 
@@ -38,12 +41,17 @@ JFactory::getDocument()->addScriptDeclaration('
 	    }, function(){            
 	        $(".contustiemp").css("display", "none");
 	    });
-			
+	    
+	    html2canvas(document.querySelector(".well")).then(function(canvas){
+        	var png = canvas.toDataURL()
+            //window.open(png);
+       		console.log(png);
+       		jQuery("#contenido").val(png); 	                    
+        });			
 			
 	}); 
 
 '); ?>
-
 
 <style type="text/css">
 /* Basic styling */
@@ -237,6 +245,47 @@ a:hover{
 
 .trtc:hover .tdtc { background: #d0dafd; color: #339; }
 </style>
-<h1><?php echo $this->html; ?></h1>
 
+<script type="text/javascript">
+	
+	Joomla.submitbutton = function(task){
+		
+		if ((task == 'cancel.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
+			
+			html2canvas(document.querySelector(".well")).then(function(canvas){
+            	var png = canvas.toDataURL()
+	            //window.open(png);
+           		console.log(png);
+           		jQuery('#contenido').val(png); 	            
+	        
+	        });
+			
+			Joomla.submitform(task, document.getElementById('Formrrhh'));
+	  			
+		}else{
+			
+	 		alert("Existen campos vacios por favor verifique!");
+			return false;
+		}	
+	
+	}	
+	
+</script>
+
+<a href="javascript:void(0);" onclick="Joomla.submitbutton('rrhh.descargarpdf')" class="button-color">
+	Exportar PDF
+</a>
+
+<div style="margin-left: auto; margin-right:auto" >
+	<?php echo $this->html; ?>
+</div>
+
+<form action="index.php?option=com_rrhh&view=rrhh_cargo" method="post" name="adminForm" id="Formrrhh" enctype="multipart/form-data" class="form-validate form">
+	
+	<input type="hidden" name="option" value="com_rrhh" />			
+	<input type="hidden" name="task" value="" />
+	<input type="hidden" name="contenido" id="contenido" value="" />	
+	<?php echo JHtml::_('form.token'); ?>		
+
+</form>
 

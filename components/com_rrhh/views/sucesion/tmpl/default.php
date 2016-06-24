@@ -15,19 +15,58 @@ JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.modal');
+JHTML::_('behavior.formvalidation');
+
+JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.js');
 
 $user      = JFactory::getUser(); ?>
 
-<div class="panel panel-default">
+<script type="text/javascript">
+	
+	jQuery(document).ready(function($){
+		
+		html2canvas(document.querySelector(".panel")).then(function(canvas){
+        	var png = canvas.toDataURL()
+            //window.open(png);
+       		console.log(png);
+       		jQuery('#contenido').val(png); 	                    
+        });
+	});
+	
+	Joomla.submitbutton = function(task){
+		
+		if ((task == 'cancel.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
+			
+			html2canvas(document.querySelector(".panel")).then(function(canvas){
+            	var png = canvas.toDataURL()
+	            //window.open(png);
+           		console.log(png);
+           		jQuery('#contenido').val(png); 	            
+	        
+	        });
+			
+			Joomla.submitform(task, document.getElementById('Formrrhh'));
+	  			
+		}else{
+			
+	 		alert("Existen campos vacios por favor verifique!");
+			return false;
+		}	
+	
+	}	
+	
+</script>
+
+<div class="panel panel-default" style="display: block; height: 450px;" >
 	
 	<!-- Default panel contents -->
-  	<div style="margin-left: 20px">  		
-	  	<h3 class="panel-heading"><?php echo $this->item->area ?></h3>
-	  	<h1 class="panel-heading"><?php echo $this->item->cargo ?></h1>
-  	</div>
-  	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
-		
+	  	
+	  	<div style="margin-left: 20px">  		
+		  	<h3 class="panel-heading"><?php echo $this->item->area ?></h3>
+		  	<h1 class="panel-heading"><?php echo $this->item->cargo ?></h1>
+	  	</div>
+  	
 		<div class="cuadros">
 			
 			<div style="width: 14%; float: left;">
@@ -76,7 +115,7 @@ $user      = JFactory::getUser(); ?>
 					
 				<?php }?>
 			</div>
-								
+			
 			<div style="width: 80%; padding-left: 20px; float: left;">
 				
 				<?php if($this->item->sucesion){ 
@@ -117,9 +156,19 @@ $user      = JFactory::getUser(); ?>
 			</div>
 			
 		</div>
-				
-	</form>  	
+		
+		<input type="hidden" name="option" value="com_rrhh" />			
+		<input type="hidden" name="task" value="" />
+		<input type="hidden" name="contenido" id="contenido" value="" />	
+		<?php echo JHtml::_('form.token'); ?>		
+		
+	</form>  		
   	
 </div>
+
+<a href="javascript:void(0);" onclick="Joomla.submitbutton('rrhh.descargarpdf')" class="button-color">
+	Exportar PDF
+</a>
+
 
 

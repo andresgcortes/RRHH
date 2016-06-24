@@ -4720,8 +4720,14 @@ a.badge:focus {
 	}
 	.hidden-tablet {
 		display: none !important;
+	}	
+	.well{
+		transform: scale(0.5,0.5);
+		float: right;
+    	margin-right: -362px;
 	}
 }
+
 @media (max-width: 767px) {
 	.hidden-desktop {
 		display: inherit !important;
@@ -4825,6 +4831,12 @@ a.badge:focus {
 	.controls-row [class*="span"] + [class*="span"] {
 		margin-left: 0;
 	}
+	
+	.well{
+		transform: scale(0.4,0.4);
+	    float: right;
+	    margin-right: -444px;
+	}
 }
 @media (max-width: 480px) {
 	.nav-collapse {
@@ -4871,7 +4883,15 @@ a.badge:focus {
 	.carousel-caption {
 		position: static;
 	}
+	
+	.well{
+		transform: scale(0.31,0.4);
+	    float: right;
+	    margin-right: -504px;
+	}
+
 }
+
 @media (min-width: 768px) and (max-width: 979px) {
 	.row {
 		margin-left: -20px;
@@ -5211,8 +5231,15 @@ a.badge:focus {
 	.uneditable-input.span1 {
 		width: 28px;
 	}
+	
+	.well{
+		transform: scale(0.62,0.64);
+    	float: right;
+    	margin-right: 165px;
+	}
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 1200px) and (max-width: 1400px) {
 	.row {
 		margin-left: -20px;
 		*zoom: 1;
@@ -5560,7 +5587,14 @@ a.badge:focus {
 	.row-fluid .thumbnails {
 		margin-left: 0;
 	}
+	
+	.well{
+		transform: scale(0.8,0.8);
+    	margin-left: -103px;
+	}
+	
 }
+
 @media (max-width: 979px) {
 	body {
 		padding-top: 0;
@@ -5712,12 +5746,26 @@ a.badge:focus {
 		padding-right: 10px;
 	}
 }
-@media (min-width: 980px) {
+
+@media (min-width: 980px) and (max-width: 1200px){
 	.nav-collapse.collapse {
 		height: auto !important;
 		overflow: visible !important;
+	}	
+	.well{
+		transform: scale(0.72,0.72);
+	    float: right;
+	    margin-right: 125px;
 	}
 }
+
+@media (min-width: 12000px) {
+	
+	.well{
+		transform: scale(1,1);
+	}
+}
+
 .small {
 	font-size: 11px;
 }
@@ -7418,6 +7466,12 @@ figcaption {
 	#login-form .input-small {
 		width: 62px;
 	}
+	
+	.well{
+		transform: scale(0.5,0.5);
+	    float: right;
+	    margin-right: 183px;
+	}
 }
 dl.tabs {
 	float: left;
@@ -7544,7 +7598,7 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 
 .lvertical{
 	border-right: 1px solid #278dad;
-	padding-right: 30px;
+	padding-right: 12px;
 }
 
 .cuadrou{
@@ -7643,7 +7697,9 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
   border-color 			: #E05E00 !important;
 }
 
-
+.well{
+	width: 97%;
+}
 
 /* list stuff */
 #org{

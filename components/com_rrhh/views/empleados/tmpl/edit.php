@@ -17,13 +17,23 @@ JHtml::_('formbehavior.chosen', 'select');
 JHTML::_('behavior.formvalidation');
 
 $user      		= JFactory::getUser();
-$funcionario    = JRequest::getvar('funcionarios'); ?>
+$funcionario    = JRequest::getvar('funcionarios'); 
+
+JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.js'); ?>
 
 <script type="text/javascript">
 
 	Joomla.submitbutton = function(task){
 		
 		if ((task == 'funcionario.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
+			
+			html2canvas(document.querySelector(".panel")).then(function(canvas){
+            	var png = canvas.toDataURL()
+	            //window.open(png);
+           		console.log(png);
+           		jQuery('#contenido').val(png); 	            
+	        
+	        });
 			
 			Joomla.submitform(task, document.getElementById('Formrrhh'));
 	  			
@@ -35,7 +45,14 @@ $funcionario    = JRequest::getvar('funcionarios'); ?>
 	}
 	
 	jQuery(document).ready(function($){
-	
+		
+		html2canvas(document.querySelector(".panel")).then(function(canvas){
+        	var png = canvas.toDataURL()
+            //window.open(png);
+       		console.log(png);
+       		jQuery('#contenido').val(png); 	                    
+        });
+	        
 		jQuery('.panel-default').on('click', '.sucesionp', function(){
 			
 			var cargo = jQuery('#jform_id_cargos').val();
@@ -94,6 +111,13 @@ $funcionario    = JRequest::getvar('funcionarios'); ?>
 	
 </script>	
 
+<div style="float: right; margin-right: 35px; margin-top: 40px;" >		
+	<input type="button" onclick="Joomla.submitbutton('funcionario.save2');" class="btn btn-primary" value="Guardar y Salir">
+	<a href="javascript:void(0);" onclick="Joomla.submitbutton('rrhh.descargarpdf')" class="button-color">
+		Exportar PDF
+	</a>		
+</div>
+	
 <div class="panel panel-default">
 	
 	<!-- Default panel contents -->
@@ -101,11 +125,7 @@ $funcionario    = JRequest::getvar('funcionarios'); ?>
 	  	<h3 class="panel-heading"><?php echo $this->item->area ?></h3>
 	  	<h1 class="panel-heading"><?php echo $this->item->cargo ?></h1>
   	</div>
-  		
-	<div style="float: right; margin-right: 35px; margin-top: -40px;" >		
-		<input type="button" onclick="Joomla.submitbutton('funcionario.save2');" class="btn btn-primary" value="Guardar y Salir">		
-	</div>
-	
+  	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=empleados'); ?>" method="post" name="adminForm" id="Formrrhh" class="form-horizontal">
 		
 		<div class="cuadrou">
@@ -364,6 +384,7 @@ $funcionario    = JRequest::getvar('funcionarios'); ?>
 		
 		<input type="hidden" name="option" value="com_rrhh" />			
 		<input type="hidden" name="task" value="" />
+		<input type="hidden" name="contenido" id="contenido" value="" />		
 		<?php echo JHtml::_('form.token'); ?>
 		<?php echo $this->form->getInput('id_user'); ?>
 	
