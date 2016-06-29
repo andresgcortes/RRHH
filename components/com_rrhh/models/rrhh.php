@@ -35,12 +35,10 @@ class RrhhModelRrhh extends JModelItem{
 		$db = JFactory::getDbo();
 		
 		$this->html = '';
-	    
-	    if ($tipo == 1) {
+	    	    
+	    if($tipo == 1){
 	    	$idt = "id_area";	
-	    }	
-
-	    if ($tipo == 2) {
+	    }elseif($tipo == 2) {
 	    	$idt = "id_cargo";	
 	    }	
 		
@@ -59,19 +57,28 @@ class RrhhModelRrhh extends JModelItem{
 		if(count($area) > 0){	
 		
 			if($inicial === true){ 
-  				echo '<ul id="org" style="display:none">';
+  				echo '<div class="wellorg" id="org">
+  					<ul class="jOrgChart" style="text-align: center; margin: 0px auto;">';
 			}else{ 
-  				echo '<ul>';				
+  				echo '<ul style="float: right; margin-right: 28px;">';				
 			}
 				
   			if($tipo == 1){
   				
   				foreach($area AS $key => $idc){
   					
-  					echo '<li class="redire" >	 		       
-				    	<div data-idcargo="'. $idc->id .'">'.$idc->nombre .'</div>';					
-						echo $this->getArbolCargosSub($idc->id, $tipo, $tabla);
+  					$validacion = $this->getQueryArbolSub($idc->id, $tipo, $tabla); 
+  					
+  					echo '<li class="redire" style="vertical-align: top; text-align: center;">';	 		       
+				    	if($id > 2){
+							echo '<div class="line top"></div>
+							<div class="down"></div>';
+						}
+					    echo '<div data-idcargo="'. $idc->id .'" class="node">'.$idc->nombre .' </div>';					
+						if(!empty($validacion))
+							echo '<div class="down"></div>';
 				    echo '</li>';
+  					echo $this->getArbolCargosSub($idc->id, $tipo, $tabla);
   				
   				}
   				
@@ -80,7 +87,9 @@ class RrhhModelRrhh extends JModelItem{
 			if($tipo == 2) {
 					
 				foreach($area AS $key => $datosAlbol){
-			
+					
+					$validacion = $this->getQueryArbolSub($datosAlbol->id, $tipo, $tabla); 
+					
 					$datoscargo = $this->getInfoCargo($datosAlbol->id);					
 					
 					if (count($datoscargo) == 0) {
@@ -90,73 +99,78 @@ class RrhhModelRrhh extends JModelItem{
   			 			$dotosInfo = $datoscargo[0];
   			 		}
 					
-					echo '<li class="redire" >
-				       <div class="tcargo tcolar" data-idcargo="'. $datosAlbol->id .'">
-				       		<p>'.$datosAlbol->nombre.'<p><hr/>
-				       	</div>
-				        <div class="cdescrip ccolar">
-				        	<div>'.$dotosInfo->nombre.'</div>
-				        </div>
+					echo '<li class="redire" style="vertical-align: top; text-align: center;">';
+						if($id > 2){
+							echo '<div class="line top"></div>
+							<div class="down"></div>';
+						}
+						
+				       	echo '<div class="nodec">
+					       <div class="tcargo tcolar" data-idcargo="'. $datosAlbol->id .'">
+					       		<p>'.$datosAlbol->nombre.'<p><hr/>
+					       	</div>
+					        <div class="cdescrip ccolar">
+					        	<div>'.$dotosInfo->nombre.'</div>
+					        </div>
 
-				        <div class="fdescrip fcolar infousutiemp"><hr/>
-				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
-				        </div> <div class="contustiemp" >';
-				        echo $this->getUsuariosTtiempo($datosAlbol->id);
-
-				    echo '</div>';
-				    echo $this->getArbolCargosSub($datosAlbol->id, $tipo, $tabla);
+					        <div class="fdescrip fcolar infousutiemp">
+						        <hr/>
+						        <p>('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
+						    </div> 
+						    <div class="contustiemp">';
+						        echo $this->getUsuariosTtiempo($datosAlbol->id);
+					    	echo '</div>
+				    	</div>';
+				    	if(!empty($validacion))
+							echo '<div class="down"></div>';
 				    echo '</li>';
+				    echo $this->getArbolCargosSub($datosAlbol->id, $tipo, $tabla);
 			 	}
 		
 			}
 
-	    	echo '</ul>';
+	    		echo '</ul>
+	    	</div>';
   		
-  		}
-		
-		if($inicial === true){
-  			
-			echo '<div class="well">
-		   		<div id="chart" class="orgChart"></div>	 		   		
-		   	</div>';
+  		}else{
+			
+			return false;	   		
 		
 		}
-		 	
-		return $this->html;	   		
-
-  	}
+		  		
+		//echo '
+	}
 
 	public function getArbolCargosSub($id, $tipo, $tabla){
   		
   		$htmlD = '';
   			
-  		$db = JFactory::getDbo();
-		if ($tipo == 1) {
-	    	$idt = "id_area";	
-	    }	
-
-	    if ($tipo == 2) {
-	    		$idt = "id_cargo";	
-	    }	
-
-	 	$query = "SELECT ".$idt." as id, nombre as nombre, id_area
-			FROM #__".$tabla."  as a
-			WHERE disabled = 0 AND a.parent_id = ".$id;
-		$db->setQuery($query);
-		$dato =  $db->loadObjectList();
-
-  		if(count($dato) > 0){
+  		$dato = $this->getQueryArbolSub($id, $tipo, $tabla);
+  		$n = count($dato);
+  		$d = "line";
+  		
+  		if($n  > 0){
 
   			echo '<ul>';
 
   			foreach ($dato as $key => $datoValue) {
-
+  					
+				$validacion = $this->getQueryArbolSub($datoValue->id, $tipo, $tabla); 
+  			 	
+  			 	if($n == ($key+1)){
+					$d = "liner";
+				}
+  			 	 
   			 	if ($tipo == 1){
-
-  			 		echo '<li class="redire">
-					    <div data-idcargo="'. $datoValue->id .'">'.$datoValue->nombre .'</div>';
-					    echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
+						
+  			 		echo '<li class="redire" style="vertical-align: top; text-align: center;">
+						<div class="'. $d.' top"></div>
+						<div class="down"></div>
+					    <div data-idcargo="'. $datoValue->id .'" class="node">'.$datoValue->nombre .'</div>';
+						if(!empty($validacion))
+							echo '<div class="down"></div>';
 				    echo '</li>';
+  					echo $this->getArbolCargos($tabla, $tipo, $datoValue->id);
   			 	
   			 	}
 
@@ -171,18 +185,25 @@ class RrhhModelRrhh extends JModelItem{
   			 			$dotosInfo = $datoscargo[0];
   			 		}
 
-  			 		echo '<li class="redire">
-				    	<div class="tcargo tcolar" data-idcargo="'. $datoValue->id .'">';
-				    	echo $datoValue->nombre;
-				    echo '<hr/></div>
-			        		<div class="cdescrip ccolar">';
-					        	echo $dotosInfo->nombre;
-					        echo'</div>
-					        <div class="fdescrip fcolar"><hr/>
-				          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
+  			 		echo '<li class="redire" style="vertical-align: top; text-align: center;">
+						<div class="'. $d.' top"></div>
+						<div class="down"></div>
+						<div class="nodec">					    
+					    	<div class="tcargo tcolar" data-idcargo="'. $datoValue->id .'">';
+						    	echo $datoValue->nombre;
+						    	echo '<hr/></div>
+					        		<div class="cdescrip ccolar">';
+							        	echo $dotosInfo->nombre;
+							        echo'</div>
+							        <div class="fdescrip fcolar"><hr/>
+						          <p >('.date("Y-m-d H:i:s", strtotime($dotosInfo->fecha)).')</p>
+					        </div>
 				        </div>';
-				        echo $this->getArbolCargos($tabla, $tipo, $datoValue->id, false, $datoValue->id_area);
-				     echo '</li>';
+			        	if(!empty($validacion))
+							echo '<div class="down"></div>';
+				    echo '</li>';
+				    echo $this->getArbolCargos($tabla, $tipo, $datoValue->id, false, $datoValue->id_area);
+  			 	
   			 	}
   			 	
   			}
@@ -215,7 +236,27 @@ class RrhhModelRrhh extends JModelItem{
 
   		return count($dato);
   	}
+	
+	private function getQueryArbolSub($id, $tipo, $tabla){
+		
+		$db = JFactory::getDbo();
+		if($tipo == 1) {
+	    	$idt = "id_area";	
+	    }	
 
+	    if($tipo == 2) {
+	    	$idt = "id_cargo";	
+	    }	
+
+	 	$query = "SELECT ".$idt." as id, nombre as nombre, id_area
+			FROM #__".$tabla."  as a
+			WHERE disabled = 0 AND a.parent_id = ".$id;
+		$db->setQuery($query);
+		
+		return $db->loadObjectList();
+
+	}
+	
   	private function getInfoCargo($id_cargo){
 
   		
