@@ -30,12 +30,12 @@ JFactory::getDocument()->addScriptDeclaration('
             dragAndDrop  : true,                         
         });
         
-		$(".redire").click(function(){			
+		$(".redire").dblclick(function(){			
 			var id_area = jQuery(this).children().data("idcargo");
 			$(location).attr("href","?option=com_rrhh&view=rrhh_cargo&id_area="+id_area);
     	});
     	
-        $(".redire").hover(function(){
+        $(".node").hover(function(){
             $(this).css("background-color", "#278dad");
         }, function(){
             $(this).css("background-color", "#8A8A8C");

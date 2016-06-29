@@ -677,7 +677,7 @@ h4 small {
 ul,
 ol {
 	padding: 0;
-	margin: 0 0 9px 25px;
+	margin:  0;
 }
 ul ul,
 ul ol,
@@ -2141,6 +2141,7 @@ table th[class*="span"],
 	padding: 19px;
 	margin-bottom: 20px;
 	background-color: #F2F2F2;
+	
 }
 .well blockquote {
 	border-color: #ddd;
@@ -7646,8 +7647,20 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 }
 
 .jOrgChart .line{
-  height                : 20px;
-  width                 : 4px;
+  width                 : 100%;
+}
+
+.jOrgChart .liner{
+  width	: 50%;
+}
+
+li:first-child div.line{
+	width: 50% !important;
+    float: right !important;
+}
+
+li:last-child div.line{
+	width: 50% !important;
 }
 
 .jOrgChart .down {
@@ -7658,7 +7671,7 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 }
 
 .jOrgChart .top {
-  border-top          : 3px solid #888888;
+  border-top          : 2px solid #888888;
 }
 
 .jOrgChart .left {
@@ -7697,15 +7710,19 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
   border-color 			: #E05E00 !important;
 }
 
-.well{
+.wellorg{
 	width: 97%;
+    display: flex;
+    width: 1729px;
+    display: flex;
+    margin: 15px auto !important;
 }
 
 /* list stuff */
 #org{
 	background-color 	: white;
 	margin 				: 10px;
-	padding 			: 10px;
+	padding 			: 10px 10px 30px 10px;	
 }
 
 #show-list{
@@ -7763,7 +7780,19 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
     text-align: left;
     padding: 20px;
     line-height: 22px;
+    margin: 0 20px;
+    
+}
 
+.jOrgChart .nodec {
+	
+    display: inline-block;
+    width: 190px;
+    height: 90px;
+    text-align: left;
+    line-height: 22px;
+    margin: 0 20px;
+    
 }
 
 .calendario{
