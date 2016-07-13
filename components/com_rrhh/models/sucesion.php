@@ -24,7 +24,7 @@ class RrhhModelSucesion extends JModelItem{
 		$query->select('a.nombre as cargo, b.nombre as area, c.id_user, c.nombre as nombre, c.foto, timestampdiff(MONTH, date_cargo, now()) AS tiempoc, c.nota');
 		$query->from('#__core_cargos AS a');
 		$query->join('inner','#__core_areas AS b ON a.id_area = b.id_area');
-		$query->join('left outer','#__core_user AS c ON a.id_cargo = b.id_cargo');
+		$query->join('left outer','#__core_user AS c ON a.id_cargo = c.id_cargo');
 		$query->where('a.id_cargo = '. $id_cargo);
 		$db->setQuery($query);	
 		$this->item = $db->loadObject();

@@ -69,11 +69,11 @@ $user      = JFactory::getUser(); ?>
   	
 		<div class="cuadros">
 			
-			<div style="width: 14%; float: left;">
+			<div style="width: 14%; float: left; min-width: 176px;">
 				
 				<?php if(!isset($this->item->nombre)){ ?>
 				
-					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
+					<div style="background: #278cad; padding: 10px; border-radius: 5px; min-width: 150px;">
 						<div>
 							<img src="<?php echo $this->baseurl ?>/images/sucesionh.png" />
 						</div>
@@ -92,7 +92,7 @@ $user      = JFactory::getUser(); ?>
 				
 					$tiempoc = ($this->item->tiempoc < 10)? "0".$this->item->tiempoc : $this->item->tiempoc ?>
 					
-					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
+					<div style="background: #278cad; padding: 10px; border-radius: 5px; min-width: 150px;">
 						<div>
 							<?php if($this->item->foto){ ?>
 								<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $this->item->foto ?>" />								
@@ -124,7 +124,7 @@ $user      = JFactory::getUser(); ?>
 						
 						$tiempoc = ($sucesion->tiempoc < 10)? "0".$sucesion->tiempoc : $sucesion->tiempoc ?>
 										
-						<div style="width:16%; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #aaa; margin-bottom: 20px; float: left; margin-right: 10px;">
+						<div style="width:16%; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #aaa; margin-bottom: 20px; float: left; margin-right: 10px; min-width: 150px;">
 							<div>
 								<?php if($sucesion->foto){ ?>
 									<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $sucesion->foto ?>" />								

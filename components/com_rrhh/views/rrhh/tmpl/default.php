@@ -24,14 +24,9 @@ JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.
 JFactory::getDocument()->addScriptDeclaration('
 	
 	jQuery(document).ready(function() {
- 	
-        $("#org").jOrgChart({
-            chartElement : \'#chart\',
-            dragAndDrop  : true,                         
-        });
-        
+ 	        
 		$(".redire").dblclick(function(){			
-			var id_area = jQuery(this).children().data("idcargo");
+			var id_area = jQuery(this).children(".node").data("idcargo");
 			$(location).attr("href","?option=com_rrhh&view=rrhh_cargo&id_area="+id_area);
     	});
     	
@@ -41,7 +36,7 @@ JFactory::getDocument()->addScriptDeclaration('
             $(this).css("background-color", "#8A8A8C");
         });
         
-        html2canvas(document.querySelector(".well")).then(function(canvas){
+        html2canvas(document.querySelector(".wellorg")).then(function(canvas){
         	var png = canvas.toDataURL()
             //window.open(png);
        		console.log(png);
@@ -57,14 +52,10 @@ JFactory::getDocument()->addScriptDeclaration('
 	Joomla.submitbutton = function(task){
 		
 		if ((task == 'area.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
-			
-			jQuery('.well').css("transform" , "scale(1 ,1)")
-			
-			html2canvas(document.querySelector(".well")).then(function(canvas){
+						
+			html2canvas(document.querySelector(".wellorg")).then(function(canvas){
             	var png = canvas.toDataURL()
-	            //window.open(png);
-           		console.log(png);
-           		jQuery('#contenido').val(png); 	            
+	       		jQuery('#contenido').val(png); 	            
 	        });
 			
 			Joomla.submitform(task, document.getElementById('Formrrhh'));

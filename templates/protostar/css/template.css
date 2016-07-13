@@ -1,41 +1,37 @@
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section {
+article, aside,
+details, figcaption,
+figure, footer,
+header, hgroup,
+nav, section {
 	display: block;
 }
-audio,
-canvas,
-video {
+audio, canvas, video {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
 }
+
 audio:not([controls]) {
 	display: none;
 }
-html {
+
+html{
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
+
 a:focus {
 	outline: thin dotted #333;
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px;
 }
-a:hover,
-a:active {
+
+a:hover,a:active {
 	outline: 0;
 }
-sub,
-sup {
+
+sub,sup {
 	position: relative;
 	font-size: 75%;
 	line-height: 0;
@@ -44,9 +40,11 @@ sup {
 sup {
 	top: -0.5em;
 }
+
 sub {
 	bottom: -0.25em;
 }
+
 img {
 	max-width: 100%;
 	width: auto \9;
@@ -59,26 +57,25 @@ img {
 main, body.modal{
 	background: #F2F2F2;
 }
+
 #map_canvas img,
 .google-maps img,
 .gm-style img {
 	max-width: none;
 }
-button,
-input,
-select,
-textarea {
+
+button,input, select,textarea {
 	margin: 0;
 	font-size: 100%;
 	vertical-align: middle;
 }
-button,
-input {
+
+button,input {
 	*overflow: visible;
 	line-height: normal;
 }
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+
+button::-moz-focus-inner, input::-moz-focus-inner {
 	padding: 0;
 	border: 0;
 }
@@ -4722,10 +4719,10 @@ a.badge:focus {
 	.hidden-tablet {
 		display: none !important;
 	}	
-	.well{
+	.wellorg{
 		transform: scale(0.5,0.5);
 		float: right;
-    	margin-right: -362px;
+    	margin-right: -362px !important;
 	}
 }
 
@@ -4833,10 +4830,10 @@ a.badge:focus {
 		margin-left: 0;
 	}
 	
-	.well{
+	.wellorg{
 		transform: scale(0.4,0.4);
 	    float: right;
-	    margin-right: -444px;
+	    margin-right: -540px !important;
 	}
 }
 @media (max-width: 480px) {
@@ -4885,10 +4882,10 @@ a.badge:focus {
 		position: static;
 	}
 	
-	.well{
+	.wellorg{
 		transform: scale(0.31,0.4);
 	    float: right;
-	    margin-right: -504px;
+	    margin-right: -573px !important;
 	}
 
 }
@@ -5233,10 +5230,10 @@ a.badge:focus {
 		width: 28px;
 	}
 	
-	.well{
+	.wellorg{
 		transform: scale(0.62,0.64);
     	float: right;
-    	margin-right: 165px;
+    	margin-right: 165px !important;;
 	}
 }
 
@@ -5589,9 +5586,9 @@ a.badge:focus {
 		margin-left: 0;
 	}
 	
-	.well{
+	.wellorg{
 		transform: scale(0.8,0.8);
-    	margin-left: -103px;
+    	margin-left: -171px !important;
 	}
 	
 }
@@ -5753,17 +5750,18 @@ a.badge:focus {
 		height: auto !important;
 		overflow: visible !important;
 	}	
-	.well{
+	.wellorg{
 		transform: scale(0.72,0.72);
 	    float: right;
-	    margin-right: 125px;
+	    margin-right: -257px !important;
 	}
 }
 
 @media (min-width: 12000px) {
 	
-	.well{
+	.wellorg{
 		transform: scale(1,1);
+		margin	: 15px auto !important;
 	}
 }
 
@@ -7468,10 +7466,10 @@ figcaption {
 		width: 62px;
 	}
 	
-	.well{
+	.wellorg{
 		transform: scale(0.5,0.5);
 	    float: right;
-	    margin-right: 183px;
+	    margin-right: -420px !important;
 	}
 }
 dl.tabs {
@@ -7646,22 +7644,19 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 	color: #ffffff;
 }
 
-.jOrgChart .line{
-  width                 : 100%;
-}
-
 .jOrgChart .liner{
   width	: 50%;
 }
 
-li:first-child div.line{
+li:first-child div.linep{
 	width: 50% !important;
     float: right !important;
 }
 
-li:last-child div.line{
-	width: 50% !important;
+.jOrgChart .line{
+  width : 100%;
 }
+
 
 .jOrgChart .down {
   	background-color 	: #888888;	
@@ -7669,6 +7664,15 @@ li:last-child div.line{
 	height				: 35px;
     width				: 2px;
 }
+
+.jOrgChart .downlarge{
+
+    background-color: #888888;
+    margin: -164px auto 0px auto;
+    height: 210px;
+    width: 2px;
+    
+} 
 
 .jOrgChart .top {
   border-top          : 2px solid #888888;
@@ -7711,18 +7715,19 @@ li:last-child div.line{
 }
 
 .wellorg{
-	width: 97%;
-    display: flex;
-    width: 1729px;
-    display: flex;
-    margin: 15px auto !important;
+	width	: 97%;
+    display	: flex;
+    width	: 1660px;
+    display	: flex; 
 }
 
 /* list stuff */
 #org{
-	background-color 	: white;
+	background-color	: white;
 	margin 				: 10px;
 	padding 			: 10px 10px 30px 10px;	
+	min-height			: 720px;
+	font-size			: 15px;
 }
 
 #show-list{
@@ -7740,8 +7745,10 @@ li:last-child div.line{
 
 /* Custom chart styling */
 .jOrgChart {
-  margin                : 10px;
-  padding               : 20px;
+ 	text-align: center;
+    margin: 0px auto;
+    padding	: 20px;
+	min-height: 525px;
 }
 
 .node p{
@@ -7797,4 +7804,27 @@ li:last-child div.line{
 
 .calendario{
 	width: 75px !important;
+}
+
+.contustiemp {
+    position: absolute;
+    width: 190px;
+    margin-left: 190px;
+    margin-top: -135px;
+    border-radius: 5px;
+    border: 1px solid #888888;
+    background: #fff;
+    display: none;
+}
+
+.ssucesion{	
+	text-align: center;	
+}
+
+.tabletc{     
+	font-size: 9px;  
+	text-align: left;    
+	border-collapse: collapse; 
+	padding: 0px;
+    margin: 0px;
 }
