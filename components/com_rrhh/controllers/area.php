@@ -13,18 +13,16 @@ use Joomla\Utilities\ArrayHelper;
 
 class rrhhControllerArea extends JControllerForm{	
 		
-	public function __construct($config = array()){
+    public function __construct($config = array()){
 
 		parent::__construct($config);
 		
 		$this->registerTask('apply', 	'save');
-		$this->registerTask('block',	'changeBlock');
-		$this->registerTask('unblock',	'changeBlock');
 		$this->registerTask('unpublish', 'publish');
 
 	}
 		
-	function save($key = NULL, $urlVar = NULL){
+    function save($key = NULL, $urlVar = NULL){
 				
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -98,7 +96,7 @@ class rrhhControllerArea extends JControllerForm{
 			
 			case 'apply':
 				$message = JText::_('Area Guardada Correctamente');
-				$this->setRedirect('index.php?option=com_rrhh&view=areas&tmpl=component&layout=edit&id_area='.$model->GetState('areas.id'), $message);
+				$this->setRedirect(JRoute::_('ndex.php?option=com_rrhh&view=areas&tmpl=component&layout=edit&id_area='.$model->GetState('areas.id')), $message);
 				break;
 
 			case 'save':
@@ -170,12 +168,11 @@ class rrhhControllerArea extends JControllerForm{
                 
             }           
           
-            exit;
-            
+            exit;            
 
-        }
+    }
 	
-	public function publish(){
+    public function publish(){
 		
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -207,10 +204,13 @@ class rrhhControllerArea extends JControllerForm{
 			}
 		}
 
-		$this->setRedirect('index.php?option=com_rrhh&view=areas');
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=areas'));
+		
+		return true; 
+		
 	}
 	
-	public function delete(){
+    public function delete(){
 		
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 

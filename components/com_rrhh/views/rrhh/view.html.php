@@ -11,14 +11,11 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-
-jimport( 'joomla.application.component.view');
-class RrhhViewRrhh extends JViewLegacy
-{
-	function display ($tpl = null)
-	{
+class RrhhViewRrhh extends JViewLegacy{
+	
+	function display ($tpl = null){
+		
 		// Assign data to the view
-		$this->msg 	= $this->get('Msg');
 		$this->html = $this->get('Arbol');
 		
 		// Check for errors.
@@ -29,7 +26,7 @@ class RrhhViewRrhh extends JViewLegacy
 
 		// Display the view
 		parent::display($tpl);
+	
 	}
-
 
 } ?>

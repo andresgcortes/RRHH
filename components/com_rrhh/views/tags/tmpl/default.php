@@ -63,14 +63,11 @@ if ($saveOrder){
 			<table class="table table-striped" id="articleList" style="width: 95%">
 				<thead>
 					<tr>
-						<th width="1%" class="nowrap center hidden-phone">
-							<?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
-						</th>
-						<th width="1%" class="center">
-							<?php echo JHtml::_('grid.checkall'); ?>
-						</th>
-						<th width="1%" class="nowrap center">
+						<th width="2%" class="center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+						</th>
+						<th width="2%" class="nowrap center">
+							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Etiquetas', 'a.nombre', $listDirn, $listOrder); ?>
@@ -80,7 +77,7 @@ if ($saveOrder){
 
 				<tfoot>
 					<tr>
-						<td colspan="4">
+						<td colspan="3">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -97,25 +94,18 @@ if ($saveOrder){
 						
 						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id; ?>">
 							<td>
-								<?php $iconClass = '';
-								if (!$canEdit){
-									$iconClass = ' inactive';
-								}elseif (!$saveOrder){
-									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-								} ?>
-								
-								<span class="sortable-handler <?php echo $iconClass ?>">
-									<span class="icon-menu"></span>
-								</span>
-								<?php if ($canEdit){ ?>
-									<input type="text" style="display:none" name="order[]" size="5"
-										value="<?php echo $item->lft; ?>" class="width-20 text-area-order " />
-								<?php }; ?>
+								<div style="display: none;">
+									<?php echo JHtml::_('grid.id', $i, $item->id); ?>
+								</div>
+								<div class="btn-group" style="float: left">
+                        			<?php echo JHtml::_('RrhhHtml.Tags.state', $item->published, $i, $canEdit, 'cb'); ?>
+                        		</div>
 							</td>
-							<td><?php echo JHtml::_('grid.id', $i, $item->id); ?></td>
 							<td>
-								<div class="btn-group">
-									<?php echo JHtml::_('jgrid.published', $item->published, $i, 'banners.', $canEdit, 'cb', $item->created_user_id); ?>
+								<div style="float: left; margin-left: 10px">
+								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','tags.delete')" >
+										<span class="icon-delete"></span>
+									</a>
 								</div>
 							</td>
 							<td>

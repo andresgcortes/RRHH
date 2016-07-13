@@ -63,7 +63,6 @@ if ($saveOrder){
 
 </script>		
 
-
 <div class="panel panel-default">
 	
 	  <!-- Default panel contents -->
@@ -97,11 +96,11 @@ if ($saveOrder){
 						<th width="2%" class="nowrap center hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 						</th>
-						<th width="2%" class="center">
-							<?php echo JHtml::_('grid.checkall'); ?>
-						</th>
-						<th width="5%" class="nowrap center">
+						<th width="2%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.disabled', $listDirn, $listOrder); ?>
+						</th>
+                        <th width="2%" class="nowrap center">
+							<?php echo JHtml::_('searchtools.sort', 'Eliminar', 'a.disabled', $listDirn, $listOrder); ?>
 						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'Nombre del Área', 'a.nombre', $listDirn, $listOrder); ?>
@@ -115,7 +114,7 @@ if ($saveOrder){
 
 				<tfoot>
 					<tr>
-						<td colspan="5">
+						<td colspan="4">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -156,7 +155,7 @@ if ($saveOrder){
 							$parentsStr = "";
 						} ?>
 						
-						<tr   class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>" itemid ="1">
+						<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id_area; ?>" itemid ="1">
 						
 							<td>
 								<?php $iconClass = '';
@@ -174,12 +173,17 @@ if ($saveOrder){
 								<?php if ($canEdit){ ?>
 									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey+ 1; ?>" class="width-20 text-area-order " />
 								<?php }; ?>
-								
-								
-							</td>
-							<td>							
-								<?php echo JHtml::_('grid.id', $i, $item->id_area); ?>
-							</td>
+							</td>				
+							
+                            <td>
+								<div style="display: none">
+									<?php echo JHtml::_('grid.id', $i, $item->id_area); ?>
+								</div>									
+                            	<div class="btn-group" style="float: left">
+                        			<?php echo JHtml::_('RrhhHtml.Areas.state', $item->disabled, $i, $canEdit, 'cb'); ?>
+                        		</div>
+                            </td>
+                            
 							<td>
 								<div style="float: left; margin-left: 10px">
 								 	<a class="btn btn-micro hasTooltip" href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i ?>','area.delete')" >

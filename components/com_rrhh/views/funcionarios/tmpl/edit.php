@@ -54,8 +54,8 @@ JHTML::_('behavior.formvalidation');
 	    	
 	    	<div>
 	    		<?php echo $this->form->getLabel('foto'); echo $this->form->getInput('foto'); ?> 
-	    	</div>			
-			
+	    	</div>
+	    	
 		</div>
 		
 		<div style="float: right;" >		

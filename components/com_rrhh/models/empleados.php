@@ -55,7 +55,7 @@ class RrhhModelEmpleados extends JModelAdmin{
 		$id_user 	= JRequest::getVar('id_user');	
 		
 		$query = $db->getQuery(true);		
-		$query->select('a.nombre as cargo, b.nombre as area, c.id_user, c.nombre as nombre, c.foto, c.date_cargo, c.date_ingreso, timestampdiff(MONTH, date_cargo, now()) AS tiempoc, c.nota, c.id_cargo');
+		$query->select('a.nombre as cargo, b.nombre as area, c.id_user, c.nombre as nombre, c.foto, c.date_cargo, c.date_ingreso, timestampdiff(MONTH, date_cargo, now()) AS tiempoc, c.nota, c.id_cargo, c.cpt');
 		$query->from('#__core_cargos AS a');
 		$query->join('inner','#__core_areas AS b ON a.id_area = b.id_area');
 		$query->join('left outer','#__core_user AS c ON a.id_cargo = b.id_cargo');
@@ -65,7 +65,7 @@ class RrhhModelEmpleados extends JModelAdmin{
 		$this->item = $db->loadObject();
 		
 		$query = $db->getQuery(true);		
-		$query->select('b.alias, b.color, c.nombre as cargo, d.nombre as area');
+		$query->select('b.alias, b.color, c.nombre as cargo, d.nombre as area, a.id_tiempo');
 		$query->from('#__core_cargos_rel_users AS a');
 		$query->join('inner','#__core_tiempos AS b ON a.id_tiempo = b.id_tiempo');
 		$query->join('inner','#__core_cargos AS c ON c.id_cargo = a.id_cargo');
@@ -107,6 +107,39 @@ class RrhhModelEmpleados extends JModelAdmin{
 			$this->item->fortalezas = null; 
 		}
 
+		$data = json_decode($this->item->cpt); 
+				
+		if(!empty($data->CPT_PN1_VE)){
+			$this->item->CPT_PN1_VE = $data->CPT_PN1_VE; 
+		}
+		if(!empty($data->CPT_PN2_ARP)){
+			$this->item->CPT_PN2_ARP = $data->CPT_PN2_ARP; 
+		}
+		if(!empty($data->CPT_PN2_AFN)){
+			$this->item->CPT_PN2_AFN = $data->CPT_PN2_AFN; 
+		}
+		if(!empty($data->CPT_ER1_LE)){
+			$this->item->CPT_ER1_LE = $data->CPT_ER1_LE; 
+		}
+		if(!empty($data->CPT_ER3_LD)){
+			$this->item->CPT_ER3_LD = $data->CPT_ER3_LD; 
+		}
+		if(!empty($data->CPT_CO1_IMO)){
+			$this->item->CPT_CO1_IMO = $data->CPT_CO1_IMO; 
+		}
+		if(!empty($data->CPT_PN1_VE)){
+			$this->item->CPT_PN1_VE = $data->CPT_PN1_VE; 
+		}
+		if(!empty($data->CPT_CO2_AAO)){
+			$this->item->CPT_CO2_AAO = $data->CPT_CO2_AAO; 
+		}
+		if(!empty($data->CPT_CO3_ICR)){
+			$this->item->CPT_CO3_ICR = $data->CPT_CO3_ICR; 
+		}
+		if(!empty($data->CPT_CO4_MI)){
+			$this->item->CPT_CO4_MI = $data->CPT_CO4_MI; 
+		}
+				
 		return $this->item;	
 	
 	}

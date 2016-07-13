@@ -15,26 +15,65 @@ JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.modal');
+JHTML::_('behavior.formvalidation');
+
+JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.js');
 
 $user      = JFactory::getUser(); ?>
 
-<div class="panel panel-default">
+<script type="text/javascript">
+	
+	jQuery(document).ready(function($){
+		
+		html2canvas(document.querySelector(".panel")).then(function(canvas){
+        	var png = canvas.toDataURL()
+            //window.open(png);
+       		console.log(png);
+       		jQuery('#contenido').val(png); 	                    
+        });
+	});
+	
+	Joomla.submitbutton = function(task){
+		
+		if ((task == 'cancel.cancel') || document.formvalidator.isValid(document.id('Formrrhh'))){
+			
+			html2canvas(document.querySelector(".panel")).then(function(canvas){
+            	var png = canvas.toDataURL()
+	            //window.open(png);
+           		console.log(png);
+           		jQuery('#contenido').val(png); 	            
+	        
+	        });
+			
+			Joomla.submitform(task, document.getElementById('Formrrhh'));
+	  			
+		}else{
+			
+	 		alert("Existen campos vacios por favor verifique!");
+			return false;
+		}	
+	
+	}	
+	
+</script>
+
+<div class="panel panel-default" style="display: block; height: 450px;" >
 	
 	<!-- Default panel contents -->
-  	<div style="margin-left: 20px">  		
-	  	<h3 class="panel-heading"><?php echo $this->item->area ?></h3>
-	  	<h1 class="panel-heading"><?php echo $this->item->cargo ?></h1>
-  	</div>
-  	
 	<form action="<?php echo JRoute::_('index.php?option=com_rrhh&view=cargos'); ?>" method="post" name="adminForm" id="adminForm" class="form-horizontal">
-		
+	  	
+	  	<div style="margin-left: 20px">  		
+		  	<h3 class="panel-heading"><?php echo $this->item->area ?></h3>
+		  	<h1 class="panel-heading"><?php echo $this->item->cargo ?></h1>
+	  	</div>
+  	
 		<div class="cuadros">
 			
-			<div style="width: 14%; float: left;">
+			<div style="width: 14%; float: left; min-width: 176px;">
 				
 				<?php if(!isset($this->item->nombre)){ ?>
 				
-					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
+					<div style="background: #278cad; padding: 10px; border-radius: 5px; min-width: 150px;">
 						<div>
 							<img src="<?php echo $this->baseurl ?>/images/sucesionh.png" />
 						</div>
@@ -53,7 +92,7 @@ $user      = JFactory::getUser(); ?>
 				
 					$tiempoc = ($this->item->tiempoc < 10)? "0".$this->item->tiempoc : $this->item->tiempoc ?>
 					
-					<div style="background: #278cad; padding: 10px; border-radius: 5px;" >
+					<div style="background: #278cad; padding: 10px; border-radius: 5px; min-width: 150px;">
 						<div>
 							<?php if($this->item->foto){ ?>
 								<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $this->item->foto ?>" />								
@@ -76,7 +115,7 @@ $user      = JFactory::getUser(); ?>
 					
 				<?php }?>
 			</div>
-								
+			
 			<div style="width: 80%; padding-left: 20px; float: left;">
 				
 				<?php if($this->item->sucesion){ 
@@ -85,7 +124,7 @@ $user      = JFactory::getUser(); ?>
 						
 						$tiempoc = ($sucesion->tiempoc < 10)? "0".$sucesion->tiempoc : $sucesion->tiempoc ?>
 										
-						<div style="width:16%; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #aaa; margin-bottom: 20px; float: left; margin-right: 10px;">
+						<div style="width:16%; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #aaa; margin-bottom: 20px; float: left; margin-right: 10px; min-width: 150px;">
 							<div>
 								<?php if($sucesion->foto){ ?>
 									<img src="<?php echo $this->baseurl ?>/images/fotos/<?php echo $sucesion->foto ?>" />								
@@ -117,9 +156,19 @@ $user      = JFactory::getUser(); ?>
 			</div>
 			
 		</div>
-				
-	</form>  	
+		
+		<input type="hidden" name="option" value="com_rrhh" />			
+		<input type="hidden" name="task" value="" />
+		<input type="hidden" name="contenido" id="contenido" value="" />	
+		<?php echo JHtml::_('form.token'); ?>		
+		
+	</form>  		
   	
 </div>
+
+<a href="javascript:void(0);" onclick="Joomla.submitbutton('rrhh.descargarpdf')" class="button-color">
+	Exportar PDF
+</a>
+
 
 

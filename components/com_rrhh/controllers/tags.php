@@ -9,21 +9,20 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\Utilities\ArrayHelper;
 /**
  * The Tags List Controller
  *
  * @since  3.1
  */
-class RrhhControllerTags extends JControllerLegacy
-{
+class RrhhControllerTags extends JControllerLegacy{
 	
 	public function __construct($config = array()){
 
 		parent::__construct($config);
 		
 		$this->registerTask('apply', 	'save');
-		$this->registerTask('block',	'changeBlock');
-		$this->registerTask('unblock',	'changeBlock');
+		$this->registerTask('unpublish', 'publish');
 
 	}
 		
@@ -113,6 +112,62 @@ class RrhhControllerTags extends JControllerLegacy
 		return true;
 	}
 	
+	public function publish(){
+		
+		// Check for request forgeries.
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$ids    = $this->input->get('cid', array(), 'array');
+		$values = array('publish' => 0, 'unpublish' => 1);
+		$task   = $this->getTask();
+		$value  = ArrayHelper::getValue($values, $task, 1, 'int');
+		
+		if (empty($ids)){
+			JError::raiseWarning(500, JText::_('No se selección un Tag'));
+		}else{
+			// Get the model.
+			/** @var BannersModelBanner $model */
+			$model = $this->getModel('tag');
+
+			// Change the state of the records.
+			if (!$model->stick($ids, $value)){
+				JError::raiseWarning(500, $model->getError());
+			}else{
+				
+				if ($value == 1){
+					$ntext = 'Tag Deshabilitado';
+				}else{
+					$ntext = 'Tag Habilitado';
+				}
+
+				$this->setMessage(JText::plural($ntext, count($ids)));
+			}
+		}
+
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=tags'));
+		
+		return true; 
+		
+	}
 	
+	Public function delete(){
+		
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$ids    = $this->input->get('cid', array(), 'array');
+		$db 	= JFactory::getDbo();
+			
+		$query 	= $db->getQuery(true)
+			->delete($db->quoteName('#__tags'))
+			->where('id = '. $ids[0]);
+        $db->setQuery($query);
+        $db->execute();
+		$message = JText::_('Tag Correctamente Borrado');
+				
+		$this->setRedirect(JRoute::_('index.php?option=com_rrhh&view=tags&layout=default'), $message);
+		
+		return false; 	
+		
+	} 	
 	
 }

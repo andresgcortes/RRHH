@@ -55,6 +55,61 @@ class RrhhModelFuncionario extends JModelAdmin{
  		$data['modificated_by'] = $user->id;
  		$data['modificated'] 	= $datenow;			 				
 		
+		$data['cpt'] = array(); 
+		
+		if(!empty($data['CPT_PN1_VE'])){
+			$data['cpt'] = array( 
+				'CPT_PN1_VE' => $data['CPT_PN1_VE']
+			);
+		}
+		if(!empty($data['CPT_PN2_ARP'])){
+			$data['cpt'] = array( 
+				'CPT_PN2_ARP' => $data['CPT_PN2_ARP']
+			);
+		}
+		if(!empty($data['CPT_PN2_AFN'])){
+			$data['cpt'] = array( 
+				'CPT_PN2_AFN' => $data['CPT_PN2_AFN']
+			);
+		}
+		if(!empty($data['CPT_ER1_LE'])){
+			$data['cpt'] = array( 
+				'CPT_ER1_LE' => $data['CPT_ER1_LE']
+			);
+		}
+		if(!empty($data['CPT_ER1_LE'])){
+			$data['cpt'] = array( 
+				'CPT_ER1_LE' => $data['CPT_ER1_LE']
+			);
+		}
+		if(!empty($data['CPT_ER3_LD'])){
+			$data['cpt'] = array( 
+				'CPT_ER3_LD' => $data['CPT_ER3_LD']
+			);
+		}
+		if(!empty($data['CPT_CO1_IMO'])){
+			$data['cpt'] = array( 
+				'CPT_CO1_IMO' => $data['CPT_CO1_IMO']
+			);
+		}
+		if(!empty($data['CPT_CO2_AAO'])){
+			$data['cpt'] = array( 
+				'CPT_CO2_AAO' => $data['CPT_CO2_AAO']
+			);
+		}
+		if(!empty($data['CPT_CO3_ICR'])){
+			$data['cpt'] = array( 
+				'CPT_CO3_ICR' => $data['CPT_CO3_ICR']
+			);
+		}
+		if(!empty($data['CPT_CO4_MI'])){
+			$data['cpt'] = array( 
+				'CPT_CO4_MI' => $data['CPT_CO4_MI']
+			);
+		}
+		
+		$data['cpt'] = json_encode($data['cpt']); 
+		
 		if ($pk > 0){
 			
 			$table->load($pk);
@@ -95,11 +150,10 @@ class RrhhModelFuncionario extends JModelAdmin{
 		$pkName = $table->getKeyName();
 
 		if (isset($table->$pkName)){
-			$this->setState($this->getName() . '.id', $table->$pkName);
+			$this->setState($this->getName(). '.id', $table->$pkName);
 		}
-		
-		
-		if(is_array($file)){
+	
+		if(!empty($file)){
 			$this->SaveDocument($table->$pkName, $file); 
 		}
 		

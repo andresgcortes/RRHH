@@ -25,7 +25,7 @@ class RrhhController extends JControllerLegacy
 		$vFormat = $document->getType();
 		$lName	 = JRequest::getCmd('layout', 'default');
 
-		if ($view = $this->getView($vName, $vFormat)) {
+		if ($view = $this->getView($vName, $vFormat)){
 			// Do any specific processing by view.
 			if($vName != "close"){
 			

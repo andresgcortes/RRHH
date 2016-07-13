@@ -1,41 +1,37 @@
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section {
+article, aside,
+details, figcaption,
+figure, footer,
+header, hgroup,
+nav, section {
 	display: block;
 }
-audio,
-canvas,
-video {
+audio, canvas, video {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
 }
+
 audio:not([controls]) {
 	display: none;
 }
-html {
+
+html{
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
+
 a:focus {
 	outline: thin dotted #333;
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px;
 }
-a:hover,
-a:active {
+
+a:hover,a:active {
 	outline: 0;
 }
-sub,
-sup {
+
+sub,sup {
 	position: relative;
 	font-size: 75%;
 	line-height: 0;
@@ -44,9 +40,11 @@ sup {
 sup {
 	top: -0.5em;
 }
+
 sub {
 	bottom: -0.25em;
 }
+
 img {
 	max-width: 100%;
 	width: auto \9;
@@ -59,26 +57,25 @@ img {
 main, body.modal{
 	background: #F2F2F2;
 }
+
 #map_canvas img,
 .google-maps img,
 .gm-style img {
 	max-width: none;
 }
-button,
-input,
-select,
-textarea {
+
+button,input, select,textarea {
 	margin: 0;
 	font-size: 100%;
 	vertical-align: middle;
 }
-button,
-input {
+
+button,input {
 	*overflow: visible;
 	line-height: normal;
 }
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+
+button::-moz-focus-inner, input::-moz-focus-inner {
 	padding: 0;
 	border: 0;
 }
@@ -677,7 +674,7 @@ h4 small {
 ul,
 ol {
 	padding: 0;
-	margin: 0 0 9px 25px;
+	margin:  0;
 }
 ul ul,
 ul ol,
@@ -685,9 +682,13 @@ ol ol,
 ol ul {
 	margin-bottom: 0;
 }
-li {
+
+li{
 	line-height: 18px;
+	list-style-type: none;	
+	    display: inline-block;
 }
+
 ul.unstyled,
 ol.unstyled {
 	margin-left: 0;
@@ -2137,6 +2138,7 @@ table th[class*="span"],
 	padding: 19px;
 	margin-bottom: 20px;
 	background-color: #F2F2F2;
+	
 }
 .well blockquote {
 	border-color: #ddd;
@@ -4716,8 +4718,14 @@ a.badge:focus {
 	}
 	.hidden-tablet {
 		display: none !important;
+	}	
+	.wellorg{
+		transform: scale(0.5,0.5);
+		float: right;
+    	margin-right: -362px !important;
 	}
 }
+
 @media (max-width: 767px) {
 	.hidden-desktop {
 		display: inherit !important;
@@ -4821,6 +4829,12 @@ a.badge:focus {
 	.controls-row [class*="span"] + [class*="span"] {
 		margin-left: 0;
 	}
+	
+	.wellorg{
+		transform: scale(0.4,0.4);
+	    float: right;
+	    margin-right: -540px !important;
+	}
 }
 @media (max-width: 480px) {
 	.nav-collapse {
@@ -4867,7 +4881,15 @@ a.badge:focus {
 	.carousel-caption {
 		position: static;
 	}
+	
+	.wellorg{
+		transform: scale(0.31,0.4);
+	    float: right;
+	    margin-right: -573px !important;
+	}
+
 }
+
 @media (min-width: 768px) and (max-width: 979px) {
 	.row {
 		margin-left: -20px;
@@ -5207,8 +5229,15 @@ a.badge:focus {
 	.uneditable-input.span1 {
 		width: 28px;
 	}
+	
+	.wellorg{
+		transform: scale(0.62,0.64);
+    	float: right;
+    	margin-right: 165px !important;;
+	}
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 1200px) and (max-width: 1400px) {
 	.row {
 		margin-left: -20px;
 		*zoom: 1;
@@ -5556,7 +5585,14 @@ a.badge:focus {
 	.row-fluid .thumbnails {
 		margin-left: 0;
 	}
+	
+	.wellorg{
+		transform: scale(0.8,0.8);
+    	margin-left: -171px !important;
+	}
+	
 }
+
 @media (max-width: 979px) {
 	body {
 		padding-top: 0;
@@ -5708,12 +5744,27 @@ a.badge:focus {
 		padding-right: 10px;
 	}
 }
-@media (min-width: 980px) {
+
+@media (min-width: 980px) and (max-width: 1200px){
 	.nav-collapse.collapse {
 		height: auto !important;
 		overflow: visible !important;
+	}	
+	.wellorg{
+		transform: scale(0.72,0.72);
+	    float: right;
+	    margin-right: -257px !important;
 	}
 }
+
+@media (min-width: 12000px) {
+	
+	.wellorg{
+		transform: scale(1,1);
+		margin	: 15px auto !important;
+	}
+}
+
 .small {
 	font-size: 11px;
 }
@@ -7414,6 +7465,12 @@ figcaption {
 	#login-form .input-small {
 		width: 62px;
 	}
+	
+	.wellorg{
+		transform: scale(0.5,0.5);
+	    float: right;
+	    margin-right: -420px !important;
+	}
 }
 dl.tabs {
 	float: left;
@@ -7515,7 +7572,6 @@ body.modal-open {
 	overflow-y: auto !important;
 }
 
-
 .sucesion{
 	background-image:url('../images/sucesion.png');
 	background-repeat: no-repeat;
@@ -7541,7 +7597,7 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 
 .lvertical{
 	border-right: 1px solid #278dad;
-	padding-right: 30px;
+	padding-right: 12px;
 }
 
 .cuadrou{
@@ -7588,10 +7644,19 @@ input:-moz-placeholder { color:#ACACAC; font-size:23px}
 	color: #ffffff;
 }
 
-jOrgChart .line{
-  height                : 20px;
-  width                 : 4px;
+.jOrgChart .liner{
+  width	: 50%;
 }
+
+li:first-child div.linep{
+	width: 50% !important;
+    float: right !important;
+}
+
+.jOrgChart .line{
+  width : 100%;
+}
+
 
 .jOrgChart .down {
   	background-color 	: #888888;	
@@ -7600,8 +7665,17 @@ jOrgChart .line{
     width				: 2px;
 }
 
+.jOrgChart .downlarge{
+
+    background-color: #888888;
+    margin: -164px auto 0px auto;
+    height: 210px;
+    width: 2px;
+    
+} 
+
 .jOrgChart .top {
-  border-top          : 3px solid #888888;
+  border-top          : 2px solid #888888;
 }
 
 .jOrgChart .left {
@@ -7640,13 +7714,20 @@ jOrgChart .line{
   border-color 			: #E05E00 !important;
 }
 
-
+.wellorg{
+	width	: 97%;
+    display	: flex;
+    width	: 1660px;
+    display	: flex; 
+}
 
 /* list stuff */
 #org{
-	background-color 	: white;
+	background-color	: white;
 	margin 				: 10px;
-	padding 			: 10px;
+	padding 			: 10px 10px 30px 10px;	
+	min-height			: 720px;
+	font-size			: 15px;
 }
 
 #show-list{
@@ -7664,17 +7745,10 @@ jOrgChart .line{
 
 /* Custom chart styling */
 .jOrgChart {
-  margin                : 10px;
-  padding               : 20px;
-}
-
-.jOrgChart .node {
-    font-size: 14px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    border: 1px solid #BBBBBB;
-    color: #AEB0B3;
-    -moz-border-radius: 8px;
+ 	text-align: center;
+    margin: 0px auto;
+    padding	: 20px;
+	min-height: 525px;
 }
 
 .node p{
@@ -7713,4 +7787,44 @@ jOrgChart .line{
     text-align: left;
     padding: 20px;
     line-height: 22px;
+    margin: 0 20px;
+    
+}
+
+.jOrgChart .nodec {
+	
+    display: inline-block;
+    width: 190px;
+    height: 90px;
+    text-align: left;
+    line-height: 22px;
+    margin: 0 20px;
+    
+}
+
+.calendario{
+	width: 75px !important;
+}
+
+.contustiemp {
+    position: absolute;
+    width: 190px;
+    margin-left: 190px;
+    margin-top: -135px;
+    border-radius: 5px;
+    border: 1px solid #888888;
+    background: #fff;
+    display: none;
+}
+
+.ssucesion{	
+	text-align: center;	
+}
+
+.tabletc{     
+	font-size: 9px;  
+	text-align: left;    
+	border-collapse: collapse; 
+	padding: 0px;
+    margin: 0px;
 }
