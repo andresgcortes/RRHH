@@ -99,7 +99,7 @@ class RrhhModelRrhh extends JModelItem{
 						$w1 = "margin-left: -12px;";
 					}
 					
-  					echo '<div style="position: absolute; margin-left: 544px;">';
+  					echo '<div id="seghij" style="position: absolute; margin-left: 544px;">';
   						echo '<ul style="'. $w1 .'">';				
 				}
 				

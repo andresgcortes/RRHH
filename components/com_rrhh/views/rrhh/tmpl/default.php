@@ -20,6 +20,8 @@ $document->addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jque
 JHtml::script(Juri::base() . 'templates/protostar/js/jquery.jOrgChart.js');
 JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/script.js');
 JHtml::script(Juri::base() . 'components/com_rrhh/views/rrhh/js/html2canvas.min.js');
+JHtml::script(Juri::base() . 'libraries/export_canvas/base64.js');
+JHtml::script(Juri::base() . 'libraries/export_canvas/canvas2image.js');
 
 JFactory::getDocument()->addScriptDeclaration('
 	
@@ -27,6 +29,7 @@ JFactory::getDocument()->addScriptDeclaration('
  	        
 		$(".redire").dblclick(function(){			
 			var id_area = jQuery(this).children(".node").data("idcargo");
+
 			$(location).attr("href","?option=com_rrhh&view=rrhh_cargo&id_area="+id_area);
     	});
     	
@@ -35,19 +38,21 @@ JFactory::getDocument()->addScriptDeclaration('
         }, function(){
             $(this).css("background-color", "#8A8A8C");
         });
-        
+        $("#seghij").css({"margin-left" : "121px", "margin-top" : "220px"});
         html2canvas(document.querySelector(".wellorg")).then(function(canvas){
+			
         	var png = canvas.toDataURL()
-            //window.open(png);
-       		console.log(png);
-       		jQuery("#contenido").val(png); 	                    
+       		jQuery("#contenido").val(png); 	                 
         });
+		
+		$("#seghij").css({"margin-left" : "544px", "margin-top" : "0px"});
         	
     });
 
 '); ?>
 
 <script type="text/javascript">
+
 	
 	Joomla.submitbutton = function(task){
 		
@@ -57,7 +62,7 @@ JFactory::getDocument()->addScriptDeclaration('
             	var png = canvas.toDataURL()
 	       		jQuery('#contenido').val(png); 	            
 	        });
-			
+			console.log(document.getElementById('Formrrhh'));
 			Joomla.submitform(task, document.getElementById('Formrrhh'));
 	  			
 		}else{
@@ -74,9 +79,6 @@ JFactory::getDocument()->addScriptDeclaration('
 	Exportar PDF
 </a>
 
-<div style="margin-left: auto; margin-right:auto" >
-	<?php echo $this->html; ?>
-</div>
 
 <form action="index.php?option=com_rrhh&view=rrhh" method="post" name="adminForm" id="Formrrhh" enctype="multipart/form-data" class="form-validate form">
 	

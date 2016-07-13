@@ -16,7 +16,7 @@ class RrhhViewRrhh extends JViewLegacy{
 	function display ($tpl = null){
 		
 		// Assign data to the view
-		$this->html = $this->get('Arbol');
+		$this->get('Arbol');
 		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))){		
